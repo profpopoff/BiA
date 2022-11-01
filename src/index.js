@@ -1,2 +1,2 @@
 import './index.html'
-import './style.scss'
+import './styles/index.scss'
