@@ -49,19 +49,57 @@ main {
 
     .link {
       &-label {
-        color: white;
+        color: #fff;
         font-size: 1.25rem;
         margin: 0rem;
         text-transform: uppercase;
+        position: relative;
+        transition: all .2s ease-in-out;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translate(.75rem, -35%);
+          width: .7rem;
+          aspect-ratio: 1;
+          opacity: 0;
+          border-radius: 50%;
+          background-color: rgb(216, 149, 101);
+          transition: all .2s ease-in-out;
+        }
       }
 
       &-image {
         width: max(20vw, 400px);
-        height: 200px;
-        // aspect-ratio: 2 / 1;
+        aspect-ratio: 1.8 / 1;
         border-radius: 0.5rem;
         margin-top: 0.75rem;
-        object-fit: cover;
+        overflow: hidden;
+
+        .src {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transform: scale(1.03);
+          transition: all .2s ease-in-out;
+        }
+      }
+
+      &:hover {
+        .link-label {
+          padding-left: 1.2rem;
+
+          &::before {
+            opacity: 1;
+            transform: translate(0, -35%);
+          }
+        }
+
+        .link-image .src {
+          transform: scale(1);
+        }
       }
     }
   }
