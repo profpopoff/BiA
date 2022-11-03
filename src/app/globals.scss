@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #000;
 }
 
 a {
@@ -13,4 +14,95 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+main {
+  background-color: #fff;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  z-index: 2;
+  transition: transform 500ms cubic-bezier(.55, 0, .2, 1);
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.nav {
+  height: 30rem;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow: hidden;
+
+  &-links {
+    display: flex;
+    gap: clamp(1rem, 2vw, 2rem);
+    margin-top: clamp(2rem, 2vw, 3rem);
+    padding: 0rem clamp(1rem, 2vw, 2rem);
+    transform: translateY(50%) scale(0.85);
+    transition: transform 500ms cubic-bezier(.55, 0, .3, 1);
+
+    .link {
+      &-label {
+        color: white;
+        font-size: 1.25rem;
+        margin: 0rem;
+        text-transform: uppercase;
+      }
+
+      &-image {
+        width: max(20vw, 400px);
+        height: 200px;
+        // aspect-ratio: 2 / 1;
+        border-radius: 0.5rem;
+        margin-top: 0.75rem;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.nav-toggle {
+  width: 5rem;
+  aspect-ratio: 1;
+  position: fixed;
+  left: 50%;
+  bottom: 3rem;
+  transform: translateX(-50%);
+  z-index: 3;
+  border-radius: 50%;
+  border: none;
+  background-color: rgb(182, 142, 113);
+  box-shadow: 0rem 0rem 4rem rgba(0 0 0 / 35%);
+  cursor: pointer;
+  transition-timing-function: ease;
+  transition-duration: 400ms;
+  transition: transform background-color .4s ease;
+
+  &:hover {
+    transform: translateX(-50%) scale(1.05);
+  }
+
+  &:active {
+    transform: translateX(-50%) scale(0.95);
+  }
+}
+
+body[data-nav="true"] {
+  main {
+    transform: translateY(-30rem);
+  }
+
+  .nav-toggle {
+    background-color: rgb(85, 130, 149);
+  }
+
+  .nav .nav-links {
+    transform: translateY(0%) scale(1);
+  }
 }
