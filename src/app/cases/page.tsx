@@ -1,5 +1,11 @@
+import Image from "next/image"
+
 export default function Cases() {
    return (
-      <div>cases page</div>
+      <div>
+         <h1>
+            cases page
+         </h1>
+      </div>
    )
 }
