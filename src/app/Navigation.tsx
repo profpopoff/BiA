@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
 import Cover from '../public/cover.jpeg'
 import { useEffect, useRef, useState } from "react"
 
@@ -9,6 +10,7 @@ export default function Navigation({ navActive, setNavActive }: { navActive: boo
 
    const navLinksRef = useRef<any>(null)
 
+   const pathname = usePathname()
 
    const [currentScroll, setCurrentScroll] = useState<number>(0)
    const [finalScroll, setFinalScroll] = useState<number>(1)
@@ -81,38 +83,37 @@ export default function Navigation({ navActive, setNavActive }: { navActive: boo
                }}
             >
                <Link className="link" href="/" onClick={toggleNavigation}>
-                  <h2 className="link-label">home</h2>
+                  <h2 className={`link-label ${pathname == "/" ? "active" : ""}`}>home</h2>
                   <div className="link-image">
                      <Image className="src" alt="home" src={Cover} />
                   </div>
                </Link>
                <Link className="link" href="/cases" onClick={toggleNavigation}>
-                  <h2 className="link-label">work</h2>
+                  <h2 className={`link-label ${pathname == "/cases" ? "active" : ""}`}>work</h2>
                   <div className="link-image">
                      <Image className="src" alt="home" src={Cover} />
                   </div>
                </Link>
                <Link className="link" href="/about" onClick={toggleNavigation}>
-                  <h2 className="link-label">about</h2>
+                  <h2 className={`link-label ${pathname == "/about" ? "active" : ""}`}>about</h2>
                   <div className="link-image">
                      <Image className="src" alt="home" src={Cover} />
                   </div>
                </Link>
                <Link className="link" href="/contact" onClick={toggleNavigation}>
-                  <h2 className="link-label">contact</h2>
+                  <h2 className={`link-label ${pathname == "/contact" ? "active" : ""}`}>contact</h2>
                   <div className="link-image">
                      <Image className="src" alt="home" src={Cover} />
                   </div>
                </Link>
                <Link className="link" href="/" onClick={toggleNavigation}>
-                  <h2 className="link-label">join us</h2>
+                  <h2 className={`link-label ${pathname == "/join-us" ? "active" : ""}`}>join us</h2>
                   <div className="link-image">
                      <Image className="src" alt="home" src={Cover} />
                   </div>
                </Link>
             </div>
          </nav >
-
       </>
    )
 }
