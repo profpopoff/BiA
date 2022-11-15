@@ -1,6 +1,8 @@
 import Image from "next/image"
 import styles from './Cases.module.scss'
 
+import Filters from "./Filters"
+
 export default function Cases() {
 
    const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
@@ -19,13 +21,16 @@ export default function Cases() {
 
    return (
       <div className={styles.container}>
-         {divideArray(array).map((half) =>
-            divideArray(half).map(quarter =>
-               <div className={styles.gallery}>
-                  {quarter.map((item: number) => <span>{item}</span>)}
-               </div>
-            )
-         )}
+         <Filters />
+         <div className={styles.galleries}>
+            {divideArray(array).map((half) =>
+               divideArray(half).map(quarter =>
+                  <div className={styles.gallery}>
+                     {quarter.map((item: number) => <span>{item}</span>)}
+                  </div>
+               )
+            )}
+         </div>
       </div>
    )
 }

@@ -1,22 +1,57 @@
 .container {
-   display: flex;
-   gap: 2rem;
+   position: relative;
 
-   .gallery {
-      flex: 1;
+   .filtersButton {
+      position: fixed;
+      inset: 50%;
+      transform: translateX(-50%) rotate(90deg);
+      height: 2rem;
+      width: max-content;
+      background-color: transparent;
+      border: none;
+      font-weight: 600;
+      text-transform: uppercase;
+      cursor: pointer;
+   }
+
+   &:has(.filtersActive) {
+      .galleries {
+         .gallery {
+
+            &:first-child,
+            &:nth-child(2) {
+               transform: translateX(-70%);
+            }
+
+            &:nth-child(3),
+            &:last-child {
+               transform: translateX(70%);
+            }
+         }
+      }
+   }
+
+   .galleries {
       display: flex;
-      flex-direction: column;
       gap: 2rem;
 
-      span {
-         display: block;
-         height: 75vh;
-         background-color: grey;
-      }
+      .gallery {
+         flex: 1;
+         display: flex;
+         flex-direction: column;
+         gap: 2rem;
+         transition: all .3s ease-in-out;
 
-      &:nth-child(2n) {
          span {
-            height: 60vh;
+            display: block;
+            height: 75vh;
+            background-color: grey;
+         }
+
+         &:nth-child(2n) {
+            span {
+               height: 60vh;
+            }
          }
       }
    }

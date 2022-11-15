@@ -61,6 +61,10 @@ a {
   isolation: isolate;
 }
 
+[data-nextjs-scroll-focus-boundary] {
+  display: contents;
+}
+
 /* remove animations for people who've turned them off  */
 @media (prefers-reduced-motion: reduce) {
 
