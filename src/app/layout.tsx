@@ -1,7 +1,9 @@
 'use client'
 
-import { useState } from 'react'
 import './globals.scss'
+import ContextProvider from './InteractionContext'
+import Main from './Main'
+import MainToggle from './MainToggle'
 import Navigation from './Navigation'
 
 export default function RootLayout({
@@ -10,18 +12,17 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-  const [navActive, setNavActive] = useState(false)
-
   return (
     <html>
       <head>
         <title>BiA</title>
       </head>
-      <body data-nav={navActive}>
-        <main>
-          {children}
-        </main>
-        <Navigation navActive={navActive} setNavActive={setNavActive} />
+      <body>
+        <ContextProvider>
+          <Main>{children}</Main>
+          <Navigation />
+          <MainToggle />
+        </ContextProvider>
       </body>
     </html>
   )

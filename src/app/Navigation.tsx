@@ -2,11 +2,12 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import Cover from '../public/cover.jpeg'
-import { useEffect, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
+import { InteractionContext } from "./InteractionContext"
 
-export default function Navigation({ navActive, setNavActive }: { navActive: boolean, setNavActive: Function }) {
+export default function Navigation() {
 
-   const toggleNavigation = () => setNavActive((prevNavActive: boolean) => !prevNavActive)
+   const { nav, toggleNav } = useContext(InteractionContext)
 
    const navLinksRef = useRef<any>(null)
 
@@ -23,10 +24,6 @@ export default function Navigation({ navActive, setNavActive }: { navActive: boo
 
    useEffect(() => {
       navLinksRef.current.addEventListener('scroll', handleScroll, { passive: true })
-
-      return () => {
-         navLinksRef.current.removeEventListener('scroll', handleScroll)
-      }
    }, [])
 
    useEffect(() => {
@@ -61,59 +58,51 @@ export default function Navigation({ navActive, setNavActive }: { navActive: boo
    }
 
    return (
-      <>
-         <button
-            className="nav-toggle"
-            onClick={toggleNavigation}
+      <nav className="nav">
+         <div
+            className={nav ? "nav-links navActive" : "nav-links"}
+            ref={navLinksRef}
+            onMouseMove={mouseScroll}
+            onMouseEnter={mouseEnter}
+            onMouseLeave={() => {
+               navLinksRef.current.scrollTo({
+                  left: 0,
+                  behavior: 'smooth'
+               })
+               setScrolled(false)
+            }}
          >
-            {navActive ? 'true' : 'false'}
-         </button>
-         <nav className="nav">
-            <div
-               className="nav-links"
-               ref={navLinksRef}
-               onMouseMove={mouseScroll}
-               onMouseEnter={mouseEnter}
-               onMouseLeave={() => {
-                  navLinksRef.current.scrollTo({
-                     left: 0,
-                     behavior: 'smooth'
-                  })
-                  setScrolled(false)
-               }}
-            >
-               <Link className="link" href="/" onClick={toggleNavigation}>
-                  <h2 className={`link-label ${pathname == "/" ? "active" : ""}`}>home</h2>
-                  <div className="link-image">
-                     <Image className="src" alt="home" src={Cover} />
-                  </div>
-               </Link>
-               <Link className="link" href="/cases" onClick={toggleNavigation}>
-                  <h2 className={`link-label ${pathname == "/cases" ? "active" : ""}`}>work</h2>
-                  <div className="link-image">
-                     <Image className="src" alt="home" src={Cover} />
-                  </div>
-               </Link>
-               <Link className="link" href="/about" onClick={toggleNavigation}>
-                  <h2 className={`link-label ${pathname == "/about" ? "active" : ""}`}>about</h2>
-                  <div className="link-image">
-                     <Image className="src" alt="home" src={Cover} />
-                  </div>
-               </Link>
-               <Link className="link" href="/contact" onClick={toggleNavigation}>
-                  <h2 className={`link-label ${pathname == "/contact" ? "active" : ""}`}>contact</h2>
-                  <div className="link-image">
-                     <Image className="src" alt="home" src={Cover} />
-                  </div>
-               </Link>
-               <Link className="link" href="/" onClick={toggleNavigation}>
-                  <h2 className={`link-label ${pathname == "/join-us" ? "active" : ""}`}>join us</h2>
-                  <div className="link-image">
-                     <Image className="src" alt="home" src={Cover} />
-                  </div>
-               </Link>
-            </div>
-         </nav >
-      </>
+            <Link className="link" href="/" onClick={toggleNav}>
+               <h2 className={`link-label ${pathname == "/" ? "active" : ""}`}>home</h2>
+               <div className="link-image">
+                  <Image className="src" alt="home" src={Cover} />
+               </div>
+            </Link>
+            <Link className="link" href="/cases" onClick={toggleNav}>
+               <h2 className={`link-label ${pathname == "/cases" ? "active" : ""}`}>work</h2>
+               <div className="link-image">
+                  <Image className="src" alt="home" src={Cover} />
+               </div>
+            </Link>
+            <Link className="link" href="/about" onClick={toggleNav}>
+               <h2 className={`link-label ${pathname == "/about" ? "active" : ""}`}>about</h2>
+               <div className="link-image">
+                  <Image className="src" alt="home" src={Cover} />
+               </div>
+            </Link>
+            <Link className="link" href="/contact" onClick={toggleNav}>
+               <h2 className={`link-label ${pathname == "/contact" ? "active" : ""}`}>contact</h2>
+               <div className="link-image">
+                  <Image className="src" alt="home" src={Cover} />
+               </div>
+            </Link>
+            <Link className="link" href="/" onClick={toggleNav}>
+               <h2 className={`link-label ${pathname == "/join-us" ? "active" : ""}`}>join us</h2>
+               <div className="link-image">
+                  <Image className="src" alt="home" src={Cover} />
+               </div>
+            </Link>
+         </div>
+      </nav >
    )
 }

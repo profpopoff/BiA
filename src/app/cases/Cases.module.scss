@@ -12,9 +12,15 @@
       font-weight: 600;
       text-transform: uppercase;
       cursor: pointer;
+      transition: all .15s ease-in-out;
+
+      &.filterActive {
+         opacity: 0;
+         pointer-events: none;
+      }
    }
 
-   &:has(.filtersActive) {
+   &:has(.filterActive) {
       .galleries {
          .gallery {
 
