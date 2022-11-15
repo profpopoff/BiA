@@ -1,7 +1,7 @@
 import Image from "next/image"
 import styles from './Cases.module.scss'
 
-import Filters from "./Filters"
+import Filter from "./Filter"
 
 export default function Cases() {
 
@@ -13,15 +13,9 @@ export default function Cases() {
       return [array1, array2]
    }
 
-   // divideArray(array).map((half) => {
-   //    divideArray(half).map(quarter => {
-   //       console.log(quarter, quarter.length)
-   //    })
-   // })
-
    return (
       <div className={styles.container}>
-         <Filters />
+         <Filter />
          <div className={styles.galleries}>
             {divideArray(array).map((half) =>
                divideArray(half).map(quarter =>
