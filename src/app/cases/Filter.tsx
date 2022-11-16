@@ -6,9 +6,11 @@ import styles from './Cases.module.scss'
 
 export default function Filter() {
    return (
-      <>
-         <FilterButton />
-      </>
+      <div className={styles.filter}>
+         <div className={styles.filter_wrapper}>
+            <FilterButton />
+         </div>
+      </div>
    )
 }
 
