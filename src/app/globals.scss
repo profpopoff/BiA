@@ -200,8 +200,9 @@ main {
   z-index: 3;
   border-radius: 50%;
   border: none;
-  background-color: rgb(182, 142, 113);
-  box-shadow: 0rem 0rem 4rem rgba(0 0 0 / 35%);
+  background-color: #C38133;
+  box-shadow: 0rem .5rem 2rem rgba(0 0 0 / .4);
+  font-size: 2rem;
   cursor: pointer;
   transition: transform background-color .4s ease;
 
