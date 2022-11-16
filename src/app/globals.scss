@@ -123,6 +123,8 @@ main {
     }
 
     .link {
+      user-select: none;
+
       &-label {
         color: #fff;
         font-size: 1.25rem;
