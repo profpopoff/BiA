@@ -1,12 +1,12 @@
 'use client'
 
-import './globals.scss'
 import '@fortawesome/fontawesome-svg-core/styles.css'
+import '../style/index.scss'
 
 import ContextProvider from './InteractionContext'
-import Main from './Main'
-import MainToggle from './MainToggle'
-import Navigation from './Navigation'
+import Main from './_components/Main'
+import MainToggle from './_components/MainToggle'
+import Navigation from './_components/Navigation'
 
 export default function RootLayout({
   children,
