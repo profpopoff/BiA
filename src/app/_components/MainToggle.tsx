@@ -21,12 +21,12 @@ export default function MainToggle() {
 
    return (
       <button
-         className={`nav-toggle ${nav && "navActive"} ${filter && "filterActive"} ${caseActive && "caseActive"}`}
+         className={`nav-toggle ${(nav || filter || caseActive) && "toggle-active"}`}
          onClick={clickHandler}
       >
          {(nav || filter || caseActive) ?
-            <FontAwesomeIcon icon={faArrowRotateBack} /> :
-            <FontAwesomeIcon icon={faBarsStaggered} />}
+            <FontAwesomeIcon icon={faArrowRotateBack} className="icon" /> :
+            <FontAwesomeIcon icon={faBarsStaggered} className="icon" />}
       </button>
    )
 }

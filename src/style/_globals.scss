@@ -118,19 +118,34 @@ main {
   box-shadow: 0rem .5rem 2rem rgba(0 0 0 / .4);
   font-size: 2rem;
   cursor: pointer;
-  transition: transform background-color .4s ease;
+  transition: all .4s ease;
+
+  .icon {
+    color: #fff;
+    opacity: 0;
+    transform: scale(.9);
+    transition: all .4s ease;
+  }
 
   &:hover {
     transform: translateX(-50%) scale(1.05);
+
+    .icon {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   &:active {
     transform: translateX(-50%) scale(0.95);
   }
 
-  &.navActive,
-  &.filterActive,
-  &.caseActive {
+  &.toggle-active {
     background-color: $secondary-color;
+
+    .icon {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }
