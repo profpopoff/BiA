@@ -64,14 +64,47 @@
          gap: 2rem;
          transition: all .3s $cubic-bezier;
 
-         span {
-            display: block;
+         .item {
+            position: relative;
             height: 75vh;
             background-color: grey;
+
+            .image {
+               height: 100%;
+               width: 100%;
+               object-fit: cover;
+            }
+
+            .headline {
+               position: absolute;
+               bottom: 0;
+               padding: 1rem;
+               gap: 1rem;
+               font-size: 1rem;
+               color: #fff;
+
+               .title {
+                  position: relative;
+                  display: inline;
+                  margin-right: 1rem;
+                  text-transform: uppercase;
+                  font-size: 1rem;
+
+                  &::after {
+                     content: "•";
+                     position: absolute;
+                     right: -.7rem;
+                  }
+               }
+
+               .artist {
+                  text-transform: capitalize;
+               }
+            }
          }
 
          &:nth-child(2n) {
-            span {
+            .item {
                height: 60vh;
             }
          }
