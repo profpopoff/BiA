@@ -1,3 +1,5 @@
+@import '../../style/variables';
+
 .container {
    position: relative;
 
@@ -22,7 +24,7 @@
             font-weight: 600;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all .15s ease-in-out;
+            transition: all .15s $cubic-bezier;
             user-select: none;
             pointer-events: all;
 
@@ -60,7 +62,7 @@
          display: flex;
          flex-direction: column;
          gap: 2rem;
-         transition: all .3s ease-in-out;
+         transition: all .3s $cubic-bezier;
 
          span {
             display: block;
