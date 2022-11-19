@@ -64,7 +64,7 @@
          gap: 2rem;
          transition: all .3s $cubic-bezier;
 
-         .item {
+         .card {
             position: relative;
             height: 75vh;
             background-color: grey;
@@ -84,27 +84,24 @@
                color: #fff;
 
                .title {
-                  position: relative;
                   display: inline;
-                  margin-right: 1rem;
                   text-transform: uppercase;
                   font-size: 1rem;
-
-                  &::after {
-                     content: "•";
-                     position: absolute;
-                     right: -.7rem;
-                  }
                }
 
                .artist {
                   text-transform: capitalize;
+
+                  &::before {
+                     content: "•";
+                     margin-inline: .3rem;
+                  }
                }
             }
          }
 
          &:nth-child(2n) {
-            .item {
+            .card {
                height: 60vh;
             }
          }
