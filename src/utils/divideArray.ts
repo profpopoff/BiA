@@ -15,10 +15,10 @@ export const quarterArray = (array: any[]) => {
             array3.push(i)
             break
          case 2:
-            array1.push(i)
+            array4.push(i)
             break
          case 3:
-            array4.push(i)
+            array1.push(i)
             break
       }
 
