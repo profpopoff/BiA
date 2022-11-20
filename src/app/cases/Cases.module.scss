@@ -1,6 +1,6 @@
 @import '../../style/variables';
 
-.container {
+.wrapper {
    position: relative;
 
    .filter {
@@ -42,12 +42,12 @@
 
             &:first-child,
             &:nth-child(2) {
-               transform: translateX(-70%);
+               translate: -70% 0;
             }
 
             &:nth-child(3),
             &:last-child {
-               transform: translateX(70%);
+               translate: 70% 0;
             }
          }
       }
@@ -60,9 +60,10 @@
       .gallery {
          flex: 1;
          display: flex;
+         height: max-content;
          flex-direction: column;
          gap: 2rem;
-         transition: all .3s $cubic-bezier;
+         transition: translate .3s $cubic-bezier;
 
          .card {
             position: relative;
@@ -101,8 +102,12 @@
             }
          }
 
-         &:nth-child(2n) .card {
-            aspect-ratio: 3/4;
+         &:nth-child(2n) {
+            transform: translateY(calc(var(--offsetY) * .3));
+
+            .card {
+               aspect-ratio: 3/4;
+            }
          }
       }
    }
