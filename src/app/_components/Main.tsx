@@ -7,9 +7,10 @@ export default function Main({
    children: React.ReactNode
 }) {
 
-   const { nav } = useContext(InteractionContext)
+   const { nav, toggleNav } = useContext(InteractionContext)
+
    return (
-      <main className={nav ? 'navActive' : ''}>
+      <main className={nav ? 'navActive' : ''} onClick={() => nav && toggleNav?.()}>
          {children}
       </main>
    )
