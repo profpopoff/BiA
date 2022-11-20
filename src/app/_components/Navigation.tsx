@@ -24,6 +24,8 @@ export default function Navigation() {
 
    useEffect(() => {
       navLinksRef.current.addEventListener('scroll', handleScroll, { passive: true })
+
+      return () => navLinksRef.current.removeEventListener('scroll', handleScroll)
    }, [])
 
    useEffect(() => {
@@ -36,9 +38,9 @@ export default function Navigation() {
       if (scrolled) {
          const mouseX = e.pageX
          const xDecimal = mouseX / window.innerWidth
-         const maxX = navLinksRef.current.scrollWidth - window.innerWidth
+         const maxX = e.currentTarget.scrollWidth - window.innerWidth
          const panX = maxX * xDecimal
-         navLinksRef.current.scrollTo({
+         e.currentTarget.scrollTo({
             left: panX,
             behavior: 'auto'
          })
@@ -48,10 +50,10 @@ export default function Navigation() {
    const mouseEnter = (e: React.MouseEvent) => {
       const mouseX = e.pageX
       const xDecimal = mouseX / window.innerWidth
-      const maxX = navLinksRef.current.scrollWidth - window.innerWidth
+      const maxX = e.currentTarget.scrollWidth - window.innerWidth
       const panX = maxX * xDecimal
       setFinalScroll(Math.floor(panX))
-      navLinksRef.current.scrollTo({
+      e.currentTarget.scrollTo({
          left: panX,
          behavior: 'smooth'
       })
@@ -64,8 +66,8 @@ export default function Navigation() {
             ref={navLinksRef}
             onMouseMove={mouseScroll}
             onMouseEnter={mouseEnter}
-            onMouseLeave={() => {
-               navLinksRef.current.scrollTo({
+            onMouseLeave={(e) => {
+               e.currentTarget.scrollTo({
                   left: 0,
                   behavior: 'smooth'
                })
