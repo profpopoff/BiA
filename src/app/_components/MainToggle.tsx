@@ -1,3 +1,5 @@
+'use client'
+
 import { useContext } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBarsStaggered, faArrowRotateBack } from '@fortawesome/free-solid-svg-icons'
