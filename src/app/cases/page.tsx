@@ -12,71 +12,76 @@ import Cover from '../../public/cover.jpeg'
 
 export default function Cases() {
 
-   const array = [
-      { title: 'Между светом и тенью', artist: 'Евгений Гороховский', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Где-то рай', artist: 'Виктор Норкин', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Выход за пределы', artist: 'MARCK', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Блестящая эпоха', artist: 'Альберт Тибурци', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Маленькая девочка и кот Том', artist: 'Андрей Прохоров', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Последний титан', artist: 'Андрей Карташов', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Арт-синергия', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
-      { title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+   const array: { id: number, title: string, artist?: string, dates: string[] }[] = [
+      { id: 1, title: 'Между светом и тенью', artist: 'Евгений Гороховский', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 2, title: 'Где-то рай', artist: 'Виктор Норкин', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 3, title: 'Выход за пределы', artist: 'MARCK', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 4, title: 'Блестящая эпоха', artist: 'Альберт Тибурци', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 5, title: 'Маленькая девочка и кот Том', artist: 'Андрей Прохоров', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 6, title: 'Последний титан', artist: 'Андрей Карташов', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 7, title: 'Арт-синергия', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 8, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 9, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 10, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 11, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 12, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 13, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 14, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 15, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 16, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 17, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 18, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
    ] // perfect length = 18
 
-   const itemsRef = useRef<Array<HTMLDivElement | null>>([])
+   const galleryRef = useRef<Array<HTMLDivElement | null>>([])
 
    const [heights, setHeights] = useState<any>()
 
    useEffect(() => {
-      itemsRef.current = itemsRef.current.slice(0, quarterArray(array).length)
+      galleryRef.current = galleryRef.current.slice(0, quarterArray(array).length)
 
-      setHeights([...itemsRef.current.map((item: any) => item.clientHeight)])
+      setHeights([...galleryRef.current.map((item: HTMLDivElement | null) => item?.clientHeight)])
    }, [])
 
-   const scrollHandler = (e: any) => {
+   const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent> & { target: HTMLInputElement }) => {
       for (let i: number = 0; i <= heights.length; i++) {
-         if (itemsRef.current[i]) {
+         if (galleryRef.current[i]) {
             const scrollY = e.currentTarget.scrollTop
             const yDecimal = scrollY / (e.target.scrollHeight - e.target.offsetHeight)
             const maxY = heights[i] - e.target.scrollHeight
             const panY = maxY * yDecimal
-            itemsRef.current[i]!.style.transform = `translateY(${-panY}px)`
+            galleryRef.current[i]!.style.transform = `translateY(${-panY}px)`
          }
       }
    }
 
    return (
-      <div className="container"
-         onScroll={scrollHandler}>
+      <div className="container" onScroll={scrollHandler}>
          <div className={styles.wrapper}>
             <Filter />
             <div className={styles.galleries}>
-               {quarterArray(array).map((quarter, index) =>
-                  <div className={styles.gallery} key={index}
-                     ref={el => itemsRef.current[index] = el}>
-                     {quarter.map((item, index) =>
-                        <Link href='/' className={styles.card} key={index}>
-                           {/* <Image className={styles.image} src={Cover} alt="cover" /> */}
-                           <div className={styles.headline}>
-                              <h2 className={styles.title}>{item.title}</h2>
-                              {!!item.artist && <span className={styles.artist}>{item.artist}</span>}
-                           </div>
-                        </Link>
-                     )}
-                  </div>
+               {quarterArray(array).map((gallery, index) =>
+                  <Gallery gallery={gallery} galleryRef={galleryRef} key={index} index={index} />
                )}
             </div>
          </div>
       </div >
+   )
+}
+
+export const Gallery = ({ gallery, galleryRef, index }:
+   { gallery: any[], galleryRef: React.MutableRefObject<(HTMLDivElement | null)[]>, index: number }) => {
+   return (
+      <div className={styles.gallery} ref={el => galleryRef.current[index] = el}>
+         {gallery.map((item) =>
+            <Link href='/' className={styles.card} key={item.id}>
+               {/* <Image className={styles.image} src={Cover} alt="cover" /> */}
+               <div className={styles.headline}>
+                  <h2 className={styles.title}>{item.title}</h2>
+                  {!!item.artist && <span className={styles.artist}>{item.artist}</span>}
+               </div>
+            </Link>
+         )}
+      </div>
    )
 }
