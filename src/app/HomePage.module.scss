@@ -1,0 +1,27 @@
+.container {
+   $gap: 2.125rem;
+   $section-width: calc(50% - ($gap /2));
+
+   display: flex;
+   gap: $gap;
+
+   &>* {
+      outline: 1px solid red;
+   }
+
+   .galleries {
+      width: $section-width;
+   }
+
+   .article {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: $section-width;
+      background-color: #F2EFE6;
+
+      .mission {
+         text-transform: uppercase;
+      }
+   }
+}
