@@ -1,6 +1,8 @@
 @import '../../style/variables';
 
 .wrapper {
+   $gap: 2.125rem;
+
    position: relative;
 
    .filter {
@@ -17,7 +19,7 @@
 
          .filtersButton {
             transform: rotate(90deg);
-            height: 2rem;
+            height: $gap;
             width: max-content;
             background-color: transparent;
             border: none;
@@ -55,14 +57,14 @@
 
    .galleries {
       display: flex;
-      gap: 2rem;
+      gap: $gap;
 
       .gallery {
          flex: 1;
          display: flex;
          height: max-content;
          flex-direction: column;
-         gap: 2rem;
+         gap: $gap;
          transition: translate .3s $cubic-bezier;
 
          .card {
