@@ -11,7 +11,7 @@ export default function Header() {
 
    return (
       <header>
-         <Link href='/about' className='link' onClick={() => nav && toggleNav?.()}>ErArta.</Link>
+         <Link href='/' className='link' onClick={() => nav && toggleNav?.()}>ErArta.</Link>
       </header>
    )
 
