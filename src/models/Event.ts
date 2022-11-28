@@ -16,6 +16,8 @@ interface IEvent {
    }
    description: string
    images: string[]
+   theses?: string[]
+   video?: string
 }
 
 const EventScheme = new mongoose.Schema<IEvent>(
@@ -54,10 +56,12 @@ const EventScheme = new mongoose.Schema<IEvent>(
          type: String,
          required: [true, 'Описание события не указано.'],
       },
-      images: {
-         type: [String],
-         required: [true, 'Изображения не добавлены.'],
-      },
+      images: [{
+         type: String,
+         required: [true, 'Добавьте хотя бы одно изображение.'],
+      }],
+      theses: [String],
+      video: String,
    },
    { timestamps: true }
 )
