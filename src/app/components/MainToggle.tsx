@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBarsStaggered, faArrowRotateBack } from '@fortawesome/free-solid-svg-icons'
 
-import { InteractionContext } from "../InteractionContext"
+import { InteractionContext } from "./InteractionContext"
 
 export default function MainToggle() {
 

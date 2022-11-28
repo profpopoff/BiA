@@ -1,7 +1,7 @@
 'use client'
 
 import { useContext } from "react"
-import { InteractionContext } from "../InteractionContext"
+import { InteractionContext } from "./InteractionContext"
 
 export default function Main({
    children,

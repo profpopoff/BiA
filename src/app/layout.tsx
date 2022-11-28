@@ -1,7 +1,7 @@
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import '../style/index.scss'
 
-import ContextProvider from './InteractionContext'
+import ContextProvider from './components/InteractionContext'
 import Header from './components/Header'
 import Main from './components/Main'
 import MainToggle from './components/MainToggle'

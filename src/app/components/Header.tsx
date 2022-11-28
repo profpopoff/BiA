@@ -3,7 +3,7 @@
 import Link from 'next/link'
 
 import { useContext } from "react"
-import { InteractionContext } from "../InteractionContext"
+import { InteractionContext } from "./InteractionContext"
 
 export default function Header() {
 

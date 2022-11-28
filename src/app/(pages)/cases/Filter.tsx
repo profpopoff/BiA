@@ -1,7 +1,7 @@
 'use client'
 
 import { useContext, useState } from 'react'
-import { InteractionContext } from '../../InteractionContext'
+import { InteractionContext } from '../../components/InteractionContext'
 import styles from './Cases.module.scss'
 
 export default function Filter() {

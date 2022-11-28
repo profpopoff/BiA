@@ -5,7 +5,7 @@ import Image from "next/image"
 import { usePathname } from "next/navigation"
 import Cover from '../../public/cover.jpeg'
 import { useContext, useEffect, useRef, useState } from "react"
-import { InteractionContext } from "../InteractionContext"
+import { InteractionContext } from "./InteractionContext"
 
 export default function Navigation() {
 
