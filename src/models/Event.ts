@@ -43,7 +43,10 @@ const EventScheme = new mongoose.Schema<IEvent>(
          floor: { type: Number, required: [true, 'Этаж не указано.'], },
          zone: {
             type: String,
-            enum: ['museum', 'exposition', 'stage'],
+            enum: {
+               values: ['museum', 'exposition', 'stage'],
+               message: 'Zone is either museum, exposition or stage.'
+            },
             default: 'exposition',
          },
       },
