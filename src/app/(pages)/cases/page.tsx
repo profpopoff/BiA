@@ -5,7 +5,7 @@ import Link from "next/link"
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
 
 import styles from './Cases.module.scss'
-import { quarterArray } from "../../utils/divideArray"
+import { quarterArray } from "../../../utils/divideArray"
 import Filter from "./Filter"
 
 import Cover from '../../public/cover.jpeg'
