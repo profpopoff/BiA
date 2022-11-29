@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react"
+import React, { useRef } from "react"
 
 import styles from './Cases.module.scss'
 import { quarterArray } from "../../../utils/divideArray"
@@ -33,25 +33,17 @@ export default function Cases() {
       { id: 18, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
    ] // perfect length = 18
 
-   const galleryRef = useRef<Array<HTMLDivElement | null>>([])
-
-   const [heights, setHeights] = useState<any>()
-
-   useEffect(() => {
-      galleryRef.current = galleryRef.current.slice(0, quarterArray(array).length)
-
-      setHeights([...galleryRef.current.map((item: HTMLDivElement | null) => item?.clientHeight)])
-   }, [])
+   const galleryRef = useRef<Array<HTMLDivElement>>([])
 
    const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent> & { target: HTMLInputElement }) => {
-      for (let i: number = 0; i <= heights.length; i++) {
-         if (galleryRef.current[i]) {
-            const scrollY = e.currentTarget.scrollTop
-            const yDecimal = scrollY / (e.target.scrollHeight - e.target.offsetHeight)
-            const maxY = heights[i] - e.target.scrollHeight
-            const panY = maxY * yDecimal
-            galleryRef.current[i]!.style.transform = `translateY(${-panY}px)`
-         }
+
+      const scrollY = e.currentTarget.scrollTop
+      const yDecimal = scrollY / (e.target.scrollHeight - e.target.offsetHeight)
+
+      for (let i: number = 0; i <= 3; i++) {
+         const maxY = galleryRef.current[i].clientHeight - e.target.scrollHeight
+         const panY = maxY * yDecimal
+         galleryRef.current[i].style.transform = `translateY(${-panY}px)`
       }
    }
 
