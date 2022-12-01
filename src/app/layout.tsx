@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html>
       <head>
-        <title>BiA</title>
+        <title>Erarta</title>
       </head>
       <body>
         <ContextProvider>

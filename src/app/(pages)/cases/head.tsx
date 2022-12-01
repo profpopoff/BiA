@@ -1,5 +1,5 @@
 export default function Head() {
    return (
-      <title>Cases | BiA</title>
+      <title>Cases | Erarta</title>
    )
 }
