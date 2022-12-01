@@ -14,9 +14,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       case 'GET' /* Get a model by its ID */:
          try {
             const event = await Event.findById(id)
-            if (!event) {
-               return res.status(400).json({ success: false, message: 'Wrong id.' })
-            }
             res.status(200).json({ success: true, data: event })
          } catch (error) {
             res.status(400).json({ success: false, message: error })
@@ -29,9 +26,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                new: true,
                runValidators: true,
             })
-            if (!event) {
-               return res.status(400).json({ success: false, message: 'Wrong id.' })
-            }
             res.status(200).json({ success: true, data: event })
          } catch (error) {
             res.status(400).json({ success: false, message: error })
@@ -41,10 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       case 'DELETE' /* Delete a model by its ID */:
          try {
             const deletedEvent = await Event.findByIdAndDelete(id)
-            if (!deletedEvent) {
-               return res.status(400).json({ success: false, message: 'Wrong id.' })
-            }
-            res.status(200).json({ success: true, message: 'Event deleted successfully.' })
+            res.status(200).json({ success: true, data: deletedEvent })
          } catch (error) {
             res.status(400).json({ success: false, message: error })
          }
