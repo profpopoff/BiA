@@ -56,10 +56,11 @@ const EventScheme = new mongoose.Schema<IEvent>(
          type: String,
          required: [true, 'Описание события не указано.'],
       },
-      images: [{
-         type: String,
-         required: [true, 'Добавьте хотя бы одно изображение.'],
-      }],
+      images: {
+         type: [String],
+         required: true,
+         validate: [(v: any) => Array.isArray(v) && v.length > 0, 'Добавьте хотя бы одно изображение.']
+      },
       theses: [String],
       video: String,
    },
