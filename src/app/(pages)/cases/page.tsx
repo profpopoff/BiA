@@ -6,7 +6,7 @@ import React, { useRef } from "react"
 
 import styles from './Cases.module.scss'
 import { quarterArray } from "../../../utils/divideArray"
-import Filter from "./Filter"
+import Filter from "./components/Filter/Filter"
 
 import Cover from '../../public/cover.jpeg'
 

@@ -1,0 +1,47 @@
+@import '../../../style/variables';
+
+.button {
+   width: 5rem;
+   aspect-ratio: 1;
+   position: fixed;
+   left: 50%;
+   bottom: 3rem;
+   transform: translateX(-50%);
+   z-index: 3;
+   border-radius: 50%;
+   border: none;
+   background-color: $primary-color;
+   box-shadow: 0rem .5rem 2rem rgba(0 0 0 / .4);
+   font-size: 2rem;
+   cursor: pointer;
+   transition: all .4s ease;
+
+   .icon {
+      color: #fff;
+      opacity: 0;
+      transform: scale(.9);
+      transition: all .4s ease;
+   }
+
+   &:hover {
+      transform: translateX(-50%) scale(1.05);
+
+      .icon {
+         opacity: 1;
+         transform: scale(1);
+      }
+   }
+
+   &:active {
+      transform: translateX(-50%) scale(0.95);
+   }
+
+   &.active {
+      background-color: $secondary-color;
+
+      .icon {
+         opacity: 1;
+         transform: scale(1);
+      }
+   }
+}

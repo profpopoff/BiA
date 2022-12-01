@@ -1,11 +1,10 @@
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import '../style/index.scss'
 
-import ContextProvider from './components/InteractionContext'
-import Header from './components/Header'
-import Main from './components/Main'
-import MainToggle from './components/MainToggle'
-import Navigation from './components/Navigation'
+import ContextProvider from './context/InteractionContext'
+import Header from './components/Header/Header'
+import MainToggle from './components/MainButton/MainButton'
+import Navigation from './components/Navigation/Navigation'
 
 export default function RootLayout({
   children,
@@ -21,7 +20,7 @@ export default function RootLayout({
       <body>
         <ContextProvider>
           <Header />
-          <Main>{children}</Main>
+          <main>{children}</main>
           <MainToggle />
           <Navigation />
         </ContextProvider>

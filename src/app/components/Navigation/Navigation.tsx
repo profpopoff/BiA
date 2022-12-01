@@ -3,9 +3,11 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import Cover from '../../public/cover.jpeg'
+import Cover from '../../../public/cover.jpeg'
 import { useContext, useEffect, useRef, useState } from "react"
-import { InteractionContext } from "./InteractionContext"
+import { InteractionContext } from "../../context/InteractionContext"
+
+import navigation from './Navigation.module.scss'
 
 export default function Navigation() {
 
@@ -62,9 +64,9 @@ export default function Navigation() {
    }
 
    return (
-      <nav className="nav">
+      <nav className={navigation.container}>
          <div
-            className={nav ? "nav-links navActive" : "nav-links"}
+            className={nav ? `${navigation.links} ${navigation.active} navActive` : navigation.links}
             ref={navLinksRef}
             onMouseMove={mouseScroll}
             onMouseEnter={mouseEnter}
@@ -76,34 +78,34 @@ export default function Navigation() {
                setScrolled(false)
             }}
          >
-            <Link className="link" href="/" onClick={toggleNav}>
-               <h2 className={`link-label ${pathname == "/" ? "active" : ""}`}>home</h2>
-               <div className="link-image">
-                  <Image className="src" alt="home" src={Cover} />
+            <Link className={navigation.link} href="/" onClick={toggleNav}>
+               <h2 className={pathname == "/" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>home</h2>
+               <div className={navigation.linkImage}>
+                  <Image className={navigation.src} alt="home" src={Cover} />
                </div>
             </Link>
-            <Link className="link" href="/cases" onClick={toggleNav}>
-               <h2 className={`link-label ${pathname == "/cases" ? "active" : ""}`}>work</h2>
-               <div className="link-image">
-                  <Image className="src" alt="home" src={Cover} />
+            <Link className={navigation.link} href="/cases" onClick={toggleNav}>
+               <h2 className={pathname == "/cases" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>work</h2>
+               <div className={navigation.linkImage}>
+                  <Image className={navigation.src} alt="home" src={Cover} />
                </div>
             </Link>
-            <Link className="link" href="/about" onClick={toggleNav}>
-               <h2 className={`link-label ${pathname == "/about" ? "active" : ""}`}>about</h2>
-               <div className="link-image">
-                  <Image className="src" alt="home" src={Cover} />
+            <Link className={navigation.link} href="/about" onClick={toggleNav}>
+               <h2 className={pathname == "/about" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>about</h2>
+               <div className={navigation.linkImage}>
+                  <Image className={navigation.src} alt="home" src={Cover} />
                </div>
             </Link>
-            <Link className="link" href="/contact" onClick={toggleNav}>
-               <h2 className={`link-label ${pathname == "/contact" ? "active" : ""}`}>contact</h2>
-               <div className="link-image">
-                  <Image className="src" alt="home" src={Cover} />
+            <Link className={navigation.link} href="/contact" onClick={toggleNav}>
+               <h2 className={pathname == "/contact" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>contact</h2>
+               <div className={navigation.linkImage}>
+                  <Image className={navigation.src} alt="home" src={Cover} />
                </div>
             </Link>
-            <Link className="link" href="/" onClick={toggleNav}>
-               <h2 className={`link-label ${pathname == "/join-us" ? "active" : ""}`}>join us</h2>
-               <div className="link-image">
-                  <Image className="src" alt="home" src={Cover} />
+            <Link className={navigation.link} href="/" onClick={toggleNav}>
+               <h2 className={pathname == "/" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>join us</h2>
+               <div className={navigation.linkImage}>
+                  <Image className={navigation.src} alt="home" src={Cover} />
                </div>
             </Link>
          </div>

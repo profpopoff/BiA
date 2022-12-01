@@ -1,0 +1,91 @@
+@import '../../../style/variables';
+
+.container {
+   height: 30rem;
+   width: 100%;
+   position: absolute;
+   bottom: 0;
+   overflow: auto;
+
+   .links {
+      display: flex;
+      gap: clamp(1rem, 2vw, 2rem);
+      margin-top: clamp(2rem, 2vw, 3rem);
+      padding: 0rem clamp(1rem, 2vw, 2rem);
+      transform: translateY(50%) scale(0.85);
+      transition: transform 500ms $cubic-bezier;
+      overflow: auto;
+
+      &.active {
+         transform: translateY(0%) scale(1);
+      }
+
+      .link {
+         user-select: none;
+
+         .linkLabel {
+            color: #fff;
+            font-size: 1.25rem;
+            margin: 0rem;
+            text-transform: uppercase;
+            position: relative;
+            transition: all .2s ease-in-out;
+
+            &.linkActive {
+               padding-left: 1.2rem;
+
+               &::before {
+                  opacity: 1;
+                  transform: translate(0, -35%);
+                  background-color: $secondary-color;
+               }
+            }
+
+            &::before {
+               content: "";
+               position: absolute;
+               left: 0;
+               top: 50%;
+               transform: translate(.75rem, -35%);
+               width: .7rem;
+               aspect-ratio: 1;
+               opacity: 0;
+               border-radius: 50%;
+               background-color: $primary-color;
+               transition: all .2s ease-in-out;
+            }
+         }
+
+         .linkImage {
+            width: max(20vw, 400px);
+            aspect-ratio: 1.8 / 1;
+            border-radius: 0.5rem;
+            margin-top: 0.75rem;
+            overflow: hidden;
+
+            .src {
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+               transform: scale(1.03);
+               transition: all .2s ease-in-out;
+            }
+         }
+
+         &:hover {
+            .linkLabel {
+               padding-left: 1.2rem;
+
+               &::before {
+                  opacity: 1;
+                  transform: translate(0, -35%);
+               }
+            }
+
+            .linkImage .src {
+               transform: scale(1);
+            }
+         }
+      }
+   }
+}

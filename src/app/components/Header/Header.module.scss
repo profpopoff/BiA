@@ -1,0 +1,21 @@
+@import '../../../style/variables';
+
+.container {
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 2;
+   padding: 1.5rem 2rem;
+   pointer-events: none;
+
+   .link {
+      pointer-events: all;
+      display: block;
+      width: min-content;
+      color: $primary-color;
+      font-size: 1.3rem;
+      font-weight: 600;
+      cursor: pointer;
+   }
+}

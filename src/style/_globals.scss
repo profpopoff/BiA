@@ -2,6 +2,12 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #000;
+
+  &:has(.navActive) {
+    main {
+      transform: translateY(-30rem);
+    }
+  }
 }
 
 main {
@@ -15,169 +21,9 @@ main {
   &:has(.container) {
     overflow: hidden;
   }
-
-  &.navActive {
-    transform: translateY(-30rem);
-  }
-}
-
-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  padding: 1.5rem 2rem;
-  pointer-events: none;
-
-  .link {
-    pointer-events: all;
-    display: block;
-    width: min-content;
-    color: $primary-color;
-    font-size: 1.3rem;
-    font-weight: 600;
-    cursor: pointer;
-  }
 }
 
 .container {
   height: 100vh;
   overflow: auto;
-}
-
-.nav {
-  height: 30rem;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  overflow: auto;
-
-  &-links {
-    display: flex;
-    gap: clamp(1rem, 2vw, 2rem);
-    margin-top: clamp(2rem, 2vw, 3rem);
-    padding: 0rem clamp(1rem, 2vw, 2rem);
-    transform: translateY(50%) scale(0.85);
-    transition: transform 500ms $cubic-bezier;
-    overflow: auto;
-
-    &.navActive {
-      transform: translateY(0%) scale(1);
-    }
-
-    .link {
-      user-select: none;
-
-      &-label {
-        color: #fff;
-        font-size: 1.25rem;
-        margin: 0rem;
-        text-transform: uppercase;
-        position: relative;
-        transition: all .2s ease-in-out;
-
-        &.active {
-          padding-left: 1.2rem;
-
-          &::before {
-            opacity: 1;
-            transform: translate(0, -35%);
-            background-color: $secondary-color;
-          }
-        }
-
-        &::before {
-          content: "";
-          position: absolute;
-          left: 0;
-          top: 50%;
-          transform: translate(.75rem, -35%);
-          width: .7rem;
-          aspect-ratio: 1;
-          opacity: 0;
-          border-radius: 50%;
-          background-color: $primary-color;
-          transition: all .2s ease-in-out;
-        }
-      }
-
-      &-image {
-        width: max(20vw, 400px);
-        aspect-ratio: 1.8 / 1;
-        border-radius: 0.5rem;
-        margin-top: 0.75rem;
-        overflow: hidden;
-
-        .src {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transform: scale(1.03);
-          transition: all .2s ease-in-out;
-        }
-      }
-
-      &:hover {
-        .link-label {
-          padding-left: 1.2rem;
-
-          &::before {
-            opacity: 1;
-            transform: translate(0, -35%);
-          }
-        }
-
-        .link-image .src {
-          transform: scale(1);
-        }
-      }
-    }
-  }
-}
-
-.nav-toggle {
-  width: 5rem;
-  aspect-ratio: 1;
-  position: fixed;
-  left: 50%;
-  bottom: 3rem;
-  transform: translateX(-50%);
-  z-index: 3;
-  border-radius: 50%;
-  border: none;
-  background-color: $primary-color;
-  box-shadow: 0rem .5rem 2rem rgba(0 0 0 / .4);
-  font-size: 2rem;
-  cursor: pointer;
-  transition: all .4s ease;
-
-  .icon {
-    color: #fff;
-    opacity: 0;
-    transform: scale(.9);
-    transition: all .4s ease;
-  }
-
-  &:hover {
-    transform: translateX(-50%) scale(1.05);
-
-    .icon {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  &:active {
-    transform: translateX(-50%) scale(0.95);
-  }
-
-  &.toggle-active {
-    background-color: $secondary-color;
-
-    .icon {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
 }

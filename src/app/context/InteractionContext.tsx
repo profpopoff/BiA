@@ -5,7 +5,7 @@ import { createContext, useState } from 'react'
 interface IInteractionContext {
    nav: boolean
    toggleNav?: () => void
-   filter: boolean
+   filterActive: boolean
    toggleFilter?: () => void
    caseActive: boolean
    toggleCase?: () => void
@@ -13,7 +13,7 @@ interface IInteractionContext {
 
 const defaultState = {
    nav: false,
-   filter: false,
+   filterActive: false,
    caseActive: false,
 }
 
@@ -24,18 +24,18 @@ export default function ContextProvider({ children }: {
 }) {
 
    const [nav, setNav] = useState<boolean>(defaultState.nav)
-   const [filter, setFilter] = useState<boolean>(defaultState.filter)
+   const [filterActive, setFilterActive] = useState<boolean>(defaultState.filterActive)
    const [caseActive, setCaseActive] = useState<boolean>(defaultState.caseActive)
 
    const toggleNav = () => setNav(!nav)
-   const toggleFilter = () => setFilter(!filter)
+   const toggleFilter = () => setFilterActive(!filterActive)
    const toggleCase = () => setCaseActive(!caseActive)
 
    return (
       <InteractionContext.Provider value={
          {
             nav, toggleNav,
-            filter, toggleFilter,
+            filterActive, toggleFilter,
             caseActive, toggleCase,
          }
       }>
