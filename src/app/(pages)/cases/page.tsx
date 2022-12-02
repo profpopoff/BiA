@@ -1,4 +1,4 @@
-'use client'
+// 'use client'
 
 import Image from "next/image"
 import Link from "next/link"
@@ -9,6 +9,7 @@ import { quarterArray } from "../../../utils/divideArray"
 import Filter from "./components/Filter/Filter"
 
 import Cover from '../../public/cover.jpeg'
+import Gallery from "./components/Gallery/Gallery"
 
 export default function Cases() {
 
@@ -33,47 +34,60 @@ export default function Cases() {
       { id: 18, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
    ] // perfect length = 18
 
-   const galleryRef = useRef<Array<HTMLDivElement>>([])
-
-   const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent> & { target: HTMLInputElement }) => {
-
-      const scrollY = e.currentTarget.scrollTop
-      const yDecimal = scrollY / (e.target.scrollHeight - e.target.offsetHeight)
-
-      for (let i: number = 0; i <= 3; i++) {
-         const maxY = galleryRef.current[i].clientHeight - e.target.scrollHeight
-         const panY = maxY * yDecimal
-         galleryRef.current[i].style.transform = `translateY(${-panY}px)`
-      }
-   }
-
    return (
-      <div className="container" onScroll={scrollHandler}>
+      <div className="container">
          <div className={styles.wrapper}>
-            <Filter />
             <div className={styles.galleries}>
                {quarterArray(array).map((gallery, index) =>
-                  <Gallery gallery={gallery} galleryRef={galleryRef} key={index} index={index} />
+                  <Gallery gallery={gallery} index={index} />
                )}
             </div>
          </div>
-      </div >
-   )
-}
-
-export const Gallery = ({ gallery, galleryRef, index }:
-   { gallery: any[], galleryRef: React.MutableRefObject<(HTMLDivElement | null)[]>, index: number }) => {
-   return (
-      <div className={styles.gallery} ref={el => galleryRef.current[index] = el}>
-         {gallery.map((item) =>
-            <Link href='/' className={styles.card} key={item.id}>
-               {/* <Image className={styles.image} src={Cover} alt="cover" /> */}
-               <div className={styles.headline}>
-                  <h2 className={styles.title}>{item.title}</h2>
-                  {!!item.artist && <span className={styles.artist}>{item.artist}</span>}
-               </div>
-            </Link>
-         )}
       </div>
    )
+
 }
+   // const galleryRef = useRef<Array<HTMLDivElement>>([])
+
+   // const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent> & { target: HTMLInputElement }) => {
+
+   //    const scrollY = e.currentTarget.scrollTop
+   //    const yDecimal = scrollY / (e.target.scrollHeight - e.target.offsetHeight)
+
+   //    for (let i: number = 0; i <= 3; i++) {
+   //       const maxY = galleryRef.current[i].clientHeight - e.target.scrollHeight
+   //       const panY = maxY * yDecimal
+   //       galleryRef.current[i].style.transform = `translateY(${-panY}px)`
+   //    }
+   // }
+
+//    return (
+//       <div className="container" onScroll={scrollHandler}>
+//          <div className={styles.wrapper}>
+//             <Filter />
+//             <div className={styles.galleries}>
+//                {quarterArray(array).map((gallery, index) =>
+//                   <Gallery gallery={gallery} galleryRef={galleryRef} key={index} index={index} />
+//                )}
+//             </div>
+//          </div>
+//       </div >
+//    )
+// }
+
+// export const Gallery = ({ gallery, galleryRef, index }:
+//    { gallery: any[], galleryRef: React.MutableRefObject<(HTMLDivElement | null)[]>, index: number }) => {
+//    return (
+//       <div className={styles.gallery} ref={el => galleryRef.current[index] = el}>
+//          {gallery.map((item) =>
+//             <Link href='/' className={styles.card} key={item.id}>
+//                {/* <Image className={styles.image} src={Cover} alt="cover" /> */}
+//                <div className={styles.headline}>
+//                   <h2 className={styles.title}>{item.title}</h2>
+//                   {!!item.artist && <span className={styles.artist}>{item.artist}</span>}
+//                </div>
+//             </Link>
+//          )}
+//       </div>
+//    )
+// }

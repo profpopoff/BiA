@@ -1,0 +1,55 @@
+@import '../../../../../style/variables';
+
+.gallery {
+   flex: 1;
+   height: min-content;
+   display: flex;
+   flex-direction: column;
+   gap: $gap;
+   transition: translate .3s $cubic-bezier;
+
+   .card {
+      position: relative;
+      aspect-ratio: 2/3;
+      background-color: grey;
+
+      .image {
+         height: 100%;
+         width: 100%;
+         object-fit: cover;
+      }
+
+      .headline {
+         position: absolute;
+         bottom: 0;
+         padding: 1rem;
+         gap: 1rem;
+         font-size: 1rem;
+         color: #fff;
+         // text-shadow: 0 0 2px $primary-color;
+
+         .title {
+            display: inline;
+            text-transform: uppercase;
+            font-size: 1rem;
+         }
+
+         .artist {
+            text-transform: capitalize;
+
+            &::before {
+               content: "•";
+               margin-inline: .3rem;
+            }
+         }
+      }
+   }
+
+   &:nth-child(2n) {
+      transform: translateY(calc(var(--offsetY) * .3));
+
+      .card {
+         aspect-ratio: 3/4;
+      }
+   }
+}
