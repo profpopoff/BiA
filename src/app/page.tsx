@@ -57,9 +57,16 @@ export default function HomePage() {
             Dolorem explicabo aspernatur nesciunt, ut qui libero adipisci sequi expedita maxime minus sit cupiditate architecto saepe? Libero facilis, consectetur aliquam, omnis, deleniti consequuntur quos culpa accusantium nemo officia eos ducimus?
          </div>
          <article className={styles.article}>
-            <h1 className={styles.mission}>мир велик и никто в нем не лишний</h1>
-            <span>Наша задача — сделать все для того, чтобы человек, придя к нам, увидел, что современное искусство — о нем и для него.</span>
-            <Link href="/about">О музее</Link>
+            <h1 className={styles.slogan}>
+               <span>мир велик</span>
+               <span>и никто</span>
+               <span className={styles.marginLeft}>в нем</span>
+               <span>не лишний</span>
+            </h1>
+            <div className={styles.mission}>
+               <p className={styles.missionDesc}>Наша задача — сделать все для того, чтобы человек, придя к нам, увидел, что современное искусство — о нем и для него.</p>
+               <Link href="/about" className={styles.missionLink}>Подробнее</Link>
+            </div>
          </article>
       </div>
    )
