@@ -1,14 +1,5 @@
-// 'use client'
-
-import Image from "next/image"
-import Link from "next/link"
-import React, { useRef } from "react"
-
 import styles from './Cases.module.scss'
 import { quarterArray } from "../../../utils/divideArray"
-import Filter from "./components/Filter/Filter"
-
-import Cover from '../../public/cover.jpeg'
 import Gallery from "./components/Gallery/Gallery"
 
 export default function Cases() {
@@ -38,56 +29,11 @@ export default function Cases() {
       <div className="container">
          <div className={styles.wrapper}>
             <div className={styles.galleries}>
-               {quarterArray(array).map((gallery, index) =>
-                  <Gallery gallery={gallery} index={index} />
+               {quarterArray(array).map((gallery) =>
+                  <Gallery gallery={gallery} />
                )}
             </div>
          </div>
       </div>
    )
-
 }
-   // const galleryRef = useRef<Array<HTMLDivElement>>([])
-
-   // const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent> & { target: HTMLInputElement }) => {
-
-   //    const scrollY = e.currentTarget.scrollTop
-   //    const yDecimal = scrollY / (e.target.scrollHeight - e.target.offsetHeight)
-
-   //    for (let i: number = 0; i <= 3; i++) {
-   //       const maxY = galleryRef.current[i].clientHeight - e.target.scrollHeight
-   //       const panY = maxY * yDecimal
-   //       galleryRef.current[i].style.transform = `translateY(${-panY}px)`
-   //    }
-   // }
-
-//    return (
-//       <div className="container" onScroll={scrollHandler}>
-//          <div className={styles.wrapper}>
-//             <Filter />
-//             <div className={styles.galleries}>
-//                {quarterArray(array).map((gallery, index) =>
-//                   <Gallery gallery={gallery} galleryRef={galleryRef} key={index} index={index} />
-//                )}
-//             </div>
-//          </div>
-//       </div >
-//    )
-// }
-
-// export const Gallery = ({ gallery, galleryRef, index }:
-//    { gallery: any[], galleryRef: React.MutableRefObject<(HTMLDivElement | null)[]>, index: number }) => {
-//    return (
-//       <div className={styles.gallery} ref={el => galleryRef.current[index] = el}>
-//          {gallery.map((item) =>
-//             <Link href='/' className={styles.card} key={item.id}>
-//                {/* <Image className={styles.image} src={Cover} alt="cover" /> */}
-//                <div className={styles.headline}>
-//                   <h2 className={styles.title}>{item.title}</h2>
-//                   {!!item.artist && <span className={styles.artist}>{item.artist}</span>}
-//                </div>
-//             </Link>
-//          )}
-//       </div>
-//    )
-// }
