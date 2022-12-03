@@ -11,13 +11,13 @@ export default function Gallery({ gallery }: { gallery: any[] }) {
 
    useEffect(() => {
       const container = galleryRef.current?.parentElement?.parentElement?.parentElement
-      const maxHeight = galleryRef.current?.parentElement?.scrollHeight!
-      const currentHeight = galleryRef.current?.scrollHeight!
+      const maxTargetHeight = galleryRef.current?.parentElement?.scrollHeight!
+      const currentTargetHeight = galleryRef.current?.scrollHeight!
 
       const onScroll = () => {
-         const scrollY = galleryRef.current?.parentElement?.parentElement?.parentElement?.scrollTop!
-         const yDecimal = scrollY / (maxHeight - window.innerHeight)
-         const maxY = currentHeight - maxHeight
+         const scrollY = container?.scrollTop!
+         const yDecimal = scrollY / (maxTargetHeight - window.innerHeight)
+         const maxY = currentTargetHeight - maxTargetHeight
          const panY = maxY * yDecimal
          galleryRef.current!.style.transform = `translateY(${-panY}px)`
       }
@@ -28,11 +28,8 @@ export default function Gallery({ gallery }: { gallery: any[] }) {
       }
    }, [])
 
-
    return (
-      <div className={galleryStyle.gallery}
-         ref={galleryRef}
-      >
+      <div className={galleryStyle.gallery} ref={galleryRef}>
          {gallery.map((item) =>
             <Link href='/' className={galleryStyle.card} key={item.id}>
                {/* <Image className={gallery.image} src={Cover} alt="cover" /> */}
