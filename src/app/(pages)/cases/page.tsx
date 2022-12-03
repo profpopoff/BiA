@@ -1,8 +1,25 @@
 import styles from './Cases.module.scss'
 import { quarterArray } from "../../../utils/divideArray"
 import Gallery from "./components/Gallery/Gallery"
+import Filter from './components/Filter/Filter'
 
-export default function Cases() {
+async function fetchEvents() {
+   const eventsResponse = await fetch("http://localhost:3000/api/events", {
+      // cache: "force-cache", ///< SSG getStaticSideProps
+      cache: "no-store", ///< SSR getServerSideProps
+      // next: {
+      //   revalidate: 20, ///< ISR revalidate
+      // },
+   })
+
+   return eventsResponse.json()
+}
+
+export default async function Cases() {
+
+   const events = await fetchEvents()
+
+   console.log(events)
 
    const array: { id: number, title: string, artist?: string, dates: string[] }[] = [
       { id: 1, title: 'Между светом и тенью', artist: 'Евгений Гороховский', dates: ['1.1.2021', '1.1.2022'] },
@@ -28,6 +45,7 @@ export default function Cases() {
    return (
       <div className="container">
          <div className={styles.wrapper}>
+            <Filter />
             <div className={styles.galleries}>
                {quarterArray(array).map((gallery) =>
                   <Gallery gallery={gallery} />
