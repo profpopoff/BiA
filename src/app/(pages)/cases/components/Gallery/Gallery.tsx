@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 
 import galleryStyle from './gallery.module.scss'
+import styles from '../../Cases.module.scss'
+
 
 export default function Gallery({ gallery }: { gallery: any[] }) {
 
@@ -29,7 +31,10 @@ export default function Gallery({ gallery }: { gallery: any[] }) {
    }, [])
 
    return (
-      <div className={galleryStyle.gallery} ref={galleryRef}>
+      <div
+         className={`${galleryStyle.gallery} ${styles.gallery}`}
+         ref={galleryRef}
+      >
          {gallery.map((item) =>
             <Link href='/' className={galleryStyle.card} key={item.id}>
                {/* <Image className={gallery.image} src={Cover} alt="cover" /> */}

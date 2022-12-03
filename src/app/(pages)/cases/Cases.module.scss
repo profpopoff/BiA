@@ -4,18 +4,16 @@
    position: relative;
 
    &:has(.filterActive) {
-      .galleries {
-         .gallery {
+      .gallery {
 
-            &:first-child,
-            &:nth-child(2) {
-               translate: -70% 0;
-            }
+         &:first-child,
+         &:nth-child(2) {
+            translate: -70% 0;
+         }
 
-            &:nth-child(3),
-            &:last-child {
-               translate: 70% 0;
-            }
+         &:nth-child(3),
+         &:last-child {
+            translate: 70% 0;
          }
       }
    }

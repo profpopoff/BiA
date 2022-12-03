@@ -8,6 +8,10 @@
    gap: $gap;
    transition: translate .3s $cubic-bezier;
 
+   // &.active {
+   //    translate: -70% 0;
+   // }
+
    .card {
       position: relative;
       aspect-ratio: 2/3;
@@ -46,8 +50,6 @@
    }
 
    &:nth-child(2n) {
-      transform: translateY(calc(var(--offsetY) * .3));
-
       .card {
          aspect-ratio: 3/4;
       }
