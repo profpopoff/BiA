@@ -1,4 +1,8 @@
-export const divideArray = (array: any[]) => ([array.slice(0, Math.floor(array.length / 2)), array.slice(Math.floor(array.length / 2))])
+export const countOff = (array: any[], count: number) => array.reduce((accumulator, value, index) => {
+   accumulator[index % count].push(value)
+
+   return accumulator
+}, Array.from({ length: count }, () => []))
 
 export const quarterArray = (array: any[]) => {
 
