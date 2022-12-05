@@ -1,4 +1,4 @@
-@import '../../../../../style/variables';
+@import '../../../style/variables';
 
 .gallery {
    flex: 1;
@@ -7,10 +7,6 @@
    flex-direction: column;
    gap: $gap;
    transition: translate .3s $cubic-bezier;
-
-   // &.active {
-   //    translate: -70% 0;
-   // }
 
    .card {
       position: relative;
@@ -52,6 +48,18 @@
    &:nth-child(2n) {
       .card {
          aspect-ratio: 3/4;
+      }
+   }
+
+   &.reverse {
+      .card {
+         aspect-ratio: 3/4;
+      }
+
+      &:nth-child(2n) {
+         .card {
+            aspect-ratio: 2/3;
+         }
       }
    }
 }

@@ -1,6 +1,6 @@
 import styles from './Cases.module.scss'
 import { quarterArray } from "../../../utils/divideArray"
-import Gallery from "./components/Gallery/Gallery"
+import Gallery from "../../components/Gallery/Gallery"
 import Filter from './components/Filter/Filter'
 
 async function fetchEvents() {

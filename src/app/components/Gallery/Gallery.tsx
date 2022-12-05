@@ -1,10 +1,11 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
 import galleryStyle from './gallery.module.scss'
-import styles from '../../Cases.module.scss'
+import styles from '../../(pages)/cases/Cases.module.scss'
 
 
 export default function Gallery({ gallery }: { gallery: any[] }) {
@@ -30,9 +31,11 @@ export default function Gallery({ gallery }: { gallery: any[] }) {
       }
    }, [])
 
+   const pathname = usePathname()
+
    return (
       <div
-         className={`${galleryStyle.gallery} ${styles.gallery}`}
+         className={pathname === '/' ? `${galleryStyle.gallery} ${galleryStyle.reverse}` : `${galleryStyle.gallery} ${styles.gallery}`}
          ref={galleryRef}
       >
          {gallery.map((item) =>
