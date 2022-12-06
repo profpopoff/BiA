@@ -39,19 +39,22 @@ export default async function HomePage() {
                   <Gallery gallery={gallery} />
                )}
             </div>
-            <article className={styles.article}>
-               <h1 className={styles.slogan}>
-                  <span>мир велик</span>
-                  <span>и никто</span>
-                  <span className={styles.marginLeft}>в нем</span>
-                  <span>не лишний</span>
-               </h1>
-               <div className={styles.mission}>
-                  <p className={styles.missionDesc}>Наша задача — сделать все для того, чтобы человек, придя к нам, увидел, что современное искусство — о нем и для него.</p>
-                  <Link href="/about" className={styles.missionLink}>Подробнее</Link>
-               </div>
-            </article>
+            <Article />
          </div>
       </div>
    )
 }
+
+export const Article = () =>
+   <article className={styles.article}>
+      <h1 className={styles.slogan}>
+         <span>мир велик</span>
+         <span>и никто</span>
+         <span className={styles.marginLeft}>в нем</span>
+         <span>не лишний</span>
+      </h1>
+      <div className={styles.mission}>
+         <p className={styles.missionDesc}>Наша задача — сделать все для того, чтобы человек, придя к нам, увидел, что современное искусство — о нем и для него.</p>
+         <Link href="/about" className={styles.missionLink}>Подробнее</Link>
+      </div>
+   </article>
