@@ -45,10 +45,10 @@ export default async function HomePage() {
    )
 }
 
-export const Article = () =>
+export const Article = () => (
    <article className={styles.article}>
       <h1 className={styles.slogan}>
-         <span>мир велик</span>
+         <span className={styles.marginLeft}>мир велик</span>
          <span>и никто</span>
          <span className={styles.marginLeft}>в нем</span>
          <span>не лишний</span>
@@ -58,3 +58,4 @@ export const Article = () =>
          <Link href="/about" className={styles.missionLink}>Подробнее</Link>
       </div>
    </article>
+)
