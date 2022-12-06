@@ -1,9 +1,14 @@
 import Link from 'next/link'
 import { countOff } from '../utils/divideArray'
+import { fetchEvents } from '../utils/fetch'
 import Gallery from './components/Gallery/Gallery'
 import styles from './HomePage.module.scss'
 
-export default function HomePage() {
+export default async function HomePage() {
+
+   const events = await fetchEvents()
+
+   // console.log(events)
 
    const array: { id: number, title: string, artist?: string, dates: string[] }[] = [
       { id: 1, title: 'Между светом и тенью', artist: 'Евгений Гороховский', dates: ['1.1.2021', '1.1.2022'] },
