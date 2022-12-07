@@ -38,12 +38,12 @@ export default function Gallery({ gallery }: { gallery: any[] }) {
          className={pathname === '/' ? `${galleryStyle.gallery} ${galleryStyle.reverse}` : `${galleryStyle.gallery} ${styles.gallery}`}
          ref={galleryRef}
       >
-         {gallery.map((item) =>
-            <Link href='/' className={galleryStyle.card} key={item.id}>
+         {gallery.map((event) =>
+            <Link href={`/case/${event.id}`} className={galleryStyle.card} key={event.id}>
                {/* <Image className={gallery.image} src={Cover} alt="cover" /> */}
                <div className={galleryStyle.headline}>
-                  <h2 className={galleryStyle.title}>{item.title}</h2>
-                  {!!item.artist && <span className={galleryStyle.artist}>{item.artist}</span>}
+                  <h2 className={galleryStyle.title}>{event.title}</h2>
+                  {!!event.artist && <span className={galleryStyle.artist}>{event.artist}</span>}
                </div>
             </Link>
          )}
