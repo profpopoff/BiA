@@ -29,13 +29,15 @@ export default async function HomePage() {
       { id: 16, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
       { id: 17, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
       { id: 18, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 19, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 20, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
    ] // perfect length = 18
 
    return (
       <div className="container">
          <div className={styles.wrapper}>
             <div className={styles.galleries}>
-               {countOff(array, 2).map((gallery: any[]) =>
+               {countOff(array.slice(0, 17), 2).map((gallery: any[]) =>
                   <Gallery gallery={gallery} />
                )}
             </div>

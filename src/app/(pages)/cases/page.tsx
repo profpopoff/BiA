@@ -29,6 +29,8 @@ export default async function Cases() {
       { id: 16, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
       { id: 17, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
       { id: 18, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 19, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
+      { id: 20, title: 'Pan-opticum', artist: 'Ван О', dates: ['1.1.2021', '1.1.2022'] },
    ] // perfect length = 18
 
    return (
@@ -36,7 +38,7 @@ export default async function Cases() {
          <div className={styles.wrapper}>
             <Filter />
             <div className={styles.galleries}>
-               {quarterArray(array).map((gallery) =>
+               {quarterArray(array.slice(0, 18)).map((gallery) =>
                   <Gallery gallery={gallery} />
                )}
             </div>
