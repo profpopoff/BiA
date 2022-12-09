@@ -8,7 +8,7 @@ import galleryStyle from './gallery.module.scss'
 import styles from '../../(pages)/cases/Cases.module.scss'
 
 
-export default function Gallery({ gallery }: { gallery: any[] }) {
+export default function Gallery({ events }: { events: any[] }) {
 
    const galleryRef = useRef<HTMLDivElement>(null)
 
@@ -38,7 +38,7 @@ export default function Gallery({ gallery }: { gallery: any[] }) {
          className={pathname === '/' ? `${galleryStyle.gallery} ${galleryStyle.reverse}` : `${galleryStyle.gallery} ${styles.gallery}`}
          ref={galleryRef}
       >
-         {gallery.map((event) =>
+         {events.map((event) =>
             <Link href={`/case/${event.id}`} className={galleryStyle.card} key={event.id}>
                {/* <Image className={gallery.image} src={Cover} alt="cover" /> */}
                <div className={galleryStyle.headline}>
