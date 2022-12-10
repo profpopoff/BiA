@@ -44,10 +44,9 @@ export default async function Cases() {
          <div className={styles.wrapper}>
             <Filter />
             <div className={styles.galleries}>
-               {quarterArray(array.slice(0, 4 * Math.floor((array.length - 2) / 4) + 2)) // Арифметическая последовательность 6,10,14,18,22... (чтобы паралакс был красивым)
-                  .map(events =>
-                     <Gallery events={events} />
-                  )}
+               {quarterArray(array
+                  .slice(0, 4 * Math.floor((array.length - 2) / 4) + 2)) // Арифметическая последовательность 6,10,14,18,22... (чтобы паралакс был красивым)
+                  .map(events => <Gallery events={events} />)}
             </div>
          </div>
       </div>

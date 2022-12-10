@@ -43,10 +43,9 @@ export default async function HomePage() {
       <div className="container">
          <div className={styles.wrapper}>
             <div className={styles.galleries}>
-               {countOff(array.slice(0, 2 * Math.floor((array.length - 3) / 2) + 3), 2) // Арифметическая последовательность 1,3,5,7,9... (чтобы паралакс был красивым (стабильным))
-                  .map((events: any[]) =>
-                     <Gallery events={events} />
-                  )}
+               {countOff(array
+                  .slice(0, 2 * Math.floor((array.length - 3) / 2) + 3), 2) // Арифметическая последовательность 1,3,5,7,9... (чтобы паралакс был красивым (стабильным))
+                  .map((events: any[]) => <Gallery events={events} />)}
             </div>
             <Article />
          </div>
