@@ -1,12 +1,12 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
 import galleryStyle from './gallery.module.scss'
 import styles from '../../(pages)/cases/Cases.module.scss'
-
 
 export default function Gallery({ events }: { events: any[] }) {
 
@@ -39,8 +39,14 @@ export default function Gallery({ events }: { events: any[] }) {
          ref={galleryRef}
       >
          {events.map((event) =>
-            <Link href={`/case/${event.id}`} className={galleryStyle.card} key={event.id}>
-               {/* <Image className={gallery.image} src={Cover} alt="cover" /> */}
+            <Link href={`/case/${event._id}`} className={galleryStyle.card} key={event._id}>
+               <Image
+                  className={galleryStyle.image}
+                  src={event.images[0]}
+                  fill={true}
+                  sizes='25vw'
+                  alt="cover"
+               />
                <div className={galleryStyle.headline}>
                   <h2 className={galleryStyle.title}>{event.title}</h2>
                   {!!event.artist && <span className={galleryStyle.artist}>{event.artist}</span>}

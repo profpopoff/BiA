@@ -11,7 +11,6 @@
    .card {
       position: relative;
       aspect-ratio: 2/3;
-      background-color: grey;
 
       .image {
          height: 100%;
@@ -26,7 +25,7 @@
          gap: 1rem;
          font-size: 1rem;
          color: #fff;
-         // text-shadow: 0 0 2px $primary-color;
+         text-shadow: 0 0 2px #000;
 
          .title {
             display: inline;
