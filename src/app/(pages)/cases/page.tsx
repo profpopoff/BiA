@@ -15,7 +15,7 @@ export default async function Cases() {
             <div className={styles.galleries}>
                {quarterArray(data
                   .slice(0, 4 * Math.floor((data.length - 2) / 4) + 2)) // Арифметическая последовательность 6,10,14,18,22... (чтобы паралакс был красивым)
-                  .map(events => <Gallery events={events} />)}
+                  .map((events, index: number) => <Gallery key={index} events={events} />)}
             </div>
          </div>
       </div>
