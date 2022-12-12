@@ -47,10 +47,10 @@ export default function Gallery({ events }: { events: any[] }) {
                   sizes='25vw'
                   alt="cover"
                />
-               <div className={galleryStyle.headline}>
-                  <h2 className={galleryStyle.title}>{event.title}</h2>
+               <h2 className={galleryStyle.headline}>
+                  <span className={galleryStyle.title}>{event.title}</span>
                   {!!event.artist && <span className={galleryStyle.artist}>{event.artist}</span>}
-               </div>
+               </h2>
             </Link>
          )}
       </div>
