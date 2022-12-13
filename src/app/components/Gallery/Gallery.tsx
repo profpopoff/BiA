@@ -3,10 +3,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { useEffect, useRef } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 
 import galleryStyle from './gallery.module.scss'
-import styles from '../../(pages)/cases/Cases.module.scss'
+import styles from '../../(pages)/events/Events.module.scss'
+import { InteractionContext } from '../../context/InteractionContext'
 
 export default function Gallery({ events }: { events: any[] }) {
 
@@ -33,13 +34,15 @@ export default function Gallery({ events }: { events: any[] }) {
 
    const pathname = usePathname()
 
+   const { eventActive, toggleEvent } = useContext(InteractionContext)
+
    return (
       <div
          className={pathname === '/' ? `${galleryStyle.gallery} ${galleryStyle.reverse}` : `${galleryStyle.gallery} ${styles.gallery}`}
          ref={galleryRef}
       >
          {events.map((event) =>
-            <Link href={`/case/${event._id}`} className={galleryStyle.card} key={event._id}>
+            <Link href={`/event/${event._id}`} className={galleryStyle.card} key={event._id}>
                <Image
                   className={galleryStyle.image}
                   src={event.images[0]}

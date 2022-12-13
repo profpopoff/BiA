@@ -1,8 +1,8 @@
 import { fetchEvent } from "../../../../utils/fetch"
 
-import caseStyle from './Case.module.scss'
+import eventStyle from './Event.module.scss'
 
-export default async function Case({ params: { id } }: {
+export default async function Event({ params: { id } }: {
    params: {
       id: string
    }

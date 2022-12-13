@@ -79,25 +79,25 @@ export default function Navigation() {
             }}
          >
             <Link className={navigation.link} href="/" onClick={toggleNav}>
-               <h2 className={pathname == "/" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>home</h2>
+               <h2 className={pathname == "/" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>Главаня</h2>
                <div className={navigation.linkImage}>
                   <Image className={navigation.src} alt="home" src={Cover} priority />
                </div>
             </Link>
-            <Link className={navigation.link} href="/cases" onClick={toggleNav}>
-               <h2 className={pathname == "/cases" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>work</h2>
+            <Link className={navigation.link} href="/events" onClick={toggleNav}>
+               <h2 className={pathname == "/events" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>События</h2>
                <div className={navigation.linkImage}>
                   <Image className={navigation.src} alt="home" src={Cover} priority />
                </div>
             </Link>
             <Link className={navigation.link} href="/about" onClick={toggleNav}>
-               <h2 className={pathname == "/about" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>about</h2>
+               <h2 className={pathname == "/about" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>О музее</h2>
                <div className={navigation.linkImage}>
                   <Image className={navigation.src} alt="home" src={Cover} priority />
                </div>
             </Link>
             <Link className={navigation.link} href="/contact" onClick={toggleNav}>
-               <h2 className={pathname == "/contact" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>contact</h2>
+               <h2 className={pathname == "/contact" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>Контакты</h2>
                <div className={navigation.linkImage}>
                   <Image className={navigation.src} alt="home" src={Cover} priority />
                </div>

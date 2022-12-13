@@ -1,10 +1,10 @@
-import styles from './Cases.module.scss'
+import styles from './Events.module.scss'
 import { quarterArray } from "../../../utils/divideArray"
 import Gallery from "../../components/Gallery/Gallery"
 import Filter from './components/Filter/Filter'
 import { fetchEvents } from '../../../utils/fetch'
 
-export default async function Cases() {
+export default async function Events() {
 
    const { data } = await fetchEvents()
 

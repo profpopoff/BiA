@@ -4,7 +4,7 @@ import { useContext, useState } from 'react'
 import { InteractionContext } from '../../../../context/InteractionContext'
 
 import filter from './Filter.module.scss'
-import page from '../../Cases.module.scss'
+import page from '../../Events.module.scss'
 
 export default function Filter() {
    return (
