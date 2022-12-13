@@ -3,11 +3,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { useContext, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 import galleryStyle from './gallery.module.scss'
 import styles from '../../(pages)/events/Events.module.scss'
-import { InteractionContext } from '../../context/InteractionContext'
 
 export default function Gallery({ events }: { events: any[] }) {
 
@@ -33,8 +32,6 @@ export default function Gallery({ events }: { events: any[] }) {
    }, [])
 
    const pathname = usePathname()
-
-   const { eventActive, toggleEvent } = useContext(InteractionContext)
 
    return (
       <div
