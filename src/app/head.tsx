@@ -1,7 +1,7 @@
 export default function Head() {
    return (
       <>
-         <title>About | Erarta</title>
+         <title>Erarta</title>
       </>
    )
 }

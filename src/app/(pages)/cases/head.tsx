@@ -1,5 +1,7 @@
 export default function Head() {
    return (
-      <title>Cases | Erarta</title>
+      <>
+         <title>Cases | Erarta</title>
+      </>
    )
 }

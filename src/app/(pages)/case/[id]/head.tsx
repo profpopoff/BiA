@@ -1,5 +1,16 @@
-export default function Head() {
+import { fetchEvent } from "../../../../utils/fetch"
+
+export default async function Head({ params: { id } }: {
+   params: {
+      id: string
+   }
+}) {
+
+   const { data } = await fetchEvent(id)
+
    return (
-      <title>Case | Erarta</title>
+      <>
+         <title>{`${data.title} | Erarta`}</title>
+      </>
    )
 }

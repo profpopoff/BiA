@@ -6,7 +6,7 @@ export default async function Case({ params: { id } }: {
    params: {
       id: string
    }
-}): Promise<JSX.Element> {
+}) {
 
    const { data } = await fetchEvent(id)
 
