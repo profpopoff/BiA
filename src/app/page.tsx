@@ -22,7 +22,7 @@ export default async function HomePage() {
    )
 }
 
-export const Article = () => (
+const Article = () => (
    <article className={styles.article}>
       <h1 className={styles.slogan}>
          <span className={styles.marginLeft}>мир велик</span>
