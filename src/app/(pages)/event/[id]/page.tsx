@@ -24,7 +24,6 @@ export default async function Event({ params }: {
                {!!data.artist && <span className={eventStyle.artist}>{data.artist}</span>}
             </h2>
          </div>
-         <div className={eventStyle.hero}>123</div>
       </div>
    )
 }
