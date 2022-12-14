@@ -44,7 +44,7 @@ export default function Gallery({ events }: { events: any[] }) {
                   className={galleryStyle.image}
                   src={event.images[0]}
                   fill={true}
-                  sizes='25vw'
+                  sizes='50vw'
                   alt="cover"
                />
                <h2 className={galleryStyle.headline}>

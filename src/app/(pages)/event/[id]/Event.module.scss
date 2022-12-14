@@ -1,0 +1,41 @@
+.container {
+   .hero {
+      height: 100vh;
+      position: relative;
+
+      .image {
+         object-fit: cover;
+      }
+
+      .headline {
+         position: absolute;
+         bottom: 0;
+         padding: 1.5rem;
+         gap: 1rem;
+         font-size: 1rem;
+         color: #fff;
+         font-weight: 600;
+
+         -webkit-font-smoothing: antialiased;
+         --stroke-color: #000;
+         --stroke-width: 1px;
+         text-shadow: var(--stroke-width) 0 0 var(--stroke-color),
+            calc(var(--stroke-width) * -1) 0 0 var(--stroke-color),
+            0 var(--stroke-width) 0 var(--stroke-color),
+            0 calc(var(--stroke-width) * -1) 0 var(--stroke-color);
+
+         .title {
+            text-transform: uppercase;
+         }
+
+         .artist {
+            text-transform: capitalize;
+
+            &::before {
+               content: "•";
+               margin-inline: .3rem;
+            }
+         }
+      }
+   }
+}
