@@ -63,10 +63,11 @@
          color: #fff;
 
          .text {
-            font-size: 1rem;
-            line-height: 1.2;
             display: inline-block;
             transform: translateY(-.012em);
+            font-size: 1rem;
+            line-height: 1.2;
+            font-weight: 400;
          }
       }
    }
