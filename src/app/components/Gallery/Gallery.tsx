@@ -8,7 +8,7 @@ import { useEffect, useRef } from 'react'
 import galleryStyle from './gallery.module.scss'
 import styles from '../../(pages)/events/Events.module.scss'
 
-export default function Gallery({ events }: { events: any[] }) {
+const Gallery = ({ events }: { events: any[] }) => {
 
    const galleryRef = useRef<HTMLDivElement>(null)
 
@@ -51,8 +51,14 @@ export default function Gallery({ events }: { events: any[] }) {
                   <span className={galleryStyle.title}>{event.title}</span>
                   {!!event.artist && <span className={galleryStyle.artist}>{event.artist}</span>}
                </h2>
+               {new Date() < new Date(event.dates.start) &&
+                  <div className={galleryStyle.marker}>
+                     <span className={galleryStyle.text}>Скоро</span>
+                  </div>}
             </Link>
          )}
       </div>
    )
 }
+
+export default Gallery
