@@ -45,7 +45,7 @@ const Gallery = ({ events }: { events: any[] }) => {
                   src={event.images[0]}
                   fill={true}
                   sizes='50vw'
-                  alt="cover"
+                  alt={`${event.title} image`}
                />
                <h2 className={galleryStyle.headline}>
                   <span className={galleryStyle.title}>{event.title}</span>

@@ -17,7 +17,7 @@ export default async function Event({ params }: {
                src={data.images[0]}
                fill={true}
                sizes='auto'
-               alt="cover"
+               alt={`${data.title} image`}
             />
             <h2 className={eventStyle.headline}>
                <span className={eventStyle.title}>{data.title}</span>
