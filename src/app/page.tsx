@@ -31,7 +31,7 @@ const Article = () => (
          <span>не лишний</span>
       </h1>
       <div className={styles.mission}>
-         <p className={styles.missionDesc}>Наша задача — сделать все для того, чтобы человек, придя к нам, увидел, что современное искусство — о нем и для него.</p>
+         <p className={styles.missionDesc}>Наша задача&nbsp;&mdash; сделать все для того, чтобы человек, придя к&nbsp;нам, увидел, что современное искусство&nbsp;&mdash; о&nbsp;нем и&nbsp;для него.</p>
          <Link href="/about" className={styles.missionLink}>Подробнее</Link>
       </div>
    </article>
