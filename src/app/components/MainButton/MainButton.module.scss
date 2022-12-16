@@ -43,5 +43,9 @@
          opacity: 1;
          transform: scale(1);
       }
+
+      &.event {
+         background-color: $primary-color;
+      }
    }
 }

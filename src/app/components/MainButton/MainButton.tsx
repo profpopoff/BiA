@@ -29,7 +29,9 @@ export default function MainButton() {
 
    return (
       <button
-         className={(nav || filterActive || pathname?.startsWith("/event/")) ? `${mainButton.button} ${mainButton.active}` : mainButton.button}
+         className={(nav || filterActive || pathname?.startsWith("/event/")) ?
+            `${mainButton.button} ${mainButton.active} ${pathname?.startsWith("/event/") && mainButton.event}` :
+            mainButton.button}
          onClick={clickHandler}
       >
          {(nav || filterActive || pathname?.startsWith("/event/")) ?
