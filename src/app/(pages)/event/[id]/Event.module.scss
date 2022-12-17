@@ -1,9 +1,10 @@
 @import '../../../../style/variables';
 
-.container {
+.event {
 
    section {
       height: 100vh;
+      overflow: hidden;
    }
 
    .hero {

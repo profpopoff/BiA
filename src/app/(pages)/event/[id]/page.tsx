@@ -6,6 +6,7 @@ import { faLocationDot, faCakeCandles, faCalendarDays } from '@fortawesome/free-
 import { fetchEvent } from "../../../../utils/fetch"
 
 import eventStyle from './Event.module.scss'
+import Wrapper from "./components/Wrapper"
 
 export default async function Event({ params }: {
    params: { id: string }
@@ -16,22 +17,25 @@ export default async function Event({ params }: {
    // console.log(data.images.slice(2))
 
    return (
-      <div className={eventStyle.container}>
-         <Hero title={data.title} artist={data.artist} image={data.images[0]} />
-         <Info title={data.title} description={data.description} dates={data.dates}
-            place={data.place} ageRestriction={data.ageRestriction} image={data.images[1]} />
-         {!!data.artistInfo && <Artist artist={data.artist} image={data.artistImage} info={data.artistInfo} />}
+      <div className={eventStyle.event}>
+         <Wrapper>
+
+            <Hero title={data.title} artist={data.artist} image={data.images[0]} />
+            <Info title={data.title} description={data.description} dates={data.dates}
+               place={data.place} ageRestriction={data.ageRestriction} image={data.images[1]} />
+            {!!data.artistInfo && <Artist artist={data.artist} image={data.artistImage} info={data.artistInfo} />}
+         </Wrapper>
       </div>
    )
 }
 
 const Hero = ({ title, artist, image }: { title: string, artist: string, image: string }) => (
-   <section className={eventStyle.hero} onScroll={() => console.log('scroll')}>
+   <section className={eventStyle.hero}>
       <Image
          className={eventStyle.image}
          src={image}
          fill={true}
-         sizes='auto'
+         sizes='30rem'
          alt={`${title} image`}
       />
       <h2 className={eventStyle.headline}>
