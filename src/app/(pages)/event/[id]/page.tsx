@@ -13,27 +13,30 @@ export default async function Event({ params }: {
 
    const { data } = await fetchEvent(params.id)
 
+   // console.log(data.images.slice(2))
+
    return (
       <div className={eventStyle.container}>
          <Hero title={data.title} artist={data.artist} image={data.images[0]} />
          <Info title={data.title} description={data.description} dates={data.dates}
             place={data.place} ageRestriction={data.ageRestriction} image={data.images[1]} />
+         {!!data.artistInfo && <Artist artist={data.artist} image={data.artistImage} info={data.artistInfo} />}
       </div>
    )
 }
 
 const Hero = ({ title, artist, image }: { title: string, artist: string, image: string }) => (
-   <section className={eventStyle.hero}>
+   <section className={eventStyle.hero} onScroll={() => console.log('scroll')}>
       <Image
          className={eventStyle.image}
          src={image}
          fill={true}
          sizes='auto'
-         alt={`${title} hero image`}
+         alt={`${title} image`}
       />
       <h2 className={eventStyle.headline}>
          <span className={eventStyle.title}>{title}</span>
-         {!!artist && <span className={eventStyle.artist}>{artist}</span>}
+         {!!artist && <span className={eventStyle.artistName}>{artist}</span>}
       </h2>
    </section>
 )
@@ -80,15 +83,33 @@ const Info = ({ title, description, dates, place, ageRestriction, image }:
                </ul>
             </div>
          </div>
-         <div className={eventStyle.src}>
+         <div className={eventStyle.image}>
             <Image
-               className={eventStyle.image}
+               className={eventStyle.src}
                src={image}
                fill={true}
                sizes='auto'
-               alt={`${title} image`}
+               alt='description image'
             />
          </div>
       </section>
    )
 }
+
+const Artist = ({ artist, image, info }: { artist: string, image: string, info: string }) => (
+   <section className={eventStyle.artist}>
+      {!!image && <div className={eventStyle.image}>
+         <Image
+            className={eventStyle.src}
+            src={image}
+            fill={true}
+            sizes='auto'
+            alt={`${artist}`}
+         />
+      </div>}
+      <div className={eventStyle.artistInfo}>
+         <h2>об авторе</h2>
+         <p>{info}</p>
+      </div>
+   </section>
+)

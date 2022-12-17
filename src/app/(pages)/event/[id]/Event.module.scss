@@ -34,7 +34,7 @@
             text-transform: uppercase;
          }
 
-         .artist {
+         .artistName {
             text-transform: capitalize;
 
             &::before {
@@ -111,12 +111,51 @@
          }
       }
 
-      .src {
+      .image {
          width: 50%;
          position: relative;
 
-         .image {
+         .src {
             object-fit: cover;
+         }
+      }
+   }
+
+   .artist {
+      padding: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      background-color: #ebebeb;
+
+      .image {
+         flex-shrink: 0;
+         width: 30rem;
+         aspect-ratio: 1;
+         position: relative;
+         border-radius: 50%;
+         overflow: hidden;
+
+         .src {
+            object-fit: cover;
+         }
+      }
+
+      .artistInfo {
+         display: flex;
+         flex-direction: column;
+         gap: 1rem;
+         max-width: 60ch;
+         font-size: 2rem;
+
+         h2 {
+            font-size: 1rem;
+            text-transform: uppercase;
+         }
+
+         p {
+            line-height: 1.05;
          }
       }
    }
