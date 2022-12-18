@@ -19,7 +19,6 @@ export default async function Event({ params }: {
    return (
       <div className={eventStyle.event}>
          <Wrapper>
-
             <Hero title={data.title} artist={data.artist} image={data.images[0]} />
             <Info title={data.title} description={data.description} dates={data.dates}
                place={data.place} ageRestriction={data.ageRestriction} image={data.images[1]} />
