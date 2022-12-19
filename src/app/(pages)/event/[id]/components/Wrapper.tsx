@@ -6,9 +6,9 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
 
    const containerRef = useRef<HTMLDivElement>(null)
 
-   const [scroll, setScroll] = useState(false)
+   const [scrollTrigger, setScrollTrigger] = useState(false)
 
-   const [currentSection, setCurrentSection] = useState(0)
+   const [nextSection, setNextSection] = useState(0)
 
    const [touchStart, setTouchStart] = useState(null)
    const [touchEnd, setTouchEnd] = useState(null)
@@ -16,17 +16,28 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
    const minSwipeDistance = 50
 
    useEffect(() => {
-      containerRef.current?.children[currentSection].scrollIntoView({ behavior: 'smooth' })
-   }, [scroll, currentSection])
+      containerRef.current?.children[nextSection].scrollIntoView({ behavior: 'smooth' })
+   }, [scrollTrigger])
 
    const onWheel = (e: any) => {
+
+      const { scrollTop, clientHeight } = containerRef.current!
+
       if (e.nativeEvent.deltaY > 0) {
-         if (currentSection < e.currentTarget.children.length - 1) {
-            setCurrentSection(prevCurrentSection => prevCurrentSection + 1)
+         if (scrollTop > clientHeight * nextSection - clientHeight * .5 &&
+            nextSection < e.currentTarget.children.length - 1) {
+            setNextSection(currentSection => currentSection + 1)
+            setScrollTrigger(prevScroll => !prevScroll)
+         } else {
+            setScrollTrigger(prevScroll => !prevScroll)
          }
       } else {
-         if (currentSection > 0) {
-            setCurrentSection(prevCurrentSection => prevCurrentSection - 1)
+         if (scrollTop < clientHeight * nextSection + clientHeight * .5 &&
+            nextSection > 0) {
+            setNextSection(currentSection => currentSection - 1)
+            setScrollTrigger(prevScroll => !prevScroll)
+         } else {
+            setScrollTrigger(prevScroll => !prevScroll)
          }
       }
    }
@@ -39,18 +50,22 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
    const onTouchMove = (e: any) => setTouchEnd(e.targetTouches[0].clientY)
 
    const onTouchEnd = (e: any) => {
+
       if (!touchStart || !touchEnd) return
       const distance = touchStart - touchEnd
+
       if (distance > minSwipeDistance) {
-         if (currentSection < e.currentTarget.children.length - 1) {
-            setCurrentSection(prevCurrentSection => prevCurrentSection + 1)
+         if (nextSection < e.currentTarget.children.length - 1) {
+            setNextSection(currentSection => currentSection + 1)
+            setScrollTrigger(prevScroll => !prevScroll)
          }
       } else if (distance < -minSwipeDistance) {
-         if (currentSection > 0) {
-            setCurrentSection(prevCurrentSection => prevCurrentSection - 1)
+         if (nextSection > 0) {
+            setNextSection(currentSection => currentSection - 1)
+            setScrollTrigger(prevScroll => !prevScroll)
          }
       } else {
-         setScroll(prevScroll => !prevScroll)
+         setScrollTrigger(prevScroll => !prevScroll)
       }
    }
 
