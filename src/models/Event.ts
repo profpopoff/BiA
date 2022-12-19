@@ -32,7 +32,10 @@ const EventScheme = new mongoose.Schema<IEvent>(
          maxlength: [60, 'Имя автора не должно быть больше 60 символов.'],
       },
       artistImage: String,
-      artistInfo: String,
+      artistInfo: {
+         type: String,
+         maxlength: [600, 'Информация об автора не должно быть больше 600 символов.'],
+      },
       dates: {
          start: { type: Date, required: [true, 'Дата начала события не указана.'] },
          end: { type: Date, required: [true, 'Дата конца события не указана.'] },
@@ -55,7 +58,7 @@ const EventScheme = new mongoose.Schema<IEvent>(
       description: {
          type: String,
          required: [true, 'Описание события не указано.'],
-         maxlength: [600, 'Название события не должно быть больше 600 символов.'],
+         maxlength: [600, 'Описание события не должно быть больше 600 символов.'],
       },
       images: {
          type: [String],
