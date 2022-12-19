@@ -74,15 +74,9 @@
                white-space: pre-line;
                max-width: 40ch;
                height: 100%;
-               overflow: auto;
+               overflow: hidden;
                font-size: 2rem;
                line-height: 1.05;
-               -webkit-mask-image: linear-gradient(180deg, #000 90%, transparent);
-
-               .textWrapper {
-                  display: inline-block;
-                  margin-bottom: 3rem;
-               }
             }
          }
 

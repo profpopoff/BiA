@@ -64,9 +64,7 @@ const Info = ({ title, description, dates, place, ageRestriction, image }:
             <article>
                <h2 className={eventStyle.type}>Временная выставка</h2>
                <p className={eventStyle.description}>
-                  <span className={eventStyle.textWrapper}>
-                     {decode(description)}
-                  </span>
+                  {decode(description)}
                </p>
             </article>
             <div className={eventStyle.stats}>

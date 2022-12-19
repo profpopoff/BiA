@@ -55,6 +55,7 @@ const EventScheme = new mongoose.Schema<IEvent>(
       description: {
          type: String,
          required: [true, 'Описание события не указано.'],
+         maxlength: [600, 'Название события не должно быть больше 600 символов.'],
       },
       images: {
          type: [String],
