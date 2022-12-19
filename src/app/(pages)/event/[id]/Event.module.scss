@@ -5,6 +5,19 @@
    section {
       height: 100vh;
       overflow: hidden;
+      display: flex;
+
+      &>* {
+         flex: 1 1 50%;
+      }
+   }
+
+   .image {
+      position: relative;
+
+      .src {
+         object-fit: cover;
+      }
    }
 
    .hero {
@@ -24,12 +37,12 @@
          font-weight: 600;
 
          -webkit-font-smoothing: antialiased;
-         --stroke-color: #000;
-         --stroke-width: 1px;
-         text-shadow: var(--stroke-width) 0 0 var(--stroke-color),
-            calc(var(--stroke-width) * -1) 0 0 var(--stroke-color),
-            0 var(--stroke-width) 0 var(--stroke-color),
-            0 calc(var(--stroke-width) * -1) 0 var(--stroke-color);
+         $stroke-color: #000;
+         $stroke-width: 1px;
+         text-shadow: $stroke-width 0 0 $stroke-color,
+            calc($stroke-width * -1) 0 0 $stroke-color,
+            0 $stroke-width 0 $stroke-color,
+            0 calc($stroke-width * -1) 0 $stroke-color;
 
          .title {
             text-transform: uppercase;
@@ -47,74 +60,60 @@
    }
 
    .info {
-      width: 100vw;
+      padding: 4rem 2rem 2rem;
       display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-      .infoWrapper {
-         width: 50%;
-         padding: 4rem 2rem 2rem;
+      article {
          display: flex;
          flex-direction: column;
-         justify-content: space-between;
+         gap: 1rem;
+         height: 70%;
 
-         article {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            height: 70%;
-
-            .type {
-               min-width: 22ch;
-               font-size: 1rem;
-               line-height: 1.2;
-               text-transform: uppercase;
-            }
-
-            .description {
-               white-space: pre-line;
-               max-width: 40ch;
-               height: 100%;
-               overflow: hidden;
-               font-size: 2rem;
-               line-height: 1.05;
-            }
+         .type {
+            min-width: 22ch;
+            font-size: 1rem;
+            line-height: 1.2;
+            text-transform: uppercase;
          }
 
-         .stats {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            font-weight: 500;
-            font-size: 1.2rem;
-
-            .statsList {
-               padding: 0;
-               display: flex;
-               gap: 2rem;
-               list-style: none;
-            }
-
-            .stat {
-               display: flex;
-               gap: .5rem;
-               align-items: center;
-
-               .icon {
-                  color: $primary-color;
-               }
-            }
+         .description {
+            white-space: pre-line;
+            max-width: 40ch;
+            height: 100%;
+            overflow: hidden;
+            font-size: 2rem;
+            line-height: 1.05;
          }
       }
 
-      .image {
-         width: 50%;
-         position: relative;
+      .stats {
+         display: flex;
+         flex-direction: column;
+         gap: 1rem;
+         font-weight: 500;
+         font-size: 1.2rem;
 
-         .src {
-            object-fit: cover;
+         .statsList {
+            padding: 0;
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+         }
+
+         .stat {
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+
+            .icon {
+               color: $primary-color;
+            }
          }
       }
    }
+
 
    .artist {
       padding: 5rem;
@@ -128,13 +127,8 @@
          flex-shrink: 0;
          width: 30rem;
          aspect-ratio: 1;
-         position: relative;
          border-radius: 50%;
          overflow: hidden;
-
-         .src {
-            object-fit: cover;
-         }
       }
 
       .artistInfo {
@@ -152,6 +146,30 @@
          p {
             line-height: 1.05;
          }
+      }
+   }
+
+   .imageThesis {
+      position: relative;
+
+      .thesis {
+         width: 40ch;
+         position: absolute;
+         bottom: 0;
+         right: 0;
+         padding: 3rem 2rem;
+         color: #fff;
+         font-size: 1.2rem;
+         font-weight: 400;
+         line-height: 1.2;
+
+         -webkit-font-smoothing: antialiased;
+         $stroke-color: #000;
+         $stroke-width: 1px;
+         text-shadow: $stroke-width 0 0 $stroke-color,
+            calc($stroke-width * -1) 0 0 $stroke-color,
+            0 $stroke-width 0 $stroke-color,
+            0 calc($stroke-width * -1) 0 $stroke-color;
       }
    }
 }
