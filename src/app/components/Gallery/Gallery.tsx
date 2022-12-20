@@ -42,14 +42,14 @@ const Gallery = ({ events }: { events: any[] }) => {
             <Link href={`/event/${event._id}`} className={galleryStyle.card} key={event._id}>
                <Image
                   className={galleryStyle.image}
-                  src={event.images[0]}
+                  src={event.images.cover}
                   fill={true}
                   sizes='50vw'
                   alt={`${event.title} image`}
                />
                <h2 className={galleryStyle.headline}>
                   <span className={galleryStyle.title}>{event.title}</span>
-                  {!!event.artist && <span className={galleryStyle.artist}>{event.artist}</span>}
+                  {!!event.artist && <span className={galleryStyle.artist}>{event.artist.name}</span>}
                </h2>
                {new Date() < new Date(event.dates.start) &&
                   <div className={galleryStyle.marker}>

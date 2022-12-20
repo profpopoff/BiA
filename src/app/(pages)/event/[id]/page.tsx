@@ -13,16 +13,15 @@ export default async function Event({ params }: {
 }) {
 
    const { data } = await fetchEvent(params.id)
-   
+
    return (
       <div className={eventStyle.event}>
          <Wrapper>
-            <Hero title={data.title} artist={data.artist} image={data.images[0]} />
-            <Info title={data.title} description={data.description} dates={data.dates}
-               place={data.place} ageRestriction={data.ageRestriction} image={data.images[1]} />
-            {!!data.artistInfo && <Artist artist={data.artist} image={data.artistImage} info={data.artistInfo} />}
-            <ImageThesis image={data.images[2]} thesis={data.theses[0]} />
-            {data.theses[1] && <AdditionalDesc description={data.theses[1]} />}
+            <Hero title={data.title} artist={data.artist.name} image={data.images.cover} />
+            <Info type={data.type} description={data.description.main} dates={data.dates} place={data.place} ageRestriction={data.ageRestriction} image={data.images.info} />
+            {!!data.artist.info && <Artist artist={data.artist} image={data.artist.image} info={data.artist.info} />}
+            <ImageThesis image={data.images.thesis.image} thesis={data.images.thesis.text} />
+            <AdditionalDesc description={data.description.additional.text} title={data.description.additional.title} />
          </Wrapper>
       </div>
    )
@@ -44,12 +43,12 @@ const Hero = ({ title, artist, image }: { title: string, artist: string, image: 
    </section>
 )
 
-const Info = ({ title, description, dates, place, ageRestriction, image }:
-   { title: string, description: string, dates: { start: Date, end: Date }, place: { floor: number, zone: string }, ageRestriction: number, image: string }) => {
+const Info = ({ type, description, dates, place, ageRestriction, image }:
+   { type: string, description: string, dates: { start: Date, end: Date }, place: { floor: number, zone: string }, ageRestriction: number, image: string }) => {
 
    const zoneToRus = (zone: string) => {
       switch (zone) {
-         case 'exposition':
+         case 'exhibition':
             return 'Выставочное крыло'
          case 'museum':
             return 'Музейнок крыло'
@@ -58,11 +57,22 @@ const Info = ({ title, description, dates, place, ageRestriction, image }:
       }
    }
 
+   const typeToRus = (type: string) => {
+      switch (type) {
+         case 'exhibition':
+            return 'Временная выставка'
+         case 'museum':
+            return 'Постоянная выставка'
+         case 'stage':
+            return 'Представление'
+      }
+   }
+
    return (
       <section>
          <div className={eventStyle.info}>
             <article>
-               <h2 className={eventStyle.type}>Временная выставка</h2>
+               <h2 className={eventStyle.type}>{typeToRus(type)}</h2>
                <p className={eventStyle.description}>
                   {decode(description)}
                </p>
@@ -70,12 +80,12 @@ const Info = ({ title, description, dates, place, ageRestriction, image }:
             <div className={eventStyle.stats}>
                <div className={eventStyle.stat}>
                   <FontAwesomeIcon icon={faCalendarDays} className={eventStyle.icon} />
-                  {`${new Date(dates.start).toLocaleDateString()} - ${new Date(dates.end).toLocaleDateString()}`}
+                  {new Date(dates.start).toLocaleDateString()}{!!dates.end && ` - ${new Date(dates.end).toLocaleDateString()}`}
                </div>
                <ul className={eventStyle.statsList}>
                   <li className={eventStyle.stat}>
                      <FontAwesomeIcon icon={faLocationDot} className={eventStyle.icon} />
-                     {`${zoneToRus(place.zone)}, ${place.floor} этаж`}
+                     {`${zoneToRus(!!place.zone ? place.zone : type)}, ${place.floor} этаж`}
                   </li>
                   <li className={eventStyle.stat}>
                      <FontAwesomeIcon icon={faCakeCandles} className={eventStyle.icon} />
@@ -128,14 +138,14 @@ const ImageThesis = ({ image, thesis }: { image: string, thesis: string }) => (
             alt='thesis image'
          />
       </div>
-      {thesis && <p className={eventStyle.thesis}>{decode(thesis)}</p>}
+      <p className={eventStyle.thesis}>{decode(thesis)}</p>
    </section>
 )
 
-const AdditionalDesc = ({ description }: { description: string }) => (
+const AdditionalDesc = ({ description, title }: { description: string, title: string }) => (
    <section className={eventStyle.additionalDesc}>
       <div className={eventStyle.additionalDescWrapper}>
-         <h2>короткое описание</h2>
+         {!!title && <h2>{decode(title)}</h2>}
          <p>{decode(description)}</p>
       </div>
    </section>
