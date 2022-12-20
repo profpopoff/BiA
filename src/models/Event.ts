@@ -2,22 +2,37 @@ import mongoose from "mongoose"
 
 interface IEvent {
    title: string
-   artist?: string
-   artistImage?: string
-   artistInfo?: string
+   type: string // временная выставка, постоянная выставка или представление (exhibition, museum, stage)
+   artist?: {
+      name: string
+      image?: string
+      info?: string
+   }
    dates: {
-      start: Date,
-      end: Date,
+      start: Date
+      end?: Date
    }
    ageRestriction: number
    place: {
       floor: number
-      zone: string // Выставочное крыло, музейное крыло или сцена 
+      wing?: string // Выставочное крыло, музейное крыло или сцена (exhibition, museum, stage)
    }
-   description: string
-   images: string[]
-   theses?: string[]
-   video?: string
+   description: {
+      main: string
+      additional: {
+         title?: string
+         text: string
+      }
+   }
+   images: {
+      cover: string
+      info: string
+      thesis: {
+         image: string
+         text: string
+      }
+      gallery?: string[]
+   }
 }
 
 const EventScheme = new mongoose.Schema<IEvent>(
@@ -27,18 +42,28 @@ const EventScheme = new mongoose.Schema<IEvent>(
          required: [true, 'Название события не указано.'],
          maxlength: [60, 'Название события не должно быть больше 60 символов.'],
       },
-      artist: {
+      type: {
          type: String,
-         maxlength: [60, 'Имя автора не должно быть больше 60 символов.'],
+         enum: {
+            values: ['museum', 'exhibition', 'stage'],
+            message: 'Zone is either museum, exhibition or stage.'
+         },
+         default: 'exhibition',
       },
-      artistImage: String,
-      artistInfo: {
-         type: String,
-         maxlength: [600, 'Информация об автора не должно быть больше 600 символов.'],
+      artist: {
+         name: {
+            type: String,
+            maxlength: [60, 'Имя автора не должно быть больше 60 символов.'],
+         },
+         image: String,
+         info: {
+            type: String,
+            maxlength: [500, 'Информация об автора не должно быть больше 500 символов.'],
+         },
       },
       dates: {
          start: { type: Date, required: [true, 'Дата начала события не указана.'] },
-         end: { type: Date, required: [true, 'Дата конца события не указана.'] },
+         end: Date,
       },
       ageRestriction: {
          type: Number,
@@ -46,27 +71,54 @@ const EventScheme = new mongoose.Schema<IEvent>(
       },
       place: {
          floor: { type: Number, required: [true, 'Этаж не указано.'], },
-         zone: {
+         wing: {
             type: String,
             enum: {
-               values: ['museum', 'exposition', 'stage'],
-               message: 'Zone is either museum, exposition or stage.'
+               values: ['museum', 'exhibition', 'stage'],
+               message: 'Zone is either museum, exhibition or stage.'
             },
-            default: 'exposition',
          },
       },
       description: {
-         type: String,
-         required: [true, 'Описание события не указано.'],
-         maxlength: [600, 'Описание события не должно быть больше 600 символов.'],
+         main: {
+            type: String,
+            required: [true, 'Оснонвое описание события не указано.'],
+            maxlength: [500, 'Оснонвое описание события не должно быть больше 500 символов.'],
+         },
+         additional: {
+            title: {
+               type: String,
+               maxlength: [100, 'Заголовок дополнителього описания события не должно быть больше 300 символов.'],
+            },
+            text: {
+               type: String,
+               required: [true, 'Дополнительое описание события не указано.'],
+               maxlength: [300, 'Дополнительое описание события не должно быть больше 300 символов.'],
+            },
+         },
       },
       images: {
-         type: [String],
-         required: true,
-         validate: [(v: any) => Array.isArray(v) && v.length > 0, 'Добавьте хотя бы одно изображение.']
+         cover: {
+            type: String,
+            required: [true, 'Обложка события не указана.'],
+         },
+         info: {
+            type: String,
+            required: [true, 'Изображение информации не указано.'],
+         },
+         thesis: {
+            image: {
+               type: String,
+               required: [true, 'Изображение тезиса не указано.'],
+            },
+            text: {
+               type: String,
+               required: [true, 'Текст тезиса не указан.'],
+               maxlength: [150, 'Текст тезиса не должнен быть больше 150 символов.'],
+            },
+         },
+         gallery: [String]
       },
-      theses: [String],
-      video: String,
    },
    { timestamps: true }
 )
