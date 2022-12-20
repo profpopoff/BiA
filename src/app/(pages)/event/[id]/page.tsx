@@ -13,6 +13,7 @@ export default async function Event({ params }: {
 }) {
 
    const { data } = await fetchEvent(params.id)
+   
    return (
       <div className={eventStyle.event}>
          <Wrapper>
@@ -21,6 +22,7 @@ export default async function Event({ params }: {
                place={data.place} ageRestriction={data.ageRestriction} image={data.images[1]} />
             {!!data.artistInfo && <Artist artist={data.artist} image={data.artistImage} info={data.artistInfo} />}
             <ImageThesis image={data.images[2]} thesis={data.theses[0]} />
+            {data.theses[1] && <AdditionalDesc description={data.theses[1]} />}
          </Wrapper>
       </div>
    )
@@ -109,7 +111,7 @@ const Artist = ({ artist, image, info }: { artist: string, image: string, info: 
          </div>}
          <div className={eventStyle.artistInfo}>
             <h2>об авторе</h2>
-            <p>{info}</p>
+            <p>{decode(info)}</p>
          </div>
       </div>
    </section>
@@ -126,6 +128,15 @@ const ImageThesis = ({ image, thesis }: { image: string, thesis: string }) => (
             alt='thesis image'
          />
       </div>
-      {thesis && <p className={eventStyle.thesis}>{thesis}</p>}
+      {thesis && <p className={eventStyle.thesis}>{decode(thesis)}</p>}
+   </section>
+)
+
+const AdditionalDesc = ({ description }: { description: string }) => (
+   <section className={eventStyle.additionalDesc}>
+      <div className={eventStyle.additionalDescWrapper}>
+         <h2>короткое описание</h2>
+         <p>{decode(description)}</p>
+      </div>
    </section>
 )
