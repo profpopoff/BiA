@@ -17,9 +17,9 @@ export default async function Event({ params }: {
    return (
       <div className={eventStyle.event}>
          <Wrapper>
-            <Hero title={data.title} artist={data.artist.name} image={data.images.cover} />
+            <Hero title={data.title} artist={data.artist?.name} image={data.images.cover} />
             <Info type={data.type} description={data.description.main} dates={data.dates} place={data.place} ageRestriction={data.ageRestriction} image={data.images.info} />
-            {!!data.artist.info && <Artist artist={data.artist} image={data.artist.image} info={data.artist.info} />}
+            {!!data.artist?.info && <Artist artist={data.artist} image={data.artist.image} info={data.artist.info} />}
             <ImageThesis image={data.images.thesis.image} thesis={data.images.thesis.text} />
             <AdditionalDesc description={data.description.additional.text} title={data.description.additional.title} />
          </Wrapper>
@@ -44,14 +44,14 @@ const Hero = ({ title, artist, image }: { title: string, artist: string, image: 
 )
 
 const Info = ({ type, description, dates, place, ageRestriction, image }:
-   { type: string, description: string, dates: { start: Date, end: Date }, place: { floor: number, zone: string }, ageRestriction: number, image: string }) => {
+   { type: string, description: string, dates: { start: Date, end: Date }, place: { floor: number, wing: string }, ageRestriction: number, image: string }) => {
 
-   const zoneToRus = (zone: string) => {
-      switch (zone) {
+   const wingToRus = (wing: string) => {
+      switch (wing) {
          case 'exhibition':
             return 'Выставочное крыло'
          case 'museum':
-            return 'Музейнок крыло'
+            return 'Музейное крыло'
          case 'stage':
             return 'Сцена'
       }
@@ -85,7 +85,7 @@ const Info = ({ type, description, dates, place, ageRestriction, image }:
                <ul className={eventStyle.statsList}>
                   <li className={eventStyle.stat}>
                      <FontAwesomeIcon icon={faLocationDot} className={eventStyle.icon} />
-                     {`${zoneToRus(!!place.zone ? place.zone : type)}, ${place.floor} этаж`}
+                     {`${wingToRus(!!place.wing ? place.wing : type)}, ${place.floor} этаж`}
                   </li>
                   <li className={eventStyle.stat}>
                      <FontAwesomeIcon icon={faCakeCandles} className={eventStyle.icon} />
