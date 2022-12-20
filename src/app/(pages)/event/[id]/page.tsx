@@ -22,6 +22,7 @@ export default async function Event({ params }: {
             {!!data.artist?.info && <Artist artist={data.artist} image={data.artist.image} info={data.artist.info} />}
             <ImageThesis image={data.images.thesis.image} thesis={data.images.thesis.text} />
             <AdditionalDesc description={data.description.additional.text} title={data.description.additional.title} />
+            {data.images.gallery.length > 1 && <ImageSections gallery={data.images.gallery} />}
          </Wrapper>
       </div>
    )
@@ -150,3 +151,30 @@ const AdditionalDesc = ({ description, title }: { description: string, title: st
       </div>
    </section>
 )
+
+const ImageSections = ({ gallery }: { gallery: string[] }) => {
+
+   const imageSections = gallery.reduce(function (rows: any[], key: string, index: number) {
+      return (index % 3 == 0 ? rows.push([key]) : rows[rows.length - 1].push(key)) && rows
+   }, [])
+
+   return (
+      <>
+         {imageSections.map((section, index: number) => section.length > 1 && (
+            <section key={index}>
+               {section.map((image: string, index: number) => (
+                  <div className={eventStyle.image} key={index}>
+                     <Image
+                        className={eventStyle.src}
+                        src={image}
+                        fill={true}
+                        sizes='50vw'
+                        alt='thesis image'
+                     />
+                  </div>
+               ))}
+            </section>
+         ))}
+      </>
+   )
+}
