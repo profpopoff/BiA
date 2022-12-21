@@ -35,10 +35,10 @@ const Hero = ({ title, artist, image }: { title: string, artist: string, image: 
          src={image}
          fill={true}
          sizes='30rem'
-         alt={`${title} image`}
+         alt={`${decode(title)} image`}
       />
       <h2 className={eventStyle.headline}>
-         <span className={eventStyle.title}>{title}</span>
+         <span className={eventStyle.title}>{decode(title)}</span>
          {!!artist && <span className={eventStyle.artistName}>{artist}</span>}
       </h2>
    </section>

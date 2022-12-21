@@ -7,6 +7,7 @@ import { useEffect, useRef } from 'react'
 
 import galleryStyle from './gallery.module.scss'
 import styles from '../../(pages)/events/Events.module.scss'
+import { decode } from 'html-entities'
 
 const Gallery = ({ events }: { events: any[] }) => {
 
@@ -45,11 +46,11 @@ const Gallery = ({ events }: { events: any[] }) => {
                   src={event.images.cover}
                   fill={true}
                   sizes='50vw'
-                  alt={`${event.title} image`}
+                  alt={`${decode(event.title)} image`}
                />
                <h2 className={galleryStyle.headline}>
-                  <span className={galleryStyle.title}>{event.title}</span>
-                  {!!event.artist && <span className={galleryStyle.artist}>{event.artist.name}</span>}
+                  <span className={galleryStyle.title}>{decode(event.title)}</span>
+                  {!!event.artist && <span className={galleryStyle.artist}>{decode(event.artist.name)}</span>}
                </h2>
                {new Date() < new Date(event.dates.start) &&
                   <div className={galleryStyle.marker}>
