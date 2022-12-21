@@ -39,7 +39,7 @@ const Hero = ({ title, artist, image }: { title: string, artist: string, image: 
          className={eventStyle.image}
          src={image}
          fill={true}
-         sizes='30rem'
+         sizes='100vw'
          alt={`${decode(title)} image`}
       />
       <h2 className={eventStyle.headline}>
