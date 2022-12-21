@@ -3,16 +3,20 @@ import { decode } from 'html-entities'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faCakeCandles, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 
-import { fetchEvent } from "../../../../utils/fetch"
+import { fetchEvent, fetchEvents, fetchNextEvent } from "../../../../utils/fetch"
 
 import eventStyle from './Event.module.scss'
 import Wrapper from "./components/Wrapper"
+import Link from "next/link"
 
 export default async function Event({ params }: {
    params: { id: string }
 }) {
 
-   const { data } = await fetchEvent(params.id)
+   const eventData = fetchEvent(params.id)
+   const nextData = fetchNextEvent(params.id)
+
+   const [{ data }, nextEvent] = await Promise.all([eventData, nextData])
 
    return (
       <div className={eventStyle.event}>
@@ -23,6 +27,7 @@ export default async function Event({ params }: {
             <ImageThesis image={data.images.thesis.image} thesis={data.images.thesis.text} />
             <AdditionalDesc description={data.description.additional.text} title={data.description.additional.title} />
             {data.images.gallery.length > 1 && <ImageSections gallery={data.images.gallery} />}
+            <Next title={nextEvent.title} image={nextEvent.image} id={nextEvent.id} />
          </Wrapper>
       </div>
    )
@@ -178,3 +183,19 @@ const ImageSections = ({ gallery }: { gallery: string[] }) => {
       </>
    )
 }
+
+const Next = ({ title, image, id }: { title: string, image: string, id: string }) => (
+   <section className={eventStyle.next}>
+      <Image
+         className={eventStyle.image}
+         src={image}
+         fill={true}
+         sizes='100vw'
+         alt={`${decode(title)} image`}
+      />
+      <div className={eventStyle.nextEvent}>
+         <span className={eventStyle.nextTitle}>{decode(title)}</span>
+         <Link href={`/event/${id}`} className={eventStyle.nextLink}>Перейти</Link>
+      </div>
+   </section>
+)

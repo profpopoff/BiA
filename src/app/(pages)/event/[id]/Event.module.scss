@@ -2,6 +2,8 @@
 
 .event {
 
+   -webkit-font-smoothing: antialiased;
+
    section {
       height: 100vh;
       overflow: hidden;
@@ -36,14 +38,7 @@
          font-size: 1rem;
          color: #fff;
          font-weight: 600;
-
-         -webkit-font-smoothing: antialiased;
-         $stroke-color: #000;
-         $stroke-width: 1px;
-         text-shadow: $stroke-width 0 0 $stroke-color,
-            calc($stroke-width * -1) 0 0 $stroke-color,
-            0 $stroke-width 0 $stroke-color,
-            0 calc($stroke-width * -1) 0 $stroke-color;
+         text-shadow: $text-shadow;
 
          .title {
             text-transform: uppercase;
@@ -162,14 +157,7 @@
          font-size: 1.2rem;
          font-weight: 400;
          line-height: 1.2;
-
-         -webkit-font-smoothing: antialiased;
-         $stroke-color: #000;
-         $stroke-width: 1px;
-         text-shadow: $stroke-width 0 0 $stroke-color,
-            calc($stroke-width * -1) 0 0 $stroke-color,
-            0 $stroke-width 0 $stroke-color,
-            0 calc($stroke-width * -1) 0 $stroke-color;
+         text-shadow: $text-shadow;
       }
    }
 
@@ -193,6 +181,66 @@
 
          p {
             line-height: 1.05;
+         }
+      }
+   }
+
+   .next {
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      .image {
+         object-fit: cover;
+      }
+
+      .nextEvent {
+         z-index: 10;
+         align-items: center;
+         display: flex;
+         flex-direction: column;
+         gap: 1rem;
+         color: #fff;
+         text-shadow: $text-shadow;
+
+         .nextTitle {
+            font-size: 4rem;
+            font-weight: 400;
+         }
+
+         .nextLink {
+            display: inline-block;
+            width: min-content;
+            position: relative;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: 1.2;
+            transition: all .2s ease-in-out;
+
+            &::before {
+               content: "";
+               position: absolute;
+               left: 0;
+               top: 50%;
+               transform: translate(.5rem, -35%);
+               width: .7rem;
+               aspect-ratio: 1;
+               opacity: 0;
+               border-radius: 50%;
+               background-color: $primary-color;
+               transition: all .2s ease-in-out;
+            }
+
+            &:hover {
+               padding-left: 1.2rem;
+
+               &::before {
+                  opacity: 1;
+                  transform: translate(0, -35%);
+               }
+            }
          }
       }
    }
