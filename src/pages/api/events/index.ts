@@ -11,7 +11,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       case 'GET':
          try {
             const events = await Event.find() /* find all the data in our database */
-            res.status(200).json({ success: true, data: events })
+
+            const sortedEvents = events
+               .filter(event => event.dates.end ?
+                  new Date(event.dates.end) > new Date() :
+                  new Date(event.dates.start) > new Date())
+               .sort((a: any, b: any) =>
+                  new Date(a.dates.start).getTime() - new Date(b.dates.start).getTime())
+
+            res.status(200).json({ success: true, data: sortedEvents })
          } catch (error) {
             res.status(400).json({ success: false, message: error })
          }
