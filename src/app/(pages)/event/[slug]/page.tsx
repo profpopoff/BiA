@@ -10,11 +10,11 @@ import Wrapper from "./components/Wrapper"
 import Link from "next/link"
 
 export default async function Event({ params }: {
-   params: { id: string }
+   params: { slug: string }
 }) {
 
-   const eventData = fetchEvent(params.id)
-   const nextData = fetchNextEvent(params.id)
+   const eventData = fetchEvent(params.slug)
+   const nextData = fetchNextEvent(params.slug)
 
    const [{ data }, nextEvent] = await Promise.all([eventData, nextData])
 
@@ -27,7 +27,7 @@ export default async function Event({ params }: {
             <ImageThesis image={data.images.thesis.image} thesis={data.images.thesis.text} />
             <AdditionalDesc description={data.description.additional.text} title={data.description.additional.title} />
             {data.images.gallery.length > 1 && <ImageSections gallery={data.images.gallery} />}
-            <Next title={nextEvent.title} image={nextEvent.image} id={nextEvent.id} />
+            <Next title={nextEvent.title} image={nextEvent.image} link={nextEvent.link} />
          </Wrapper>
       </div>
    )
@@ -184,7 +184,7 @@ const ImageSections = ({ gallery }: { gallery: string[] }) => {
    )
 }
 
-const Next = ({ title, image, id }: { title: string, image: string, id: string }) => (
+const Next = ({ title, image, link }: { title: string, image: string, link: string }) => (
    <section className={eventStyle.next}>
       <Image
          className={eventStyle.image}
@@ -195,7 +195,7 @@ const Next = ({ title, image, id }: { title: string, image: string, id: string }
       />
       <div className={eventStyle.nextEvent}>
          <span className={eventStyle.nextTitle}>{decode(title)}</span>
-         <Link href={`/event/${id}`} className={eventStyle.nextLink}>Перейти</Link>
+         <Link href={`/event/${link}`} className={eventStyle.nextLink}>Перейти</Link>
       </div>
    </section>
 )

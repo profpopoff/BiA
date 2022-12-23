@@ -1,10 +1,10 @@
 import { fetchEvent } from "../../../../utils/fetch"
 
 export default async function Head({ params }: {
-   params: { id: string }
+   params: { slug: string }
 }) {
 
-   const { data } = await fetchEvent(params.id)
+   const { data } = await fetchEvent(params.slug)
 
    return (
       <>

@@ -40,7 +40,7 @@ const Gallery = ({ events }: { events: any[] }) => {
          ref={galleryRef}
       >
          {events.map((event) =>
-            <Link href={`/event/${event._id}`} className={galleryStyle.card} key={event._id}>
+            <Link href={`/event/${event.link}`} className={galleryStyle.card} key={event._id}>
                <Image
                   className={galleryStyle.image}
                   src={event.images.cover}

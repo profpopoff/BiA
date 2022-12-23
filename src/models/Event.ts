@@ -2,6 +2,7 @@ import mongoose from "mongoose"
 
 interface IEvent {
    title: string
+   link: string
    type: string // временная выставка, постоянная выставка или представление (exhibition, museum, stage)
    artist?: {
       name: string
@@ -41,6 +42,12 @@ const EventScheme = new mongoose.Schema<IEvent>(
          type: String,
          required: [true, 'Название события не указано.'],
          maxlength: [60, 'Название события не должно быть больше 60 символов.'],
+      },
+      link: {
+         type: String,
+         unique: true,
+         required: [true, 'Название ссылки не указано.'],
+         maxlength: [70, 'Название ссылки не должно быть больше 70 символов.'],
       },
       type: {
          type: String,
