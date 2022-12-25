@@ -7,18 +7,45 @@ import filter from './Filter.module.scss'
 import page from '../../Events.module.scss'
 
 export default function Filter() {
+
+   const { filterActive } = useContext(InteractionContext)
+
    return (
       <div className={filter.filter}>
-         <div className={filter.filter_wrapper}>
-            <FilterButton />
+         <div className={filterActive ? `${filter.filter_wrapper} ${filter.active} ${page.filterActive}` : filter.filter_wrapper}>
+            <Filters />
+            <Button />
          </div>
       </div>
    )
 }
 
-export const FilterButton = () => {
+const Filters = () => {
+   return (
+      <div className={filter.filters}>
+         <div className={filter.category}>
+            <h3>Категория</h3>
+            <ul>
+               <li>Временная вытсавка</li>
+               <li>Постоянная выставка</li>
+               <li>Выступление на сцене</li>
+            </ul>
+         </div>
+         <div className={filter.date}>
+            <h3>Дата</h3>
+            <ul>
+               <li>Сугодня</li>
+               <li>Завтра</li>
+               <li>Выбрать день</li>
+            </ul>
+         </div>
+      </div>
+   )
+}
 
-   const { nav, toggleNav, filterActive, toggleFilter } = useContext(InteractionContext)
+export const Button = () => {
+
+   const { nav, toggleNav, toggleFilter } = useContext(InteractionContext)
 
    const handleClick = () => {
       if (nav) {
@@ -29,10 +56,8 @@ export const FilterButton = () => {
 
    return (
       <button
-         className={filterActive ? `${filter.button} ${filter.active} ${page.filterActive}` : filter.button}
+         className={filter.button}
          onClick={handleClick}
-      >
-         Filter Work
-      </button>
+      >Фильтры</button>
    )
 }

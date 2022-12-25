@@ -12,6 +12,26 @@
       display: grid;
       place-items: center;
 
+      &.active {
+         .filters {
+            opacity: 1;
+            pointer-events: all;
+         }
+
+         .button {
+            opacity: 0;
+            pointer-events: none;
+         }
+      }
+
+      .filters {
+         position: absolute;
+         pointer-events: none;
+         opacity: 0;
+         transition: all .3s $cubic-bezier;
+         // text-align: center;
+      }
+
       .button {
          transform: rotate(90deg);
          height: $gap;
@@ -19,16 +39,12 @@
          background-color: transparent;
          border: none;
          font-weight: 600;
+         line-height: 1;
          text-transform: uppercase;
          cursor: pointer;
-         transition: all .15s $cubic-bezier;
+         transition: all .3s $cubic-bezier;
          user-select: none;
          pointer-events: all;
-
-         &.active {
-            opacity: 0;
-            pointer-events: none;
-         }
       }
    }
 }
