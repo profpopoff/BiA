@@ -26,10 +26,16 @@
 
       .filters {
          position: absolute;
+         width: 15%;
          pointer-events: none;
          opacity: 0;
          transition: all .3s $cubic-bezier;
-         // text-align: center;
+         // outline: 1px solid red;
+
+         ul {
+            list-style: none;
+            padding: 0;
+         }
       }
 
       .button {

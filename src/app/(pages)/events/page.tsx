@@ -11,7 +11,7 @@ export default async function Events() {
    return (
       <div className="container">
          <div className={styles.wrapper}>
-            <Filter />
+            <Filter events={data} />
             <div className={styles.galleries}>
                {quarterArray(data
                   .slice(0, 4 * Math.floor((data.length - 2) / 4) + 2)) // Арифметическая последовательность 6,10,14,18,22... (чтобы паралакс был красивым)
