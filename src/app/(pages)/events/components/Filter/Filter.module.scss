@@ -33,8 +33,28 @@
          // outline: 1px solid red;
 
          ul {
-            list-style: none;
             padding: 0;
+            list-style: none;
+            user-select: none;
+
+            li {
+               label {
+                  cursor: pointer;
+
+                  input {
+                     display: none;
+
+                     &:checked+span {
+                        font-weight: bold;
+                     }
+                  }
+
+                  .span {
+                     display: flex;
+                     justify-content: space-between;
+                  }
+               }
+            }
          }
       }
 

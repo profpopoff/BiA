@@ -21,14 +21,38 @@ export default function Filter({ events }: { events: any[] }) {
 }
 
 const Filters = ({ events }: { events: any[] }) => {
-   const [filter, setFilter] = useState({ type: '', date: '' })
+
+   interface IFilter { type?: string, date?: string }
+
+   const [filter, setFilter] = useState<IFilter>({})
+   console.log(filter)
 
    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.checked) {
          setFilter({ ...filter, [e.target.name]: e.target.value })
       } else {
-         setFilter({ ...filter, [e.target.name]: '' })
+         setFilter(current => {
+            const copy = { ...current }
+            delete copy[e.target.name as keyof IFilter]
+            return copy
+         })
+      }
+   }
 
+   const types = Array.from(new Set(events.map((item: any) => item.type)))
+
+   const typeToRus = (item: string) => {
+      switch (item) {
+         case 'photo':
+            return 'Фотография'
+         case 'painting':
+            return 'Живопись'
+         case 'digital':
+            return 'Digital art'
+         case 'sculpture':
+            return 'Скульптура'
+         case 'performance':
+            return 'Выступление на сцене'
       }
    }
 
@@ -37,46 +61,18 @@ const Filters = ({ events }: { events: any[] }) => {
          <div className={filterStyle.category}>
             <h3>Категория</h3>
             <ul>
-               <li><label>
-                  <input type="checkbox" value="painting" name="type"
-                     checked={filter.type === 'painting'}
-                     onChange={changeHandler}
-                  />
-                  Живопись
-                  {events.filter(event => event.type === 'painting').length}
-               </label></li>
-               <li><label>
-                  <input type="checkbox" value="photo" name="type"
-                     checked={filter.type === 'photo'}
-                     onChange={changeHandler}
-                  />
-                  Фотогрфия
-                  {events.filter(event => event.type === 'photo').length}
-               </label></li>
-               <li><label>
-                  <input type="checkbox" value="sculpture" name="type"
-                     checked={filter.type === 'sculpture'}
-                     onChange={changeHandler}
-                  />
-                  Скульптура
-                  {events.filter(event => event.type === 'sculpture').length}
-               </label></li>
-               <li><label>
-                  <input type="checkbox" value="digital" name="type"
-                     checked={filter.type === 'digital'}
-                     onChange={changeHandler}
-                  />
-                  Digital art
-                  {events.filter(event => event.type === 'digital').length}
-               </label></li>
-               <li><label>
-                  <input type="checkbox" value="performance" name="type"
-                     checked={filter.type === 'performance'}
-                     onChange={changeHandler}
-                  />
-                  Выступление на сцене
-                  {events.filter(event => event.type === 'performance').length}
-               </label></li>
+               {types.map(type => (
+                  <li key={type}><label>
+                     <input type="checkbox" value={type} name="type"
+                        checked={filter.type === type}
+                        onChange={changeHandler}
+                     />
+                     <span className={filterStyle.span}>
+                        <span>{typeToRus(type)}</span>
+                        <span>{events.filter(event => event.type === type).length}</span>
+                     </span>
+                  </label></li>
+               ))}
             </ul>
          </div>
          <div className={filterStyle.date}>
@@ -87,21 +83,21 @@ const Filters = ({ events }: { events: any[] }) => {
                      checked={filter.date === 'today'}
                      onChange={changeHandler}
                   />
-                  Сегодня
+                  <span>Сегодня</span>
                </label></li>
                <li><label>
                   <input type="checkbox" value="tomorrow" name="date"
                      checked={filter.date === 'tomorrow'}
                      onChange={changeHandler}
                   />
-                  Завтра
+                  <span>Завтра</span>
                </label></li>
                <li><label>
                   <input type="checkbox" value="choose" name="date"
                      checked={filter.date === 'choose'}
                      onChange={changeHandler}
                   />
-                  Выбрать день
+                  <span>Выбрать день</span>
                </label></li>
             </ul>
          </div>
