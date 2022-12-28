@@ -60,17 +60,17 @@ const Info = ({ type, description, dates, place, ageRestriction, image }:
             return 'Музейное крыло'
          case 'stage':
             return 'Сцена'
+         default:
+            return 'Выставочное крыло'
       }
    }
 
    const typeToRus = (type: string) => {
       switch (type) {
-         case 'exhibition':
-            return 'Временная выставка'
-         case 'museum':
-            return 'Постоянная выставка'
          case 'stage':
-            return 'Представление'
+            return 'Выступление на сцене'
+         default:
+            return 'Временная выставка'
       }
    }
 

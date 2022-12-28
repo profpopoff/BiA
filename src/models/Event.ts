@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 interface IEvent {
    title: string
    link: string
-   type: string // временная выставка, постоянная выставка или представление (exhibition, museum, stage)
+   type: string
    artist?: {
       name: string
       image?: string
@@ -16,7 +16,7 @@ interface IEvent {
    ageRestriction: number
    place: {
       floor: number
-      wing?: string // Выставочное крыло, музейное крыло или сцена (exhibition, museum, stage)
+      wing?: string
    }
    description: {
       main: string
@@ -52,8 +52,8 @@ const EventScheme = new mongoose.Schema<IEvent>(
       type: {
          type: String,
          enum: {
-            values: ['museum', 'exhibition', 'stage'],
-            message: 'Zone is either museum, exhibition or stage.'
+            values: ['painting', 'photo', 'sculpture', 'digital', 'performance'],
+            message: 'Zone is either painting, photo, sculpture, digital or performance.'
          },
          default: 'exhibition',
       },

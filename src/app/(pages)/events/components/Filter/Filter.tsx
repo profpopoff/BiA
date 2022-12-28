@@ -35,23 +35,47 @@ const Filters = ({ events }: { events: any[] }) => {
    return (
       <div className={filterStyle.filters}>
          <div className={filterStyle.category}>
-            <h3>Тип</h3>
+            <h3>Категория</h3>
             <ul>
                <li><label>
-                  <input type="checkbox" value="exhibition" name="type"
-                     checked={filter.type === 'exhibition'}
+                  <input type="checkbox" value="painting" name="type"
+                     checked={filter.type === 'painting'}
                      onChange={changeHandler}
                   />
-                  Временная выставка
-                  {events.filter(event => event.type === 'exhibition').length}
+                  Живопись
+                  {events.filter(event => event.type === 'painting').length}
                </label></li>
                <li><label>
-                  <input type="checkbox" value="stage" name="type"
-                     checked={filter.type === 'stage'}
+                  <input type="checkbox" value="photo" name="type"
+                     checked={filter.type === 'photo'}
+                     onChange={changeHandler}
+                  />
+                  Фотогрфия
+                  {events.filter(event => event.type === 'photo').length}
+               </label></li>
+               <li><label>
+                  <input type="checkbox" value="sculpture" name="type"
+                     checked={filter.type === 'sculpture'}
+                     onChange={changeHandler}
+                  />
+                  Скульптура
+                  {events.filter(event => event.type === 'sculpture').length}
+               </label></li>
+               <li><label>
+                  <input type="checkbox" value="digital" name="type"
+                     checked={filter.type === 'digital'}
+                     onChange={changeHandler}
+                  />
+                  Digital art
+                  {events.filter(event => event.type === 'digital').length}
+               </label></li>
+               <li><label>
+                  <input type="checkbox" value="performance" name="type"
+                     checked={filter.type === 'performance'}
                      onChange={changeHandler}
                   />
                   Выступление на сцене
-                  {events.filter(event => event.type === 'stage').length}
+                  {events.filter(event => event.type === 'performance').length}
                </label></li>
             </ul>
          </div>
