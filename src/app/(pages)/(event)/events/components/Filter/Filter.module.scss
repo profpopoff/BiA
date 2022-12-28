@@ -1,4 +1,4 @@
-@import '../../../../../style/variables';
+@import '../../../../../../style/variables';
 
 .filter {
    position: absolute;
@@ -30,7 +30,6 @@
          pointer-events: none;
          opacity: 0;
          transition: all .3s $cubic-bezier;
-         // outline: 1px solid red;
 
          ul {
             padding: 0;

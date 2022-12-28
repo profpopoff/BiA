@@ -3,7 +3,7 @@ import { decode } from 'html-entities'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faCakeCandles, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 
-import { fetchEvent, fetchEvents, fetchNextEvent } from "../../../../utils/fetch"
+import { fetchEvent, fetchNextEvent } from "../../../../../utils/fetch"
 
 import eventStyle from './Event.module.scss'
 import Wrapper from "./components/Wrapper"

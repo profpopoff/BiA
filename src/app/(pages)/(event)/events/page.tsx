@@ -1,8 +1,8 @@
 import styles from './Events.module.scss'
-import { quarterArray } from "../../../utils/divideArray"
-import Gallery from "../../components/Gallery/Gallery"
+import { quarterArray } from "../../../../utils/divideArray"
+import Gallery from "../../../components/Gallery/Gallery"
 import Filter from './components/Filter/Filter'
-import { fetchEvents } from '../../../utils/fetch'
+import { fetchEvents } from '../../../../utils/fetch'
 
 export default async function Events() {
 

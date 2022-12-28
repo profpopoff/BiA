@@ -1,4 +1,4 @@
-import { fetchEvent } from "../../../../utils/fetch"
+import { fetchEvent } from "../../../../../utils/fetch"
 
 export default async function Head({ params }: {
    params: { slug: string }

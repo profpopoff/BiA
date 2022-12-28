@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
 import galleryStyle from './gallery.module.scss'
-import styles from '../../(pages)/events/Events.module.scss'
+import styles from '../../(pages)/(event)/events/Events.module.scss'
 import { decode } from 'html-entities'
 
 const Gallery = ({ events }: { events: any[] }) => {

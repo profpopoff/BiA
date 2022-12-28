@@ -1,10 +1,11 @@
 'use client'
 
 import { useContext, useState } from 'react'
-import { InteractionContext } from '../../../../context/InteractionContext'
+import { InteractionContext } from '../../../../../context/InteractionContext'
 
 import filterStyle from './Filter.module.scss'
 import page from '../../Events.module.scss'
+import { FilterContext } from '../../../context/FilterContext'
 
 export default function Filter({ events }: { events: any[] }) {
 
@@ -22,20 +23,17 @@ export default function Filter({ events }: { events: any[] }) {
 
 const Filters = ({ events }: { events: any[] }) => {
 
-   interface IFilter { type?: string, date?: string }
-
-   const [filter, setFilter] = useState<IFilter>({})
-   console.log(filter)
+   const { type, changeType, date, changeDate } = useContext(FilterContext)
 
    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.checked) {
-         setFilter({ ...filter, [e.target.name]: e.target.value })
+         [e.target.name].toString() === 'type' ?
+            changeType?.(e.target.value) :
+            changeDate?.(e.target.value)
       } else {
-         setFilter(current => {
-            const copy = { ...current }
-            delete copy[e.target.name as keyof IFilter]
-            return copy
-         })
+         [e.target.name].toString() === 'type' ?
+            changeType?.('') :
+            changeDate?.('')
       }
    }
 
@@ -61,15 +59,15 @@ const Filters = ({ events }: { events: any[] }) => {
          <div className={filterStyle.category}>
             <h3>Категория</h3>
             <ul>
-               {types.map(type => (
-                  <li key={type}><label>
-                     <input type="checkbox" value={type} name="type"
-                        checked={filter.type === type}
+               {types.map(typeElement => (
+                  <li key={typeElement}><label>
+                     <input type="checkbox" value={typeElement} name="type"
+                        checked={type === typeElement}
                         onChange={changeHandler}
                      />
                      <span className={filterStyle.span}>
-                        <span>{typeToRus(type)}</span>
-                        <span>{events.filter(event => event.type === type).length}</span>
+                        <span>{typeToRus(typeElement)}</span>
+                        <span>{events.filter(event => event.type === typeElement).length}</span>
                      </span>
                   </label></li>
                ))}
@@ -80,21 +78,21 @@ const Filters = ({ events }: { events: any[] }) => {
             <ul>
                <li><label>
                   <input type="checkbox" value="today" name="date"
-                     checked={filter.date === 'today'}
+                     checked={date === 'today'}
                      onChange={changeHandler}
                   />
                   <span>Сегодня</span>
                </label></li>
                <li><label>
                   <input type="checkbox" value="tomorrow" name="date"
-                     checked={filter.date === 'tomorrow'}
+                     checked={date === 'tomorrow'}
                      onChange={changeHandler}
                   />
                   <span>Завтра</span>
                </label></li>
                <li><label>
                   <input type="checkbox" value="choose" name="date"
-                     checked={filter.date === 'choose'}
+                     checked={date === 'choose'}
                      onChange={changeHandler}
                   />
                   <span>Выбрать день</span>
