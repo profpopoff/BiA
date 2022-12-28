@@ -109,6 +109,7 @@ const Filters = ({ events }: { events: any[] }) => {
 export const Button = () => {
 
    const { nav, toggleNav, toggleFilter } = useContext(InteractionContext)
+   const { type, date } = useContext(FilterContext)
 
    const handleClick = () => {
       if (nav) {
@@ -121,6 +122,6 @@ export const Button = () => {
       <button
          className={filterStyle.button}
          onClick={handleClick}
-      >Фильтры</button>
+      >Фильтры {(type|| date) && `(${[type, date].filter(a => a).map(a => a).length})`}</button>
    )
 }
