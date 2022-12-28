@@ -1,7 +1,7 @@
 export default function Head() {
    return (
       <>
-         <title>Cases | Erarta</title>
+         <title>Афиша | Erarta</title>
       </>
    )
 }

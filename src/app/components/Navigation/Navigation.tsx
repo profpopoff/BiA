@@ -85,7 +85,7 @@ export default function Navigation() {
                </div>
             </Link>
             <Link className={navigation.link} href="/events" onClick={toggleNav}>
-               <h2 className={pathname == "/events" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>События</h2>
+               <h2 className={pathname == "/events" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>Афиша</h2>
                <div className={navigation.linkImage}>
                   <Image className={navigation.src} alt="home" src={Cover} priority />
                </div>
