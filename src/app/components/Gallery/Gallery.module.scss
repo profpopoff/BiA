@@ -11,6 +11,21 @@
    .card {
       position: relative;
       aspect-ratio: 2/3;
+      overflow: hidden;
+
+      &.filtered {
+         .image {
+            filter: blur(1rem);
+         }
+
+         .headline {
+            display: none;
+         }
+
+         .marker {
+            display: none;
+         }
+      }
 
       .image {
          height: 100%;

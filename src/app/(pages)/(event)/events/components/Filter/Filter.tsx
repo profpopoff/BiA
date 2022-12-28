@@ -13,7 +13,10 @@ export default function Filter({ events }: { events: any[] }) {
 
    return (
       <div className={filterStyle.filter}>
-         <div className={filterActive ? `${filterStyle.filter_wrapper} ${filterStyle.active} ${page.filterActive}` : filterStyle.filter_wrapper}>
+         <div className={filterActive ?
+            `${filterStyle.filter_wrapper} ${filterStyle.active} ${page.filterActive}` :
+            filterStyle.filter_wrapper}
+         >
             <Filters events={events} />
             <Button />
          </div>
