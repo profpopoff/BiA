@@ -26,31 +26,60 @@
 
       .filters {
          position: absolute;
-         width: 15%;
+         width: 25%;
+         height: 100%;
+         padding: 1rem 5rem 10rem 5rem;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         gap: 3rem;
          pointer-events: none;
          opacity: 0;
          transition: all .3s $cubic-bezier;
+         user-select: none;
+
+         h3 {
+            margin-bottom: 1rem;
+         }
 
          ul {
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
             list-style: none;
-            user-select: none;
 
             li {
+               font-size: 1.5rem;
+               line-height: 1.1;
+
                label {
                   cursor: pointer;
 
                   input {
                      display: none;
 
-                     &:checked+span {
-                        font-weight: bold;
+                     &:checked+.span {
+                        color: $secondary-color;
+
+                        span:first-child {
+                           transform: skew(-10deg);
+                        }
                      }
                   }
 
                   .span {
                      display: flex;
                      justify-content: space-between;
+                     transition: all .15s ease;
+
+                     &:hover {
+                        color: $secondary-color;
+                     }
+
+                     span:first-child {
+                        transition: all .15s ease;
+                     }
                   }
                }
             }

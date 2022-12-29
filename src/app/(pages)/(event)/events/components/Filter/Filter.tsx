@@ -84,21 +84,21 @@ const Filters = ({ events }: { events: any[] }) => {
                      checked={date === 'today'}
                      onChange={changeHandler}
                   />
-                  <span>Сегодня</span>
+                  <span className={filterStyle.span}>Сегодня</span>
                </label></li>
                <li><label>
                   <input type="checkbox" value="tomorrow" name="date"
                      checked={date === 'tomorrow'}
                      onChange={changeHandler}
                   />
-                  <span>Завтра</span>
+                  <span className={filterStyle.span}>Завтра</span>
                </label></li>
                <li><label>
                   <input type="checkbox" value="choose" name="date"
                      checked={date === 'choose'}
                      onChange={changeHandler}
                   />
-                  <span>Выбрать день</span>
+                  <span className={filterStyle.span}>Выбрать день</span>
                </label></li>
             </ul>
          </div>
@@ -122,6 +122,6 @@ export const Button = () => {
       <button
          className={filterStyle.button}
          onClick={handleClick}
-      >Фильтры {(type|| date) && `(${[type, date].filter(a => a).map(a => a).length})`}</button>
+      >Фильтры {(type || date) && `(${[type, date].filter(a => a).map(a => a).length})`}</button>
    )
 }
