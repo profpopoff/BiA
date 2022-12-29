@@ -15,26 +15,23 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
          clearTimeout(timer)
       }
 
-      timer = setTimeout(function () {
+      timer = setTimeout(() => {
 
          const container = e.target as HTMLInputElement
          const { scrollTop, clientHeight } = container
          const scrollHeight = scrollY - scrollTop
-         const scrollTo = (scrollTop - clientHeight * .25) / clientHeight
+         const clientHeightDif = .1
+         const scrollUp = Math.ceil(((scrollTop - clientHeight * (1 - clientHeightDif)) / clientHeight)) * clientHeight
+         const scrollDown = Math.ceil(((scrollTop - clientHeight * clientHeightDif) / clientHeight)) * clientHeight
 
-         if (scrollHeight >= clientHeight * .25) {
+         if (scrollHeight >= clientHeight * clientHeightDif) {
             container.scrollTo({
-               top: Math.round(scrollTo) * clientHeight,
-               behavior: 'smooth'
-            })
-         } else if (scrollHeight <= -clientHeight * .25) {
-            container.scrollTo({
-               top: Math.ceil(scrollTo) * clientHeight,
+               top: scrollUp,
                behavior: 'smooth'
             })
          } else {
             container.scrollTo({
-               top: (Math.floor(scrollTo) + 1) * clientHeight,
+               top: scrollDown,
                behavior: 'smooth'
             })
          }
