@@ -33,6 +33,17 @@ const Gallery = ({ events }: { events: any[] }) => {
       }
    }, [])
 
+   const { type, date } = useContext(FilterContext)
+
+   useEffect(() => {
+      const container = galleryRef.current?.parentElement?.parentElement?.parentElement
+      container?.scrollTo({
+         top: 0,
+         behavior: 'smooth'
+      })
+   }, [type, date])
+
+
    const pathname = usePathname()
 
    return (
