@@ -1,7 +1,7 @@
 export default function Head() {
    return (
       <>
-         <title>Contact | Erarta</title>
+         <title>Контакты | Erarta</title>
       </>
    )
 }
