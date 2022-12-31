@@ -1,0 +1,19 @@
+@import '../../../style/variables';
+
+.wrapper {
+   posittion: relative;
+   display: flex;
+
+   .galleries {
+      width: 50vw;
+      display: flex;
+      gap: $gap;
+   }
+
+   .info {
+      position: sticky;
+      top: 0;
+      width: 50vw;
+      height: 100vh;
+   }
+}
