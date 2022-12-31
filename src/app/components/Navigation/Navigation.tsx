@@ -79,7 +79,7 @@ export default function Navigation() {
             }}
          >
             <Link className={navigation.link} href="/" onClick={toggleNav}>
-               <h2 className={pathname == "/" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>Главаня</h2>
+               <h2 className={pathname == "/" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>Главная</h2>
                <div className={navigation.linkImage}>
                   <Image className={navigation.src} alt="home" src={Cover} priority />
                </div>
