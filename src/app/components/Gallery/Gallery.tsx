@@ -10,7 +10,7 @@ import styles from '../../(pages)/(event)/events/Events.module.scss'
 import { decode } from 'html-entities'
 import { FilterContext } from '../../(pages)/(event)/context/FilterContext'
 
-const Gallery = ({ events }: { events: any[] }) => {
+const Gallery = ({ array }: { array: any[] }) => {
 
    const galleryRef = useRef<HTMLDivElement>(null)
 
@@ -48,17 +48,20 @@ const Gallery = ({ events }: { events: any[] }) => {
 
    return (
       <div
-         className={pathname === '/' ? `${galleryStyle.gallery} ${galleryStyle.reverse}` : `${galleryStyle.gallery} ${styles.gallery}`}
+         className={pathname === '/events' ? `${galleryStyle.gallery} ${styles.gallery}` : `${galleryStyle.gallery} ${galleryStyle.reverse}`}
          ref={galleryRef}
       >
-         {events.map((event) =>
-            <Card event={event} key={event._id} />
-         )}
+         {pathname === '/contact' ?
+            array.map((image, index) =>
+               <ImageCard image={image} key={index} />) :
+            array.map((event) =>
+               <EventCard event={event} key={event._id} />)
+         }
       </div>
    )
 }
 
-const Card = ({ event }: { event: any }) => {
+const EventCard = ({ event }: { event: any }) => {
 
    const { type, date } = useContext(FilterContext)
 
@@ -85,6 +88,22 @@ const Card = ({ event }: { event: any }) => {
                <span className={galleryStyle.text}>Скоро</span>
             </div>}
       </Link>
+   )
+}
+
+
+
+const ImageCard = ({ image }: { image: string }) => {
+   return (
+      <div className={galleryStyle.card}>
+         <Image
+            className={galleryStyle.image}
+            src={image}
+            fill={true}
+            sizes='50vw'
+            alt='image'
+         />
+      </div>
    )
 }
 

@@ -13,8 +13,8 @@ export default async function HomePage() {
          <div className={styles.wrapper}>
             <div className={styles.galleries}>
                {countOff(data
-                  .slice(0, 2 * Math.floor((data.length - 3) / 2) + 3), 2) // Арифметическая последовательность 1,3,5,7,9... (чтобы паралакс был красивым (стабильным))
-                  .map((events: any[], index: number) => <Gallery key={index} events={events} />)}
+                  .slice(0, 2 * Math.floor((data.length - 3) / 2) + 3), 2) 
+                  .map((events: any[], index: number) => <Gallery key={index} array={events} />)}
             </div>
             <Article />
          </div>

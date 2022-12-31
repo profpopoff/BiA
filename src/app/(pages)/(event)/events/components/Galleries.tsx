@@ -25,7 +25,7 @@ export default function Galleries({ events }: { events: any[] }) {
       <div className={styles.galleries}>
          {quarterArray(sortArray(events, type)
             .slice(0, 4 * Math.floor((events.length - 2) / 4) + 2))
-            .map((events, index: number) => <Gallery key={index} events={events} />)}
+            .map((events, index: number) => <Gallery key={index} array={events} />)}
       </div>
    )
 }
