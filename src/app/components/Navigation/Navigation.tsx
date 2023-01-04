@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation"
 import Cover from '../../../public/cover.jpeg'
 import { useContext, useEffect, useRef, useState } from "react"
 import { InteractionContext } from "../../context/InteractionContext"
+import images from '../../../public/img/navigation/navigationImages'
 
 import navigation from './Navigation.module.scss'
 
@@ -81,13 +82,13 @@ export default function Navigation() {
             <Link className={navigation.link} href="/" onClick={toggleNav}>
                <h2 className={pathname == "/" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>Главная</h2>
                <div className={navigation.linkImage}>
-                  <Image className={navigation.src} alt="home" src={Cover} priority />
+                  <Image className={navigation.src} alt="home" src={images.home} priority />
                </div>
             </Link>
             <Link className={navigation.link} href="/events" onClick={toggleNav}>
                <h2 className={pathname == "/events" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>Афиша</h2>
                <div className={navigation.linkImage}>
-                  <Image className={navigation.src} alt="home" src={Cover} priority />
+                  <Image className={navigation.src} alt="home" src={images.events} priority />
                </div>
             </Link>
             <Link className={navigation.link} href="/about" onClick={toggleNav}>
@@ -99,7 +100,7 @@ export default function Navigation() {
             <Link className={navigation.link} href="/contact" onClick={toggleNav}>
                <h2 className={pathname == "/contact" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>Контакты</h2>
                <div className={navigation.linkImage}>
-                  <Image className={navigation.src} alt="home" src={Cover} priority />
+                  <Image className={navigation.src} alt="home" src={images.contact} priority />
                </div>
             </Link>
             <Link className={navigation.link} href="/" onClick={toggleNav}>
