@@ -3,7 +3,6 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import Cover from '../../../public/cover.jpeg'
 import { useContext, useEffect, useRef, useState } from "react"
 import { InteractionContext } from "../../context/InteractionContext"
 import images from '../../../public/img/navigation/navigationImages'
@@ -94,7 +93,7 @@ export default function Navigation() {
             <Link className={navigation.link} href="/about" onClick={toggleNav}>
                <h2 className={pathname == "/about" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>О музее</h2>
                <div className={navigation.linkImage}>
-                  <Image className={navigation.src} alt="home" src={Cover} priority />
+                  <Image className={navigation.src} alt="home" src={images.contact} priority />
                </div>
             </Link>
             <Link className={navigation.link} href="/contact" onClick={toggleNav}>
@@ -106,7 +105,7 @@ export default function Navigation() {
             <Link className={navigation.link} href="/" onClick={toggleNav}>
                <h2 className={pathname == "/" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>join us</h2>
                <div className={navigation.linkImage}>
-                  <Image className={navigation.src} alt="home" src={Cover} />
+                  <Image className={navigation.src} alt="home" src={images.contact} />
                </div>
             </Link>
          </div>

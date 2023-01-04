@@ -1,4 +1,5 @@
 import { fetchEvent } from "../../../../../utils/fetch"
+import DefaultTags from "../../../../components/DefaultTags"
 
 export default async function Head({ params }: {
    params: { slug: string }
@@ -8,6 +9,7 @@ export default async function Head({ params }: {
 
    return (
       <>
+         <DefaultTags />
          <title>{`${data.title} | Erarta`}</title>
       </>
    )
