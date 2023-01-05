@@ -37,10 +37,7 @@ const Gallery = ({ array }: { array: any[] }) => {
 
    useEffect(() => {
       const container = galleryRef.current?.parentElement?.parentElement?.parentElement
-      container?.scrollTo({
-         top: 0,
-         behavior: 'smooth'
-      })
+      container?.scrollTo({ top: 0 })
    }, [type, date])
 
 
