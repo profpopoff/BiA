@@ -68,7 +68,7 @@ const Info = ({ type, description, dates, place, ageRestriction, image }:
    const typeToRus = (type: string) => {
       switch (type) {
          case 'stage':
-            return 'Выступление на сцене'
+            return 'Выступление на&nbsp;сцене'
          default:
             return 'Временная выставка'
       }
@@ -78,7 +78,7 @@ const Info = ({ type, description, dates, place, ageRestriction, image }:
       <section>
          <div className={eventStyle.info}>
             <article>
-               <h2 className={eventStyle.type}>{typeToRus(type)}</h2>
+               <h2 className={eventStyle.type}>{decode(typeToRus(type))}</h2>
                <p className={eventStyle.description}>
                   {decode(description)}
                </p>
