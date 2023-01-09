@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 
 import Wrapper from '../(event)/event/[slug]/components/Wrapper'
 import aboutStyles from './About.module.scss'
@@ -8,6 +8,7 @@ import { faLocationDot, faClock, faCalendarDays } from '@fortawesome/free-solid-
 
 import img from '../../../public/img/about/img2.jpeg'
 import img2 from '../../../public/img/about/img19.jpg'
+import img3 from '../../../public/img/about/img20.jpg'
 import CustomLink from '../../components/CustomLink/CustomLink'
 
 export default function About() {
@@ -15,10 +16,8 @@ export default function About() {
       <div className={aboutStyles.about}>
          <Wrapper>
             <Info />
-            <ImageThesis />
-            <section>
-               <h1>section 3</h1>
-            </section>
+            <Images images={[img2]} thesis='Название образовано из&nbsp;слов era и&nbsp;arta и&nbsp;означает &laquo;время искусства&raquo;.' />
+            <AdditionalDesc />
          </Wrapper>
       </div>
    )
@@ -61,19 +60,30 @@ const Info = () => (
    </section>
 )
 
-const ImageThesis = () => (
+const Images = ({ images, thesis }: { images: StaticImageData[], thesis?: String }) => (
    <section className={aboutStyles.imageThesis}>
-      <div className={aboutStyles.image}>
-         <Image
-            className={aboutStyles.src}
-            src={img2}
-            fill={true}
-            sizes='100vw'
-            alt='thesis image'
-         />
+      {images.map((image, index) =>
+         <div className={aboutStyles.image} key={index}>
+            <Image
+               className={aboutStyles.src}
+               src={image}
+               fill={true}
+               sizes='100vw'
+               alt='thesis image'
+            />
+         </div>
+      )}
+      {thesis && <p className={aboutStyles.thesis}>
+         {thesis}
+      </p>}
+   </section>
+)
+
+const AdditionalDesc = () => (
+   <section className={aboutStyles.additionalDesc}>
+      <div className={aboutStyles.additionalDescWrapper}>
+         <h2>Коллекция музея</h2>
+         <p>В&nbsp;собрание музея входят произведения, созданные российскими художниками во&nbsp;второй половине XX&nbsp;&mdash; начале XXI&nbsp;веков. Музей периодически пополняет свою коллекцию, сотрудничая с&nbsp;художниками, работающими в&nbsp;разных регионах России и&nbsp;представляющими разные поколения и&nbsp;направления в&nbsp;изобразительном искусстве.</p>
       </div>
-      <p className={aboutStyles.thesis}>
-         Название образовано из&nbsp;слов era и&nbsp;arta и&nbsp;означает &laquo;время искусства&raquo;.
-      </p>
    </section>
 )

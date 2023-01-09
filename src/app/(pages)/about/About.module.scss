@@ -92,4 +92,28 @@
          text-shadow: $text-shadow;
       }
    }
+
+   .additionalDesc {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: $grey-color;
+
+      .additionalDescWrapper {
+         display: flex;
+         flex-direction: column;
+         gap: 1rem;
+         max-width: 40ch;
+         font-size: 2rem;
+
+         h2 {
+            font-size: 1rem;
+            text-transform: uppercase;
+         }
+
+         p {
+            line-height: 1.05;
+         }
+      }
+   }
 }
