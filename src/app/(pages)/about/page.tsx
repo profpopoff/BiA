@@ -6,7 +6,8 @@ import aboutStyles from './About.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faClock, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 
-import img from '../../../public/img/about/img7.jpg'
+import img from '../../../public/img/about/img2.jpeg'
+import img2 from '../../../public/img/about/img19.jpg'
 import CustomLink from '../../components/CustomLink/CustomLink'
 
 export default function About() {
@@ -14,9 +15,7 @@ export default function About() {
       <div className={aboutStyles.about}>
          <Wrapper>
             <Info />
-            <section>
-               <h1>section 2</h1>
-            </section>
+            <ImageThesis />
             <section>
                <h1>section 3</h1>
             </section>
@@ -42,7 +41,7 @@ const Info = () => (
             </li>
             <li>
                <FontAwesomeIcon icon={faCalendarDays} className={aboutStyles.icon} />
-               Ежедневно, кроме вторника 
+               Ежедневно, кроме вторника
             </li>
             <li>
                <FontAwesomeIcon icon={faLocationDot} className={aboutStyles.icon} />
@@ -59,5 +58,22 @@ const Info = () => (
             alt='image'
          />
       </div>
+   </section>
+)
+
+const ImageThesis = () => (
+   <section className={aboutStyles.imageThesis}>
+      <div className={aboutStyles.image}>
+         <Image
+            className={aboutStyles.src}
+            src={img2}
+            fill={true}
+            sizes='100vw'
+            alt='thesis image'
+         />
+      </div>
+      <p className={aboutStyles.thesis}>
+         Название образовано из&nbsp;слов era и&nbsp;arta и&nbsp;означает &laquo;время искусства&raquo;.
+      </p>
    </section>
 )
