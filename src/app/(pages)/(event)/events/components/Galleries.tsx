@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { quarterArray } from '../../../../../utils/divideArray'
 import Gallery from "../../../../components/Gallery/Gallery"
 import { FilterContext } from '../../context/FilterContext'
@@ -9,6 +9,7 @@ import styles from '../Events.module.scss'
 export default function Galleries({ events }: { events: any[] }) {
 
    const { type, date } = useContext(FilterContext)
+   const [zIndex, setZIndex] = useState(10)
 
    const sortArray = (array: any[], sortBy: string) => {
       if (!!sortBy) {
@@ -25,7 +26,7 @@ export default function Galleries({ events }: { events: any[] }) {
       <div className={styles.galleries}>
          {quarterArray(sortArray(events, type)
             .slice(0, 4 * Math.floor((events.length - 2) / 4) + 2))
-            .map((events, index: number) => <Gallery key={index} array={events} />)}
+            .map((events, index: number) => <Gallery key={index} array={events} zIndex={zIndex} setZIndex={setZIndex} />)}
       </div>
    )
 }
