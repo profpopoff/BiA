@@ -34,12 +34,12 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
       }
    }, [])
 
-   const { type, date } = useContext(FilterContext)
+   const { filter } = useContext(FilterContext)
 
    useEffect(() => {
       const container = galleryRef.current?.parentElement?.parentElement?.parentElement
       container?.scrollTo({ top: 0 })
-   }, [type, date])
+   }, [filter])
 
 
    const pathname = usePathname()
@@ -63,15 +63,29 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
 const EventCard = ({ event, galleryIndex, setSelectedGallery }:
    { event: any, galleryIndex: number, setSelectedGallery: React.Dispatch<React.SetStateAction<number>> }) => {
 
-   const { type, date } = useContext(FilterContext)
+   const { filter } = useContext(FilterContext)
 
    const router = useRouter()
 
+   const isFiltered = () => {
+
+      const filterType = filter.split(':')[0]
+      const filterValue = filter.split(':')[1]
+
+      if (filterType === 'type') {
+         return filterValue === event.type ? true : false
+      } else if (filterType === 'date') {
+         return event.dates.end ?
+            new Date(filterValue) <= new Date(event.dates.end) &&
+            new Date(filterValue) >= new Date(event.dates.start) :
+            new Date(filterValue) === new Date(event.dates.start) ? true : false
+      } else { return true }
+   }
+
    return (
       <div
-         className={!!type && type !== event.type ?
-            `${galleryStyle.card} ${galleryStyle.filtered}`
-            : galleryStyle.card}
+         className={isFiltered() ?
+            galleryStyle.card : `${galleryStyle.card} ${galleryStyle.filtered}`}
          key={event._id}
       >
          <div
@@ -100,7 +114,7 @@ const EventCard = ({ event, galleryIndex, setSelectedGallery }:
                   className={galleryStyle.src}
                   src={event.images.cover}
                   fill={true}
-                  sizes='50vw'
+                  sizes='100vw'
                   alt={`${decode(event.title)} image`}
                />
             </div>

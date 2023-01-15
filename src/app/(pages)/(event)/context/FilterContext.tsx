@@ -3,15 +3,12 @@
 import { createContext, useState } from 'react'
 
 interface IFilterContext {
-   type: string
-   changeType?: (value: string) => void
-   date: string
-   changeDate?: (value: string) => void
+   filter: string
+   changeFilter?: (value: string) => void
 }
 
 const defaultState = {
-   type: '',
-   date: '',
+   filter: '',
 }
 
 export const FilterContext = createContext<IFilterContext>(defaultState)
@@ -20,14 +17,12 @@ export default function FilterProvider({ children }: {
    children: React.ReactNode
 }) {
 
-   const [type, setType] = useState<string>(defaultState.type)
-   const [date, setDate] = useState<string>(defaultState.date)
+   const [filter, setFilter] = useState<string>(defaultState.filter)
 
-   const changeType = (value: string) => setType(value)
-   const changeDate = (value: string) => setDate(value)
+   const changeFilter = (value: string) => setFilter(value)
 
    return (
-      <FilterContext.Provider value={{ type, changeType, date, changeDate }}>
+      <FilterContext.Provider value={{ filter, changeFilter }}>
          {children}
       </FilterContext.Provider >
    )

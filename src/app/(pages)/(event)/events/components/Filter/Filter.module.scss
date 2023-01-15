@@ -49,20 +49,27 @@
             gap: .5rem;
             list-style: none;
 
+
+
             li {
                font-size: 1.5rem;
                line-height: 1.1;
 
                label {
                   cursor: pointer;
+                  display: flex;
 
-                  input {
+                  &>* {
+                     flex: 1 1 50%;
+                  }
+
+                  input[type="checkbox"] {
                      display: none;
 
                      &:checked+.span {
                         color: $secondary-color;
 
-                        span:first-child {
+                        &>span:first-child {
                            transform: skew(-10deg);
                         }
                      }
@@ -71,14 +78,45 @@
                   .span {
                      display: flex;
                      justify-content: space-between;
-                     transition: all .15s ease;
+                     align-items: center;
+                     transition: all .2s ease;
 
                      &:hover {
                         color: $secondary-color;
                      }
 
                      span:first-child {
-                        transition: all .15s ease;
+                        transition: all .2s ease;
+                     }
+                  }
+
+                  .dateToggle {
+                     display: flex;
+                     justify-content: end;
+                     position: relative;
+
+                     .dateToggleButton {
+                        font-size: 1.5rem;
+                     }
+
+                     .dateInput {
+                        position: absolute;
+                        inset: 0;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 0;
+                        cursor: pointer;
+                        box-sizing: border-box;
+                     }
+
+                     .dateInput::-webkit-calendar-picker-indicator {
+                        position: absolute;
+                        inset: 0;
+                        width: 100%;
+                        height: 100%;
+                        margin: 0;
+                        padding: 0;
+                        cursor: pointer;
                      }
                   }
                }

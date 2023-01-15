@@ -7,6 +7,9 @@ import filterStyle from './Filter.module.scss'
 import page from '../../Events.module.scss'
 import { FilterContext } from '../../../context/FilterContext'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
+
 export default function Filter({ events }: { events: any[] }) {
 
    const { filterActive } = useContext(InteractionContext)
@@ -26,17 +29,13 @@ export default function Filter({ events }: { events: any[] }) {
 
 const Filters = ({ events }: { events: any[] }) => {
 
-   const { type, changeType, date, changeDate } = useContext(FilterContext)
+   const { filter, changeFilter } = useContext(FilterContext)
 
    const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
       if (e.target.checked) {
-         [e.target.name].toString() === 'type' ?
-            changeType?.(e.target.value) :
-            changeDate?.(e.target.value)
+         changeFilter?.(e.target.value)
       } else {
-         [e.target.name].toString() === 'type' ?
-            changeType?.('') :
-            changeDate?.('')
+         changeFilter?.('')
       }
    }
 
@@ -57,6 +56,16 @@ const Filters = ({ events }: { events: any[] }) => {
       }
    }
 
+   function getTomorrow() {
+      const tomorrow = new Date()
+      tomorrow.setDate(tomorrow.getDate() + 1)
+      return tomorrow.toDateString()
+   }
+
+   const todayISO = new Date().toISOString().split('T')[0]
+
+   const [selectedDate, setSelecedDate] = useState(todayISO)
+
    return (
       <div className={filterStyle.filters}>
          <div className={filterStyle.category}>
@@ -64,8 +73,8 @@ const Filters = ({ events }: { events: any[] }) => {
             <ul>
                {types.map(typeElement => (
                   <li key={typeElement}><label>
-                     <input type="checkbox" value={typeElement} name="type"
-                        checked={type === typeElement}
+                     <input type="checkbox" value={`type:${typeElement}`} name="filter"
+                        checked={filter.split(':')[1] === typeElement}
                         onChange={changeHandler}
                      />
                      <span className={filterStyle.span}>
@@ -80,25 +89,44 @@ const Filters = ({ events }: { events: any[] }) => {
             <h3>Дата</h3>
             <ul>
                <li><label>
-                  <input type="checkbox" value="today" name="date"
-                     checked={date === 'today'}
+                  <input type="checkbox" value={`date:${new Date().toDateString()}`} name="filter"
+                     checked={filter.split(':')[1] === new Date().toDateString()}
                      onChange={changeHandler}
                   />
-                  <span className={filterStyle.span}>Сегодня</span>
+                  <span className={filterStyle.span}><span>Сегодня</span></span>
                </label></li>
                <li><label>
-                  <input type="checkbox" value="tomorrow" name="date"
-                     checked={date === 'tomorrow'}
+                  <input type="checkbox"
+                     value={`date:${getTomorrow()}`}
+                     name="date"
+                     checked={filter.split(':')[1] === getTomorrow()}
                      onChange={changeHandler}
                   />
-                  <span className={filterStyle.span}>Завтра</span>
+                  <span className={filterStyle.span}><span>Завтра</span></span>
                </label></li>
                <li><label>
-                  <input type="checkbox" value="choose" name="date"
-                     checked={date === 'choose'}
+                  <input type="checkbox" value={`date:${selectedDate}`} name="filter"
+                     checked={filter.split(':')[1] === selectedDate}
                      onChange={changeHandler}
                   />
-                  <span className={filterStyle.span}>Выбрать день</span>
+                  <span className={filterStyle.span}>
+                     <span>
+                        {selectedDate === todayISO ?
+                           'Выбрать день' : new Date(selectedDate).toLocaleDateString()}
+                     </span>
+                  </span>
+                  <span className={filterStyle.dateToggle}>
+                     <span className={filterStyle.dateToggleButton}>
+                        <FontAwesomeIcon icon={faCalendarDays} className={filterStyle.icon} />
+                     </span>
+                     <input
+                        type="date"
+                        className={filterStyle.dateInput}
+                        value={selectedDate}
+                        min={todayISO}
+                        onChange={(e) => setSelecedDate(e.target.value)}
+                     />
+                  </span>
                </label></li>
             </ul>
          </div>
@@ -109,7 +137,7 @@ const Filters = ({ events }: { events: any[] }) => {
 export const Button = () => {
 
    const { nav, toggleNav, toggleFilter } = useContext(InteractionContext)
-   const { type, date } = useContext(FilterContext)
+   const { filter } = useContext(FilterContext)
 
    const handleClick = () => {
       if (nav) {
@@ -122,6 +150,6 @@ export const Button = () => {
       <button
          className={filterStyle.button}
          onClick={handleClick}
-      >Фильтры {(type || date) && `(${[type, date].filter(a => a).map(a => a).length})`}</button>
+      >Фильтры {!!filter && '(1)'}</button>
    )
 }
