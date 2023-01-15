@@ -99,8 +99,8 @@ const EventCard = ({ event, galleryIndex, setSelectedGallery }:
                <Image
                   className={galleryStyle.src}
                   src={event.images.cover}
-                  fill
-                  sizes='100vw'
+                  fill={true}
+                  sizes='50vw'
                   alt={`${decode(event.title)} image`}
                />
             </div>
@@ -120,13 +120,15 @@ const EventCard = ({ event, galleryIndex, setSelectedGallery }:
 const ImageCard = ({ image }: { image: string }) => {
    return (
       <div className={galleryStyle.card}>
-         <Image
-            className={galleryStyle.image}
-            src={image}
-            fill={true}
-            sizes='50vw'
-            alt='image'
-         />
+         <div className={galleryStyle.image}>
+            <Image
+               className={galleryStyle.src}
+               src={image}
+               fill
+               sizes='50vw'
+               alt='image'
+            />
+         </div>
       </div>
    )
 }
