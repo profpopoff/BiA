@@ -1,3 +1,4 @@
+import { decode } from "html-entities"
 import { fetchEvent } from "../../../../../utils/fetch"
 import DefaultTags from "../../../../components/DefaultTags"
 
@@ -10,7 +11,7 @@ export default async function Head({ params }: {
    return (
       <>
          <DefaultTags />
-         <title>{`${data.title} | Erarta`}</title>
+         <title>{`${decode(data.title)} | Erarta`}</title>
       </>
    )
 }
