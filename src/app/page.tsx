@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { countOff } from '../utils/divideArray'
 import { fetchEvents } from '../utils/fetch'
 import Gallery from './components/Gallery/Gallery'
+import HomePageGalleries from './components/HomePageGalleries'
 import styles from './HomePage.module.scss'
 
 export default async function HomePage() {
@@ -11,11 +12,7 @@ export default async function HomePage() {
    return (
       <div className="container">
          <div className={styles.wrapper}>
-            <div className={styles.galleries}>
-               {countOff(data
-                  .slice(0, 2 * Math.floor((data.length - 3) / 2) + 3), 2)
-                  .map((events: any[], index: number) => <Gallery key={index} array={events} />)}
-            </div>
+            <HomePageGalleries events={data} />
             <Article />
          </div>
       </div>

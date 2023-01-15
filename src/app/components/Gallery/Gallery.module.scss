@@ -1,18 +1,18 @@
 @import '../../../style/variables';
 
 .gallery {
+   position: relative;
    flex: 1;
    height: min-content;
    display: flex;
    flex-direction: column;
    gap: $gap;
+   z-index: 1;
    transition: translate .3s $cubic-bezier;
 
    .card {
       position: relative;
       aspect-ratio: 2/3;
-      cursor: pointer;
-      z-index: 1;
 
       &.filtered {
          cursor: default;
@@ -37,12 +37,15 @@
          overflow: hidden;
          position: absolute;
          inset: 0;
+         zIndex: 1;
+         cursor: pointer;
          transition: inset .75s ease;
 
          .image {
             position: relative;
             width: 100%;
             height: 100%;
+            user-select: none;
 
             .src {
                object-fit: cover;

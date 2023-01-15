@@ -3,7 +3,7 @@ import { quarterArray } from "../../../../utils/divideArray"
 
 import Filter from './components/Filter/Filter'
 import { fetchEvents } from '../../../../utils/fetch'
-import Galleries from './components/Galleries'
+import EventsGalleries from './components/EventsGalleries'
 
 export default async function Events() {
 
@@ -13,7 +13,7 @@ export default async function Events() {
       <div className="container">
          <div className={styles.wrapper}>
             <Filter events={data} />
-            <Galleries events={data} />
+            <EventsGalleries events={data} />
          </div>
       </div>
    )
