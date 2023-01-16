@@ -1,8 +1,7 @@
 'use client'
 
-import Link from "next/link"
 import Image from "next/image"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { useContext, useEffect, useRef, useState } from "react"
 import { InteractionContext } from "../../context/InteractionContext"
 import images from '../../../public/img/navigation/navigationImages'
@@ -63,6 +62,13 @@ export default function Navigation() {
       })
    }
 
+   const router = useRouter()
+
+   const handleClick = (link: string) => {
+      toggleNav?.()
+      setTimeout(() => router.push(link), 500)
+   }
+
    return (
       <nav className={navigation.container}>
          <div
@@ -78,36 +84,36 @@ export default function Navigation() {
                setScrolled(false)
             }}
          >
-            <Link className={navigation.link} href="/" onClick={toggleNav}>
+            <div className={navigation.link} onClick={() => handleClick('/')}>
                <h2 className={pathname == "/" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>Главная</h2>
                <div className={navigation.linkImage}>
                   <Image className={navigation.src} alt="home" src={images.home} priority />
                </div>
-            </Link>
-            <Link className={navigation.link} href="/events" onClick={toggleNav}>
+            </div>
+            <div className={navigation.link} onClick={() => handleClick('/events')}>
                <h2 className={pathname == "/events" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>Афиша</h2>
                <div className={navigation.linkImage}>
                   <Image className={navigation.src} alt="home" src={images.events} priority />
                </div>
-            </Link>
-            <Link className={navigation.link} href="/about" onClick={toggleNav}>
+            </div>
+            <div className={navigation.link} onClick={() => handleClick('/about')}>
                <h2 className={pathname == "/about" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>О музее</h2>
                <div className={navigation.linkImage}>
                   <Image className={navigation.src} alt="home" src={images.about} priority />
                </div>
-            </Link>
-            <Link className={navigation.link} href="/contact" onClick={toggleNav}>
+            </div>
+            <div className={navigation.link} onClick={() => handleClick('/contact')}>
                <h2 className={pathname == "/contact" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>Контакты</h2>
                <div className={navigation.linkImage}>
                   <Image className={navigation.src} alt="home" src={images.contact} priority />
                </div>
-            </Link>
-            <Link className={navigation.link} href="/" onClick={toggleNav}>
+            </div>
+            <div className={navigation.link} onClick={() => handleClick('/')}>
                <h2 className={pathname == "/" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>join us</h2>
                <div className={navigation.linkImage}>
                   <Image className={navigation.src} alt="home" src={images.contact} />
                </div>
-            </Link>
+            </div>
          </div>
       </nav >
    )
