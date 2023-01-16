@@ -4,7 +4,7 @@
 </p>
 <h1 align="center">Erarta</h1>
 
-<video src="./src/public/video/erarta.mov"></video>
+https://user-images.githubusercontent.com/87638867/212690585-7ad2ec2c-fb72-4e55-9541-95c19db9a406.mov
 
 ---
 
