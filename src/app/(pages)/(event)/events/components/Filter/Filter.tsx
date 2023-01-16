@@ -77,10 +77,8 @@ const Filters = ({ events }: { events: any[] }) => {
                         checked={filter.split(':')[1] === typeElement}
                         onChange={changeHandler}
                      />
-                     <span className={filterStyle.span}>
-                        <span>{typeToRus(typeElement)}</span>
-                        <span>{events.filter(event => event.type === typeElement).length}</span>
-                     </span>
+                     <span>{typeToRus(typeElement)}</span>
+                     <span>{events.filter(event => event.type === typeElement).length}</span>
                   </label></li>
                ))}
             </ul>
@@ -93,7 +91,7 @@ const Filters = ({ events }: { events: any[] }) => {
                      checked={filter.split(':')[1] === new Date().toDateString()}
                      onChange={changeHandler}
                   />
-                  <span className={filterStyle.span}><span>Сегодня</span></span>
+                  <span>Сегодня</span>
                </label></li>
                <li><label>
                   <input type="checkbox"
@@ -102,18 +100,16 @@ const Filters = ({ events }: { events: any[] }) => {
                      checked={filter.split(':')[1] === getTomorrow()}
                      onChange={changeHandler}
                   />
-                  <span className={filterStyle.span}><span>Завтра</span></span>
+                  <span>Завтра</span>
                </label></li>
-               <li><label>
+               <li><label className={filterStyle.dateSelect}>
                   <input type="checkbox" value={`date:${selectedDate}`} name="filter"
                      checked={filter.split(':')[1] === selectedDate}
                      onChange={changeHandler}
                   />
-                  <span className={filterStyle.span}>
-                     <span>
-                        {selectedDate === todayISO ?
-                           'Выбрать день' : new Date(selectedDate).toLocaleDateString()}
-                     </span>
+                  <span>
+                     {selectedDate === todayISO ?
+                        'Выбрать день' : new Date(selectedDate).toLocaleDateString()}
                   </span>
                   <span className={filterStyle.dateToggle}>
                      <span className={filterStyle.dateToggleButton}>
