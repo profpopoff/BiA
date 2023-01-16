@@ -39,15 +39,6 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
    useEffect(() => {
       const container = galleryRef.current?.parentElement?.parentElement?.parentElement
 
-      // galleryRef.current?.animate([
-      //    { opacity: '1' },
-      //    { opacity: '0' }
-      // ], {
-      //    duration: 300,
-      //    iterations: 1,
-      // })
-
-      // setTimeout(() => {
       container?.scrollTo({ top: 0 })
 
       if (galleryIndex % 2 === 0) {
@@ -55,7 +46,7 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
             { transform: 'translateY(-100px)', opacity: '0' },
             { transform: 'translateY(0px)', opacity: '1' }
          ], {
-            duration: 500,
+            duration: 300,
             iterations: 1,
          })
       } else {
@@ -63,11 +54,10 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
             { transform: 'translateY(100px)', opacity: '0' },
             { transform: 'translateY(0px)', opacity: '1' }
          ], {
-            duration: 500,
+            duration: 300,
             iterations: 1,
          })
       }
-      // }, 300)
    }, [filter])
 
 
