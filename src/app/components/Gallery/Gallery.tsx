@@ -11,7 +11,7 @@ import { decode } from 'html-entities'
 import { FilterContext } from '../../(pages)/(event)/context/FilterContext'
 
 const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
-   { array: any[], galleryIndex: number, selectedGallery: number, setSelectedGallery: React.Dispatch<React.SetStateAction<number>> }) => {
+   { array: any[], galleryIndex: number, selectedGallery?: number, setSelectedGallery?: React.Dispatch<React.SetStateAction<number>> }) => {
 
    const galleryRef = useRef<HTMLDivElement>(null)
 
@@ -38,7 +38,36 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
 
    useEffect(() => {
       const container = galleryRef.current?.parentElement?.parentElement?.parentElement
+
+      // galleryRef.current?.animate([
+      //    { opacity: '1' },
+      //    { opacity: '0' }
+      // ], {
+      //    duration: 300,
+      //    iterations: 1,
+      // })
+
+      // setTimeout(() => {
       container?.scrollTo({ top: 0 })
+
+      if (galleryIndex % 2 === 0) {
+         galleryRef.current?.animate([
+            { transform: 'translateY(-100px)', opacity: '0' },
+            { transform: 'translateY(0px)', opacity: '1' }
+         ], {
+            duration: 500,
+            iterations: 1,
+         })
+      } else {
+         galleryRef.current?.animate([
+            { transform: 'translateY(100px)', opacity: '0' },
+            { transform: 'translateY(0px)', opacity: '1' }
+         ], {
+            duration: 500,
+            iterations: 1,
+         })
+      }
+      // }, 300)
    }, [filter])
 
 
@@ -61,7 +90,7 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
 }
 
 const EventCard = ({ event, galleryIndex, setSelectedGallery }:
-   { event: any, galleryIndex: number, setSelectedGallery: React.Dispatch<React.SetStateAction<number>> }) => {
+   { event: any, galleryIndex: number, setSelectedGallery?: React.Dispatch<React.SetStateAction<number>> }) => {
 
    const { filter } = useContext(FilterContext)
 
@@ -91,7 +120,7 @@ const EventCard = ({ event, galleryIndex, setSelectedGallery }:
          <div
             className={galleryStyle.cardContainer}
             onClick={e => {
-               setSelectedGallery(galleryIndex)
+               setSelectedGallery?.(galleryIndex)
                const container = e.currentTarget as HTMLElement
                const mainContainer = container.parentElement?.parentElement?.parentElement?.parentElement?.parentElement! as HTMLElement
                const clientRect = container.getBoundingClientRect()

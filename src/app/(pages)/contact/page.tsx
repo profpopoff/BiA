@@ -11,7 +11,7 @@ export default function Contact() {
          <div className={contactStyle.wrapper}>
             <div className={contactStyle.galleries}>
                {countOff(images, 2).map((images: string[], index: number) =>
-                  <Gallery key={index} array={images} />)}
+                  <Gallery key={index} array={images} galleryIndex={index} />)}
             </div>
             <Contacts />
          </div>
