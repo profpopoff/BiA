@@ -41,22 +41,22 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
 
       container?.scrollTo({ top: 0 })
 
+      const animation = (from: string) => [
+         { transform: `translateY(${from})`, opacity: '0' },
+         { transform: 'translateY(0px)', opacity: '1' }
+      ]
+
+      const animationTiming = {
+         duration: 300,
+         iterations: 1,
+      }
+
       if (galleryIndex % 2 === 0) {
-         galleryRef.current?.animate([
-            { transform: 'translateY(-100px)', opacity: '0' },
-            { transform: 'translateY(0px)', opacity: '1' }
-         ], {
-            duration: 300,
-            iterations: 1,
-         })
+         galleryRef.current?.children[0].animate(animation('-100px'), animationTiming)
+         galleryRef.current?.children[1].animate(animation('-100px'), animationTiming)
       } else {
-         galleryRef.current?.animate([
-            { transform: 'translateY(100px)', opacity: '0' },
-            { transform: 'translateY(0px)', opacity: '1' }
-         ], {
-            duration: 300,
-            iterations: 1,
-         })
+         galleryRef.current?.children[0].animate(animation('100px'), animationTiming)
+         galleryRef.current?.children[1].animate(animation('100px'), animationTiming)
       }
    }, [filter])
 
