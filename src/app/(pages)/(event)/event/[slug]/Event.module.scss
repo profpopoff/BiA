@@ -16,6 +16,8 @@
 
    .image {
       position: relative;
+      user-select: none;
+      pointer-events: none;
 
       .src {
          object-fit: cover;
