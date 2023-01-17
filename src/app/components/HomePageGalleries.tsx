@@ -11,8 +11,7 @@ export default function HomePageGalleries({ events }: { events: any[] }) {
 
    return (
       <div className={styles.galleries}>
-         {countOff(events
-            .slice(0, 2 * Math.floor((events.length - 3) / 2) + 3), 2)
+         {countOff(events.slice(0, 9), 2)
             .map((events: any[], index: number) => <Gallery key={index} array={events} galleryIndex={index} selectedGallery={selectedGallery} setSelectedGallery={setSelectedGallery} />)}
       </div>
    )
