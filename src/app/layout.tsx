@@ -5,6 +5,7 @@ import ContextProvider from './context/InteractionContext'
 import Header from './components/Header/Header'
 import MainToggle from './components/MainButton/MainButton'
 import Navigation from './components/Navigation/Navigation'
+import MainComponent from './components/Main'
 
 export default function RootLayout({ children }: {
   children: React.ReactNode
@@ -15,7 +16,7 @@ export default function RootLayout({ children }: {
       <body>
         <ContextProvider>
           <Header />
-          <main>{children}</main>
+          <MainComponent>{children}</MainComponent>
           <MainToggle />
           <Navigation />
         </ContextProvider>

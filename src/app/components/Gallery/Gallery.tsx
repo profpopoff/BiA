@@ -9,6 +9,7 @@ import galleryStyle from './gallery.module.scss'
 import styles from '../../(pages)/(event)/events/Events.module.scss'
 import { decode } from 'html-entities'
 import { FilterContext } from '../../(pages)/(event)/context/FilterContext'
+import { InteractionContext } from '../../context/InteractionContext'
 
 const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
    { array: any[], galleryIndex: number, selectedGallery?: number, setSelectedGallery?: React.Dispatch<React.SetStateAction<number>> }) => {
@@ -101,6 +102,28 @@ const EventCard = ({ event, galleryIndex, setSelectedGallery }:
       } else { return true }
    }
 
+   const clickHandle = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+
+      setSelectedGallery?.(galleryIndex)
+      const container = e.currentTarget as HTMLElement
+      const mainContainer = container.parentElement?.parentElement?.parentElement?.parentElement?.parentElement! as HTMLElement
+      const clientRect = container.getBoundingClientRect()
+
+      mainContainer.style.overflow = 'hidden'
+
+      container.style.pointerEvents = 'none'
+      container.style.cursor = 'default'
+      container.style.zIndex = '2'
+      container.style.inset = `${-clientRect.y}px 
+      ${-(window.innerWidth - clientRect.x - clientRect.width)}px 
+      ${-(window.innerHeight - clientRect.y - clientRect.height)}px 
+      ${-clientRect.x}px`
+
+      router.push(`/event/${event.link}`)
+   }
+
+   const { nav } = useContext(InteractionContext)
+
    return (
       <div
          className={isFiltered() ?
@@ -109,24 +132,7 @@ const EventCard = ({ event, galleryIndex, setSelectedGallery }:
       >
          <div
             className={galleryStyle.cardContainer}
-            onClick={e => {
-               setSelectedGallery?.(galleryIndex)
-               const container = e.currentTarget as HTMLElement
-               const mainContainer = container.parentElement?.parentElement?.parentElement?.parentElement?.parentElement! as HTMLElement
-               const clientRect = container.getBoundingClientRect()
-
-               mainContainer.style.overflow = 'hidden'
-
-               container.style.pointerEvents = 'none'
-               container.style.cursor = 'default'
-               container.style.zIndex = '2'
-               container.style.inset = `${-clientRect.y}px 
-               ${-(window.innerWidth - clientRect.x - clientRect.width)}px 
-               ${-(window.innerHeight - clientRect.y - clientRect.height)}px 
-               ${-clientRect.x}px`
-
-               router.push(`/event/${event.link}`)
-            }}
+            onClick={(e) => !nav && clickHandle(e)}
          >
             <div className={galleryStyle.image}>
                <Image
