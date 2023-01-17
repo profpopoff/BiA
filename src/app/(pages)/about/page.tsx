@@ -22,7 +22,7 @@ export default function About() {
             <Images images={[img2]} thesis='Название образовано из&nbsp;слов era и&nbsp;arta и&nbsp;означает &laquo;время искусства&raquo;.' />
             <AdditionalDesc />
             <Images images={[img3, img4, img5]} thesis='Миссия музея&nbsp;&mdash; находить, изучать, коллекционировать и&nbsp;популяризировать творчество талантливых художников современной России.' />
-            <Ticket />
+            <Events />
          </Wrapper>
       </div>
    )
@@ -93,11 +93,11 @@ const AdditionalDesc = () => (
    </section>
 )
 
-const Ticket = () => (
-   <section className={aboutStyles.ticket}>
-      <span className={aboutStyles.buyTicket}>
-         <span className={aboutStyles.buy}>Покупка билета</span>
-         <CustomLink href='/contact'>
+const Events = () => (
+   <section className={aboutStyles.events}>
+      <span className={aboutStyles.eventsTitle}>
+         <span className={aboutStyles.text}>Афиша</span>
+         <CustomLink href='/events'>
             <span className={aboutStyles.link}>перейти</span>
          </CustomLink>
       </span>

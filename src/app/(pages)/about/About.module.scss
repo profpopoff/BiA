@@ -50,6 +50,7 @@
             }
 
             .text {
+               font-size: 1.25rem;
                text-transform: uppercase;
                font-weight: 700;
                transition: all .2s ease-in-out;
@@ -120,10 +121,10 @@
    }
 }
 
-.ticket {
+.events {
    position: relative;
 
-   .buyTicket {
+   .eventsTitle {
       z-index: 10;
       position: absolute;
       top: 50%;
@@ -136,7 +137,7 @@
       color: #fff;
       text-shadow: $text-shadow;
 
-      .buy {
+      .text {
          font-size: 4rem;
          font-weight: 400;
       }
