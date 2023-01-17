@@ -108,12 +108,6 @@ export default function Navigation() {
                   <Image className={navigation.src} alt="home" src={images.contact} priority />
                </div>
             </div>
-            <div className={navigation.link} onClick={() => handleClick('/')}>
-               <h2 className={pathname == "/" ? `${navigation.linkLabel} ${navigation.linkActive}` : navigation.linkLabel}>join us</h2>
-               <div className={navigation.linkImage}>
-                  <Image className={navigation.src} alt="home" src={images.contact} />
-               </div>
-            </div>
          </div>
       </nav >
    )
