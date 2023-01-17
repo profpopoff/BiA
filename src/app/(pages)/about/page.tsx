@@ -6,9 +6,12 @@ import aboutStyles from './About.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faClock, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 
-import img from '../../../public/img/about/img2.jpeg'
-import img2 from '../../../public/img/about/img19.jpg'
-import img3 from '../../../public/img/about/img20.jpg'
+import infoImage from '../../../public/img/about/img1.jpg'
+import img2 from '../../../public/img/about/img2.jpg'
+import img3 from '../../../public/img/about/img3.jpg'
+import img4 from '../../../public/img/about/img4.jpg'
+import img5 from '../../../public/img/about/img5.jpg'
+import img6 from '../../../public/img/about/img6.jpg'
 import CustomLink from '../../components/CustomLink/CustomLink'
 
 export default function About() {
@@ -18,6 +21,8 @@ export default function About() {
             <Info />
             <Images images={[img2]} thesis='Название образовано из&nbsp;слов era и&nbsp;arta и&nbsp;означает &laquo;время искусства&raquo;.' />
             <AdditionalDesc />
+            <Images images={[img3, img4, img5]} thesis='Миссия музея&nbsp;&mdash; находить, изучать, коллекционировать и&nbsp;популяризировать творчество талантливых художников современной России.' />
+            <Ticket />
          </Wrapper>
       </div>
    )
@@ -51,7 +56,7 @@ const Info = () => (
       <div className={aboutStyles.image}>
          <Image
             className={aboutStyles.src}
-            src={img}
+            src={infoImage}
             fill={true}
             sizes='100vw'
             alt='image'
@@ -84,6 +89,26 @@ const AdditionalDesc = () => (
       <div className={aboutStyles.additionalDescWrapper}>
          <h2>Коллекция музея</h2>
          <p>В&nbsp;собрание музея входят произведения, созданные российскими художниками во&nbsp;второй половине XX&nbsp;&mdash; начале XXI&nbsp;веков. Музей периодически пополняет свою коллекцию, сотрудничая с&nbsp;художниками, работающими в&nbsp;разных регионах России и&nbsp;представляющими разные поколения и&nbsp;направления в&nbsp;изобразительном искусстве.</p>
+      </div>
+   </section>
+)
+
+const Ticket = () => (
+   <section className={aboutStyles.ticket}>
+      <span className={aboutStyles.buyTicket}>
+         <span className={aboutStyles.buy}>Покупка билета</span>
+         <CustomLink href='/contact'>
+            <span className={aboutStyles.link}>перейти</span>
+         </CustomLink>
+      </span>
+      <div className={aboutStyles.image}>
+         <Image
+            className={aboutStyles.src}
+            src={img6}
+            fill={true}
+            sizes='100vw'
+            alt='thesis image'
+         />
       </div>
    </section>
 )
