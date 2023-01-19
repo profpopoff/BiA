@@ -2,12 +2,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #000;
-
-  &:has(.navActive) {
-    main {
-      transform: translateY(-30rem);
-    }
-  }
 }
 
 main {
@@ -16,10 +10,10 @@ main {
   z-index: 1;
   background-color: #fff;
   transition: transform 500ms $cubic-bezier;
-  overflow: auto;
+  overflow: hidden;
 
-  &:has(.container) {
-    overflow: hidden;
+  &.navActive {
+    transform: translateY(-30rem);
   }
 }
 

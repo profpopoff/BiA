@@ -4,7 +4,6 @@ import { useContext, useState } from 'react'
 import { InteractionContext } from '../../../../../context/InteractionContext'
 
 import filterStyle from './Filter.module.scss'
-import page from '../../Events.module.scss'
 import { FilterContext } from '../../../context/FilterContext'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,7 +16,7 @@ export default function Filter({ events }: { events: any[] }) {
    return (
       <div className={filterStyle.filter}>
          <div className={filterActive ?
-            `${filterStyle.filter_wrapper} ${filterStyle.active} ${page.filterActive}` :
+            `${filterStyle.filter_wrapper} ${filterStyle.active}` :
             filterStyle.filter_wrapper}
          >
             <Filters events={events} />

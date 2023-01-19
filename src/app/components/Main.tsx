@@ -9,6 +9,6 @@ export default function MainComponent({ children }:
    const { nav, toggleNav } = useContext(InteractionContext)
 
    return (
-      <main onClick={() => !!nav && toggleNav?.()}>{children}</main>
+      <main className={!!nav ? "navActive" : ''} onClick={() => !!nav && toggleNav?.()}>{children}</main>
    )
 }

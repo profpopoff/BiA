@@ -1,9 +1,7 @@
-import styles from './Events.module.scss'
-import { quarterArray } from "../../../../utils/divideArray"
-
 import Filter from './components/Filter/Filter'
 import { fetchEvents } from '../../../../utils/fetch'
 import EventsGalleries from './components/EventsGalleries'
+import EventsWrapper from './components/EventsWrapper'
 
 export default async function Events() {
 
@@ -11,10 +9,10 @@ export default async function Events() {
 
    return (
       <div className="container">
-         <div className={styles.wrapper}>
+         <EventsWrapper>
             <Filter events={data} />
             <EventsGalleries events={data} />
-         </div>
+         </EventsWrapper>
       </div>
    )
 }

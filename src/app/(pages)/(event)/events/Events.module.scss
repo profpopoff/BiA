@@ -3,17 +3,20 @@
 .wrapper {
    position: relative;
 
-   &:has(.filterActive) {
-      .gallery {
+   &.filterActive {
+      .galleries {
 
-         &:first-child,
-         &:nth-child(2) {
-            translate: -70% 0;
-         }
+         .gallery {
 
-         &:nth-child(3),
-         &:last-child {
-            translate: 70% 0;
+            &:first-child,
+            &:nth-child(2) {
+               translate: -70% 0;
+            }
+
+            &:nth-child(3),
+            &:last-child {
+               translate: 70% 0;
+            }
          }
       }
    }
