@@ -20,7 +20,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
          const container = e.target as HTMLInputElement
          const { scrollTop, clientHeight } = container
          const scrollHeight = scrollY - scrollTop
-         const clientHeightDif = .1
+         const clientHeightDif = .25
          const scrollUp = Math.ceil(((scrollTop - clientHeight * (1 - clientHeightDif)) / clientHeight)) * clientHeight
          const scrollDown = Math.ceil(((scrollTop - clientHeight * clientHeightDif) / clientHeight)) * clientHeight
 
