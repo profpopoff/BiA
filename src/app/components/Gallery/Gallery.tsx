@@ -105,11 +105,17 @@ const EventCard = ({ event, galleryIndex, setSelectedGallery }:
    const clickHandle = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 
       setSelectedGallery?.(galleryIndex)
+
       const container = e.currentTarget as HTMLElement
-      const mainContainer = container.parentElement?.parentElement?.parentElement?.parentElement?.parentElement! as HTMLElement
       const clientRect = container.getBoundingClientRect()
 
+      const wrapper = container.parentElement?.parentElement?.parentElement?.parentElement!
+      const mainContainer = wrapper.parentElement! as HTMLElement
+      const filter = wrapper.children[0].children[0]! as HTMLElement
+
       mainContainer.style.overflow = 'hidden'
+
+      filter.style.zIndex = '1'
 
       container.style.pointerEvents = 'none'
       container.style.cursor = 'default'

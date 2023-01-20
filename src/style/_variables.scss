@@ -4,11 +4,12 @@ $grey-color: #ebebeb;
 
 $cubic-bezier: cubic-bezier(.5, 0, .1, 1);
 
-$gap: 2.125rem;
+$gap: clamp(1.5rem, 2.25vw, 2.125rem);
+$mobile-gap: clamp(1rem, 4vw, 2rem);
 
 $stroke-color: #000;
 $stroke-width: 1px;
 $text-shadow: $stroke-width 0 0 $stroke-color,
-calc($stroke-width * -1) 0 0 $stroke-color,
-0 $stroke-width 0 $stroke-color,
-0 calc($stroke-width * -1) 0 $stroke-color;
+   calc($stroke-width * -1) 0 0 $stroke-color,
+   0 $stroke-width 0 $stroke-color,
+   0 calc($stroke-width * -1) 0 $stroke-color;

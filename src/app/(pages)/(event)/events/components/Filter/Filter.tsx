@@ -51,7 +51,7 @@ const Filters = ({ events }: { events: any[] }) => {
          case 'sculpture':
             return 'Скульптура'
          case 'performance':
-            return 'Выступление на сцене'
+            return 'Представление'
       }
    }
 

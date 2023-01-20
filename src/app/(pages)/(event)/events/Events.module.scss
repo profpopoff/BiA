@@ -7,12 +7,12 @@
 
       &:first-child,
       &:nth-child(2) {
-         translate: -70% 0;
+         translate: min(-10rem, -15vw) 0;
       }
 
       &:nth-child(3),
       &:last-child {
-         translate: 70% 0;
+         translate: max(10rem, 15vw) 0;
       }
    }
 
@@ -24,6 +24,31 @@
 
       &.transition {
          opacity: 0;
+      }
+   }
+}
+
+@media screen and (max-width: 64rem) {
+   .wrapper {
+      .galleries {
+         gap: $mobile-gap;
+      }
+   }
+}
+
+@media screen and (max-width: 32rem) {
+   .wrapper {
+      &.filterActive .galleries .gallery {
+
+         &:first-child,
+         &:nth-child(2) {
+            translate: -30vw 0;
+         }
+
+         &:nth-child(3),
+         &:last-child {
+            translate: 30vw 0;
+         }
       }
    }
 }

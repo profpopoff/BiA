@@ -7,12 +7,12 @@
    display: flex;
    flex-direction: column;
    gap: $gap;
-   z-index: 1;
    transition: translate .3s $cubic-bezier;
 
    .card {
       position: relative;
       aspect-ratio: 2/3;
+      font-size: clamp(.85rem, 1.25vw, 1rem);
 
       &.filtered {
          cursor: default;
@@ -48,16 +48,15 @@
          overflow: hidden;
          position: absolute;
          inset: 0;
-         zIndex: 1;
          cursor: pointer;
          transition: inset .75s ease;
 
          .headline {
             position: absolute;
             bottom: 0;
-            padding: 1rem;
-            gap: 1rem;
-            font-size: 1rem;
+            padding: 1em;
+            gap: 1em;
+            font-size: 1em;
             color: #fff;
             font-weight: 600;
 
@@ -88,11 +87,11 @@
          position: absolute;
          top: .6rem;
          right: .6rem;
-         padding: .3rem 1rem;
+         padding: .3em 1em;
          display: inline-flex;
          align-items: center;
          justify-content: center;
-         border-radius: 2.5rem;
+         border-radius: 2.5em;
          background-color: rgba(255, 255, 255, .2);
          backdrop-filter: blur(.2rem);
          color: #fff;
@@ -100,7 +99,7 @@
          .text {
             display: inline-block;
             transform: translateY(-.012em);
-            font-size: 1rem;
+            font-size: 1em;
             line-height: 1.2;
             font-weight: 400;
          }
@@ -122,6 +121,16 @@
          .card {
             aspect-ratio: 2/3;
          }
+      }
+   }
+}
+
+@media screen and (max-width: 64rem) {
+   .gallery {
+      gap: $mobile-gap;
+
+      .card {
+         font-size: clamp(.75rem, 2.5vw, 1rem);
       }
    }
 }
