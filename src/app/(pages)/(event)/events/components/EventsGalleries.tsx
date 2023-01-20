@@ -1,7 +1,7 @@
 'use client'
 
-import { useContext, useState } from 'react'
-import { quarterArray } from '../../../../../utils/divideArray'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { countOff, quarterArray } from '../../../../../utils/divideArray'
 import Gallery from "../../../../components/Gallery/Gallery"
 import { FilterContext } from '../../context/FilterContext'
 import styles from '../Events.module.scss'
@@ -38,12 +38,37 @@ export default function EventsGalleries({ events }: { events: any[] }) {
       }
    }
 
+   const array = sortArray(events).slice(0, 4 * Math.floor((events.length - 2) / 4) + 2)
+
+   const galleriesElement = (array: any[]) => {
+      return (
+         array.map((events: any, index: number) =>
+            <Gallery key={index} array={events} galleryIndex={index} selectedGallery={selectedGallery} setSelectedGallery={setSelectedGallery} />)
+      )
+   }
+
+   const [windowWidth, setWindowWidth] = useState<Number>()
+
+   const handleWindowWidthChange = (event: UIEvent) => {
+      const w = event.target as Window
+      setWindowWidth(w.innerWidth)
+   }
+
+   useEffect(() => {
+      setWindowWidth(window.innerWidth)
+
+      window.addEventListener('resize', handleWindowWidthChange)
+
+      return () => {
+         window.addEventListener('resize', handleWindowWidthChange)
+      }
+   }, [])
+
    return (
-      <div className={styles.galleries}>
-         {quarterArray(sortArray(events)
-            .slice(0, 4 * Math.floor((events.length - 2) / 4) + 2))
-            .map((events, index: number) =>
-               <Gallery key={index} array={events} galleryIndex={index} selectedGallery={selectedGallery} setSelectedGallery={setSelectedGallery} />)}
+      <div className={!windowWidth ? `${styles.galleries} ${styles.transition}` : styles.galleries}>
+         {!!windowWidth && (windowWidth > 1024 ?
+            galleriesElement(quarterArray(array)) :
+            galleriesElement(countOff(array, 2)))}
       </div>
    )
 }
