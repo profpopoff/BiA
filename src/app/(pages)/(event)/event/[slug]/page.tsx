@@ -8,6 +8,7 @@ import { fetchEvent, fetchNextEvent } from "../../../../../utils/fetch"
 import eventStyle from './Event.module.scss'
 import Wrapper from "./components/Wrapper"
 import Link from "next/link"
+import CustomLink from "../../../../components/CustomLink/CustomLink"
 
 export default async function Event({ params }: {
    params: { slug: string }
@@ -195,7 +196,9 @@ const Next = ({ title, image, link }: { title: string, image: string, link: stri
       />
       <div className={eventStyle.nextEvent}>
          <span className={eventStyle.nextTitle}>{decode(title)}</span>
-         <Link href={`/event/${link}`} className={eventStyle.nextLink}>Перейти</Link>
+         <CustomLink href={`/event/${link}`}>
+            <span className={eventStyle.nextLink}>перейти</span>
+         </CustomLink>
       </div>
    </section>
 )

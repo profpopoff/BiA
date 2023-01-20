@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { countOff } from '../utils/divideArray'
 import { fetchEvents } from '../utils/fetch'
+import CustomLink from './components/CustomLink/CustomLink'
 import Gallery from './components/Gallery/Gallery'
 import HomePageGalleries from './components/HomePageGalleries'
 import styles from './HomePage.module.scss'
@@ -30,7 +31,9 @@ const Article = () => (
       </h1>
       <div className={styles.mission}>
          <p className={styles.missionDesc}>Наша задача&nbsp;&mdash; сделать все для того, чтобы человек, придя к&nbsp;нам, увидел, что современное искусство&nbsp;&mdash; о&nbsp;нем и&nbsp;для него.</p>
-         <Link href="/about" className={styles.missionLink}>Подробнее</Link>
+         <CustomLink href="/about">
+            <span className={styles.missionLink}>Подробнее</span>
+         </CustomLink>
       </div>
    </article>
 )
