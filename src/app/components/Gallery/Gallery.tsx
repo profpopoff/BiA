@@ -19,14 +19,16 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
    useEffect(() => {
       const container = galleryRef.current?.parentElement?.parentElement?.parentElement
       const maxTargetHeight = galleryRef.current?.parentElement?.scrollHeight!
-      const currentTargetHeight = galleryRef.current?.scrollHeight!
+      const currentTargetHeight = galleryRef.current!.scrollHeight!
 
       const onScroll = () => {
-         const scrollY = container?.scrollTop!
-         const yDecimal = scrollY / (maxTargetHeight - window.innerHeight)
-         const maxY = currentTargetHeight - maxTargetHeight
-         const panY = maxY * yDecimal
-         galleryRef.current!.style.transform = `translateY(${-panY}px)`
+         if (galleryRef.current!.getBoundingClientRect().y <= 0) {
+            const scrollY = -galleryRef.current!.parentElement!.getBoundingClientRect().y
+            const yDecimal = scrollY / (maxTargetHeight - window.innerHeight)
+            const maxY = currentTargetHeight - maxTargetHeight
+            const panY = maxY * yDecimal
+            galleryRef.current!.style.transform = `translateY(${-panY}px)`
+         }
       }
 
       container?.addEventListener('scroll', onScroll)
@@ -54,11 +56,11 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
 
       if (galleryIndex % 2 === 0) {
          for (let i = 0; i < galleryRef.current!.childNodes.length - 1; i++) {
-            galleryRef.current?.children[i].animate(animation('-100px'), animationTiming)
+            galleryRef.current?.children[i].animate(animation('-30%'), animationTiming)
          }
       } else {
          for (let i = 0; i < galleryRef.current!.childNodes.length - 1; i++) {
-            galleryRef.current?.children[i].animate(animation('100px'), animationTiming)
+            galleryRef.current?.children[i].animate(animation('30%'), animationTiming)
          }
       }
    }, [filter])
