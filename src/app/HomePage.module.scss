@@ -1,6 +1,7 @@
 @import '../style/variables';
 
 $section-width: calc(50% - ($gap / 2));
+$background-color: #d0043a23;
 
 .wrapper {
    posittion: relative;
@@ -18,31 +19,32 @@ $section-width: calc(50% - ($gap / 2));
       top: 0;
       height: 100vh;
       width: $section-width;
-      background-color: #d0043a23;
+      background-color: $background-color;
 
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      gap: 1.5rem;
 
       padding: 24.5vh 5vw 3.75rem 4vw;
 
       .showOff {
          position: absolute;
-         right: 2rem;
+         right: 2em;
          top: 1.5rem;
-         width: 40%;
+         width: 25em;
          text-align: end;
-         font-size: 1.1rem;
+         font-size: 1.2em;
          line-height: 1.2;
 
          span {
-            font-weight: 500;
+            font-weight: 600;
          }
       }
 
       .slogan {
          text-transform: uppercase;
-         font-size: 10vmin;
+         font-size: min(6em, 6vw);
          display: flex;
          flex-direction: column;
 
@@ -56,20 +58,49 @@ $section-width: calc(50% - ($gap / 2));
 
       .mission {
          align-self: flex-end;
-         max-width: 25rem;
+         max-width: 25em;
 
          .missionDesc {
-            font-size: 1.5rem;
+            font-size: max(1rem, 1.5em);
             line-height: 1.05;
             font-weight: 400;
             margin-bottom: 1rem;
          }
 
          .missionLink {
-            font-size: 1.1rem;
+            font-size: 1.1em;
             font-weight: 700;
             text-transform: uppercase;
             line-height: 1.2;
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 64rem) {
+   .wrapper {
+      flex-direction: column-reverse;
+      gap: 0;
+      font-size: clamp(.75rem, 2.5vw, 1rem);
+
+      .galleries {
+         width: 100vw;
+         gap: $mobile-gap;
+         background-color: $background-color;
+      }
+
+      .article {
+         padding: 18vh 2em 3.75em 2em;
+         position: relative;
+         width: 100vw;
+         height: auto;
+
+         .showOff {
+            width: min(70vw, 22em);
+         }
+
+         .slogan {
+            font-size: min(14vw, 5em);
          }
       }
    }

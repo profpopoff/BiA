@@ -4,7 +4,7 @@
    display: flex;
    width: min-content;
    position: relative;
-   font-size: 1rem;
+   font-size: inherit;
 
    .text {
       transition: all .2s ease-in-out;
@@ -14,7 +14,7 @@
       position: absolute;
       left: 0;
       top: 50%;
-      transform: translate(.5rem, -35%);
+      transform: translate(.5em, -.3em);
       width: 1.2ch;
       aspect-ratio: 1;
       opacity: 0;
@@ -27,12 +27,12 @@
    &:hover {
 
       .text {
-         transform: translateX(1rem);
+         transform: translateX(1em);
       }
 
       .dot {
          opacity: 1;
-         transform: translate(0, -35%);
+         transform: translate(0, -.3em);
       }
    }
 }
