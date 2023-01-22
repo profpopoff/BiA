@@ -5,6 +5,7 @@ body {
 }
 
 main {
+  font-size: clamp(.8rem, 1vw, 1rem);
   position: relative;
   height: 100vh;
   z-index: 1;
@@ -13,11 +14,19 @@ main {
   overflow: hidden;
 
   &.navActive {
-    transform: translateY(-30rem);
+    transform: translateY(-30em);
   }
 }
 
 .container {
   height: 100vh;
   overflow: auto;
+}
+
+@media screen and (max-width: 64rem) {
+  main {
+    &.navActive {
+      transform: translateY(-30rem);
+    }
+  }
 }

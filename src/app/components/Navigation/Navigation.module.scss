@@ -1,7 +1,8 @@
 @import '../../../style/variables';
 
 .container {
-   height: 30rem;
+   font-size: clamp(.8rem, 1vw, 1rem);
+   height: 30em;
    width: 100%;
    position: absolute;
    bottom: 0;
@@ -10,9 +11,8 @@
    .links {
       display: flex;
       justify-content: center;
-      gap: clamp(1rem, 2vw, 2rem);
-      margin-top: clamp(2rem, 2vw, 3rem);
-      padding: 0rem clamp(1rem, 2vw, 2rem);
+      gap: $gap;
+      margin-top: 2em;
       transform: translateY(50%) scale(0.85);
       transition: transform 500ms $cubic-bezier;
       overflow: auto;
@@ -27,14 +27,14 @@
 
          .linkLabel {
             color: #fff;
-            font-size: 1.25rem;
+            font-size: 1.25em;
             margin: 0rem;
             text-transform: uppercase;
             position: relative;
             transition: all .2s ease-in-out;
 
             &.linkActive {
-               padding-left: 1.2rem;
+               padding-left: 1.2em;
 
                &::before {
                   opacity: 1;
@@ -48,8 +48,8 @@
                position: absolute;
                left: 0;
                top: 50%;
-               transform: translate(.75rem, -35%);
-               width: .7rem;
+               transform: translate(.75em, -35%);
+               width: .7em;
                aspect-ratio: 1;
                opacity: 0;
                border-radius: 50%;
@@ -59,10 +59,10 @@
          }
 
          .linkImage {
-            width: max(20vw, 400px);
+            width: min(25vw, 25em);
             aspect-ratio: 1.8 / 1;
-            border-radius: 0.5rem;
-            margin-top: 0.75rem;
+            border-radius: 0.5em;
+            margin-top: 0.75em;
             overflow: hidden;
 
             .src {
@@ -96,6 +96,34 @@
    .container {
       .links {
          justify-content: start;
+         padding-inline: 4em;
+      }
+   }
+}
+
+@media screen and (max-width: 64rem) {
+   .container {
+      height: 30rem;
+
+      .links {
+         justify-content: center;
+         padding-inline: 0;
+
+         .link {
+            .linkImage {
+               width: 12em;
+               aspect-ratio: 1.5 / 2.5;
+            }
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 48rem) {
+   .container {
+      .links {
+         justify-content: start;
+         padding-inline: clamp(2em, 7vw, 4em);
       }
    }
 }
