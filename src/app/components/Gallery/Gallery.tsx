@@ -53,15 +53,13 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
       }
 
       if (galleryIndex % 2 === 0) {
-         galleryRef.current?.children[0].animate(animation('-100px'), animationTiming)
-         galleryRef.current?.children[1].animate(animation('-100px'), animationTiming)
-         galleryRef.current?.children[2].animate(animation('-100px'), animationTiming)
-         galleryRef.current?.children[3].animate(animation('-100px'), animationTiming)
+         for (let i = 0; i < galleryRef.current!.childNodes.length - 1; i++) {
+            galleryRef.current?.children[i].animate(animation('-100px'), animationTiming)
+         }
       } else {
-         galleryRef.current?.children[0].animate(animation('100px'), animationTiming)
-         galleryRef.current?.children[1].animate(animation('100px'), animationTiming)
-         galleryRef.current?.children[2].animate(animation('100px'), animationTiming)
-         galleryRef.current?.children[3].animate(animation('100px'), animationTiming)
+         for (let i = 0; i < galleryRef.current!.childNodes.length - 1; i++) {
+            galleryRef.current?.children[i].animate(animation('100px'), animationTiming)
+         }
       }
    }, [filter])
 
