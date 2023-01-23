@@ -65,7 +65,6 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
       }
    }, [filter])
 
-
    const pathname = usePathname()
 
    return (
@@ -91,6 +90,8 @@ const EventCard = ({ event, galleryIndex, setSelectedGallery }:
 
    const router = useRouter()
 
+   const pathname = usePathname()
+
    const isFiltered = () => {
 
       const filterType = filter.split(':')[0]
@@ -115,11 +116,13 @@ const EventCard = ({ event, galleryIndex, setSelectedGallery }:
 
       const wrapper = container.parentElement?.parentElement?.parentElement?.parentElement!
       const mainContainer = wrapper.parentElement! as HTMLElement
-      const filter = wrapper.children[0].children[0]! as HTMLElement
+
+      if (pathname === '/events') {
+         const filter = wrapper.children[0].children[0] as HTMLElement
+         filter.style.zIndex = '1'
+      }
 
       mainContainer.style.overflow = 'hidden'
-
-      filter.style.zIndex = '1'
 
       container.style.pointerEvents = 'none'
       container.style.cursor = 'default'
@@ -174,7 +177,7 @@ const ImageCard = ({ image }: { image: string }) => {
                className={galleryStyle.src}
                src={image}
                fill
-               sizes="(max-width: 1024px) 50vw, 25vw"
+               sizes="(max-width: 1024px) 150vw, 75vw"
                alt='image'
             />
          </div>
