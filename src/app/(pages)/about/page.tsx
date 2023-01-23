@@ -49,7 +49,7 @@ const Info = () => (
             </li>
             <li>
                <FontAwesomeIcon icon={faLocationDot} className={aboutStyles.icon} />
-               Васильевский остров, 29-я линия, дом 2&nbsp;| 199106 Санкт-Петербург
+               Васильевский остров, 29-я линия, дом 2
             </li>
          </ul>
       </div>
@@ -58,7 +58,7 @@ const Info = () => (
             className={aboutStyles.src}
             src={infoImage}
             fill={true}
-            sizes='100vw'
+            sizes="(max-width: 1024px) 100vw, 75vw"
             alt='image'
          />
       </div>
@@ -73,7 +73,7 @@ const Images = ({ images, thesis }: { images: StaticImageData[], thesis?: String
                className={aboutStyles.src}
                src={image}
                fill={true}
-               sizes='100vw'
+               sizes="(max-width: 1024px) 300vw, 100vw"
                alt='thesis image'
             />
          </div>
@@ -106,7 +106,7 @@ const Events = () => (
             className={aboutStyles.src}
             src={img6}
             fill={true}
-            sizes='100vw'
+            sizes="(max-width: 1024px) 300vw, 100vw"
             alt='thesis image'
          />
       </div>
