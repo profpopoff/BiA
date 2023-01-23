@@ -58,18 +58,12 @@
             gap: 1em;
             font-size: 1em;
             color: #fff;
-            font-weight: 600;
-
-            -webkit-font-smoothing: antialiased;
-            --stroke-color: #000;
-            --stroke-width: 1px;
-            text-shadow: var(--stroke-width) 0 0 var(--stroke-color),
-               calc(var(--stroke-width) * -1) 0 0 var(--stroke-color),
-               0 var(--stroke-width) 0 var(--stroke-color),
-               0 calc(var(--stroke-width) * -1) 0 var(--stroke-color);
+            font-weight: 400;
+            text-shadow: $text-shadow;
 
             .title {
                text-transform: uppercase;
+               font-weight: 600;
             }
 
             .artist {
@@ -77,7 +71,7 @@
 
                &::before {
                   content: "•";
-                  margin-inline: .3rem;
+                  margin-inline: .3em;
                }
             }
          }

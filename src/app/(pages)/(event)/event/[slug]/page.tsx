@@ -76,8 +76,8 @@ const Info = ({ type, description, dates, place, ageRestriction, image }:
    }
 
    return (
-      <section>
-         <div className={eventStyle.info}>
+      <section className={eventStyle.info}>
+         <div className={eventStyle.text}>
             <article>
                <h2 className={eventStyle.type}>{decode(typeToRus(type))}</h2>
                <p className={eventStyle.description}>
@@ -85,18 +85,17 @@ const Info = ({ type, description, dates, place, ageRestriction, image }:
                </p>
             </article>
             <div className={eventStyle.stats}>
-               <div className={eventStyle.stat}>
-                  <FontAwesomeIcon icon={faCalendarDays} className={eventStyle.icon} />
-                  {new Date(dates.start).toLocaleDateString()}{!!dates.end && ` - ${new Date(dates.end).toLocaleDateString()}`}
+               <div className={eventStyle.ageRestriction}>
+                  <span>{ageRestriction}+</span>
                </div>
                <ul className={eventStyle.statsList}>
                   <li className={eventStyle.stat}>
-                     <FontAwesomeIcon icon={faLocationDot} className={eventStyle.icon} />
-                     {`${wingToRus(!!place.wing ? place.wing : type)}, ${place.floor} этаж`}
+                     <FontAwesomeIcon icon={faCalendarDays} className={eventStyle.icon} />
+                     {new Date(dates.start).toLocaleDateString()}{!!dates.end && ` - ${new Date(dates.end).toLocaleDateString()}`}
                   </li>
                   <li className={eventStyle.stat}>
-                     <FontAwesomeIcon icon={faCakeCandles} className={eventStyle.icon} />
-                     {ageRestriction}+
+                     <FontAwesomeIcon icon={faLocationDot} className={eventStyle.icon} />
+                     {`${wingToRus(!!place.wing ? place.wing : type)}, ${place.floor} этаж`}
                   </li>
                </ul>
             </div>
@@ -115,8 +114,8 @@ const Info = ({ type, description, dates, place, ageRestriction, image }:
 }
 
 const Artist = ({ artist, image, info }: { artist: string, image: string, info: string }) => (
-   <section>
-      <div className={eventStyle.artist}>
+   <section className={eventStyle.artist}>
+      <div className={eventStyle.artistInfo}>
          {!!image && <div className={eventStyle.image}>
             <Image
                className={eventStyle.src}
@@ -126,7 +125,7 @@ const Artist = ({ artist, image, info }: { artist: string, image: string, info: 
                alt={`${artist}`}
             />
          </div>}
-         <div className={eventStyle.artistInfo}>
+         <div className={eventStyle.text}>
             <h2>об авторе</h2>
             <p>{decode(info)}</p>
          </div>
@@ -167,7 +166,7 @@ const ImageSections = ({ gallery }: { gallery: string[] }) => {
    return (
       <>
          {imageSections.map((section, index: number) => section.length > 1 && (
-            <section key={index}>
+            <section key={index} className={eventStyle.imageSection} >
                {section.map((image: string, index: number) => (
                   <div className={eventStyle.image} key={index}>
                      <Image
