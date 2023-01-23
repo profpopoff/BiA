@@ -6,7 +6,7 @@
    left: 0;
    right: 0;
    z-index: 2;
-   padding: 1.5rem 2rem;
+   padding: 1.5em 2em;
    pointer-events: none;
 
    .link {
@@ -14,8 +14,14 @@
       display: block;
       width: min-content;
       color: $primary-color;
-      font-size: 1.3rem;
+      font-size: 1.3em;
       font-weight: 600;
       cursor: pointer;
+   }
+}
+
+@media screen and (max-width: 64rem) {
+   .container {
+      font-size: clamp(.75rem, 2.5vw, 1rem);
    }
 }
