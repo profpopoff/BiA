@@ -22,7 +22,7 @@ const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
       const currentTargetHeight = galleryRef.current!.scrollHeight!
 
       const onScroll = () => {
-         if (galleryRef.current!.getBoundingClientRect().y <= 0) {
+         if (galleryRef.current!.parentElement!.getBoundingClientRect().y <= 0) {
             const scrollY = -galleryRef.current!.parentElement!.getBoundingClientRect().y
             const yDecimal = scrollY / (maxTargetHeight - window.innerHeight)
             const maxY = currentTargetHeight - maxTargetHeight
