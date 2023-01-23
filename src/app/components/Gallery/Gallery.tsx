@@ -148,8 +148,8 @@ const EventCard = ({ event, galleryIndex, setSelectedGallery }:
                <Image
                   className={galleryStyle.src}
                   src={event.images.cover}
-                  fill={true}
-                  sizes='100vw'
+                  fill
+                  sizes="(max-width: 1024px) 300vw, 100vw"
                   alt={`${decode(event.title)} image`}
                />
             </div>
@@ -174,7 +174,7 @@ const ImageCard = ({ image }: { image: string }) => {
                className={galleryStyle.src}
                src={image}
                fill
-               sizes='50vw'
+               sizes="(max-width: 1024px) 50vw, 25vw"
                alt='image'
             />
          </div>

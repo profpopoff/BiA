@@ -40,7 +40,7 @@ const Hero = ({ title, artist, image }: { title: string, artist: string, image: 
          className={eventStyle.image}
          src={image}
          fill={true}
-         sizes='100vw'
+         sizes="(max-width: 1024px) 300vw, 100vw"
          alt={`${decode(title)} image`}
       />
       <h2 className={eventStyle.headline}>
@@ -104,8 +104,8 @@ const Info = ({ type, description, dates, place, ageRestriction, image }:
             <Image
                className={eventStyle.src}
                src={image}
-               fill={true}
-               sizes='auto'
+               fill
+               sizes="(max-width: 1024px) 100vw, 75vw"
                alt='description image'
             />
          </div>
@@ -120,8 +120,8 @@ const Artist = ({ artist, image, info }: { artist: string, image: string, info: 
             <Image
                className={eventStyle.src}
                src={image}
-               fill={true}
-               sizes='auto'
+               fill
+               sizes="(max-width: 1024px) 100vw, 50vw"
                alt={`${artist}`}
             />
          </div>}
@@ -139,8 +139,8 @@ const ImageThesis = ({ image, thesis }: { image: string, thesis: string }) => (
          <Image
             className={eventStyle.src}
             src={image}
-            fill={true}
-            sizes='100vw'
+            fill
+            sizes="(max-width: 1024px) 300vw, 100vw"
             alt='thesis image'
          />
       </div>
@@ -172,8 +172,8 @@ const ImageSections = ({ gallery }: { gallery: string[] }) => {
                      <Image
                         className={eventStyle.src}
                         src={image}
-                        fill={true}
-                        sizes='50vw'
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                         alt='thesis image'
                      />
                   </div>
@@ -189,8 +189,8 @@ const Next = ({ title, image, link }: { title: string, image: string, link: stri
       <Image
          className={eventStyle.image}
          src={image}
-         fill={true}
-         sizes='100vw'
+         fill
+         sizes="(max-width: 1024px) 300vw, 100vw"
          alt={`${decode(title)} image`}
       />
       <div className={eventStyle.nextEvent}>
