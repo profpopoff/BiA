@@ -28,7 +28,8 @@
          .linkLabel {
             color: #fff;
             font-size: 1.25em;
-            margin: 0rem;
+            margin: 0;
+            margin-bottom: 0.75em;
             text-transform: uppercase;
             position: relative;
             transition: all .2s ease-in-out;
@@ -62,15 +63,23 @@
             width: min(25vw, 25em);
             aspect-ratio: 1.8 / 1;
             border-radius: 0.5em;
-            margin-top: 0.75em;
             overflow: hidden;
+            transition: all .2s ease-in-out;
 
-            .src {
-               width: 100%;
-               height: 100%;
-               object-fit: cover;
-               transform: scale(1.03);
-               transition: all .2s ease-in-out;
+            &.home {
+               background: no-repeat center/105% url('../../../public/img/navigation/home.png');
+            }
+
+            &.events {
+               background: no-repeat center/105% url('../../../public/img/navigation/events.png');
+            }
+
+            &.about {
+               background: no-repeat center/105% url('../../../public/img/navigation/about.png');
+            }
+
+            &.contact {
+               background: no-repeat center/105% url('../../../public/img/navigation/contact.png');
             }
          }
 
@@ -84,8 +93,8 @@
                }
             }
 
-            .linkImage .src {
-               transform: scale(1);
+            .linkImage {
+               background-size: 101%;
             }
          }
       }
@@ -113,6 +122,22 @@
             .linkImage {
                width: 12em;
                aspect-ratio: 1.5 / 2.5;
+
+               &.home {
+                  background: no-repeat center/cover url('../../../public/img/navigation/home-mobile.png');
+               }
+
+               &.events {
+                  background: no-repeat center/cover url('../../../public/img/navigation/events-mobile.png');
+               }
+
+               &.about {
+                  background: no-repeat center/cover url('../../../public/img/navigation/about-mobile.png');
+               }
+
+               &.contact {
+                  background: no-repeat center/cover url('../../../public/img/navigation/contact-mobile.png');
+               }
             }
          }
       }
