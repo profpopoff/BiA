@@ -2,9 +2,9 @@
 
 import { usePathname, useRouter } from "next/navigation"
 import { useContext, useEffect, useRef, useState } from "react"
-import { InteractionContext } from "../../context/InteractionContext"
 
 import navigation from './Navigation.module.scss'
+import { InteractionContext } from "../../context/InteractionContext"
 
 export default function Navigation() {
 

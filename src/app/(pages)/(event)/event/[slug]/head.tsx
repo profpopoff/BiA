@@ -1,6 +1,7 @@
-import { decode } from "html-entities"
-import { fetchEvent } from "../../../../../utils/fetch"
 import DefaultTags from "../../../../components/DefaultTags"
+
+import { fetchEvent } from "../../../../../utils/fetch"
+import { decode } from "html-entities"
 
 export default async function Head({ params }: {
    params: { slug: string }

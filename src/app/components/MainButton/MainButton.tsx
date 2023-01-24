@@ -1,13 +1,13 @@
 'use client'
 
+import { usePathname, useRouter } from "next/navigation"
 import { useContext } from "react"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBarsStaggered, faArrowRotateBack } from '@fortawesome/free-solid-svg-icons'
-
-import { InteractionContext } from "../../context/InteractionContext"
 
 import mainButton from './MainButton.module.scss'
-import { usePathname, useRouter } from "next/navigation"
+import { InteractionContext } from "../../context/InteractionContext"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBarsStaggered, faArrowRotateBack } from '@fortawesome/free-solid-svg-icons'
 
 export default function MainButton() {
 

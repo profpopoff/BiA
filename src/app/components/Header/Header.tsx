@@ -1,11 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-
 import { useContext } from "react"
-import { InteractionContext } from "../../context/InteractionContext"
 
 import header from './Header.module.scss'
+import { InteractionContext } from "../../context/InteractionContext"
 
 export default function Header() {
 

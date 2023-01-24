@@ -1,15 +1,15 @@
 'use client'
 
-import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 
 import galleryStyle from './gallery.module.scss'
 import styles from '../../(pages)/(event)/events/Events.module.scss'
-import { decode } from 'html-entities'
 import { FilterContext } from '../../(pages)/(event)/context/FilterContext'
 import { InteractionContext } from '../../context/InteractionContext'
+
+import { decode } from 'html-entities'
 
 const Gallery = ({ array, galleryIndex, selectedGallery, setSelectedGallery }:
    { array: any[], galleryIndex: number, selectedGallery?: number, setSelectedGallery?: React.Dispatch<React.SetStateAction<number>> }) => {

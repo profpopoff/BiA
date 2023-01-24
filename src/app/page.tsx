@@ -1,10 +1,8 @@
-import Link from 'next/link'
-import { countOff } from '../utils/divideArray'
-import { fetchEvents } from '../utils/fetch'
-import CustomLink from './components/CustomLink/CustomLink'
-import Gallery from './components/Gallery/Gallery'
-import HomePageGalleries from './components/HomePageGalleries'
 import styles from './HomePage.module.scss'
+import HomePageGalleries from './components/HomePageGalleries'
+import CustomLink from './components/CustomLink/CustomLink'
+
+import { fetchEvents } from '../utils/fetch'
 
 export default async function HomePage() {
 

@@ -1,8 +1,8 @@
 'use client'
 
 import { useContext } from 'react'
-import { InteractionContext } from '../../../../context/InteractionContext'
 import styles from '../Events.module.scss'
+import { InteractionContext } from '../../../../context/InteractionContext'
 
 export default function EventsWrapper({ children }:
    { children: React.ReactNode }) {

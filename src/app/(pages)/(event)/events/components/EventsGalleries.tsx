@@ -1,10 +1,12 @@
 'use client'
 
-import { useContext, useEffect, useRef, useState } from 'react'
-import { countOff, quarterArray } from '../../../../../utils/divideArray'
-import Gallery from "../../../../components/Gallery/Gallery"
-import { FilterContext } from '../../context/FilterContext'
+import { useContext, useEffect, useState } from 'react'
+
 import styles from '../Events.module.scss'
+import { FilterContext } from '../../context/FilterContext'
+import Gallery from "../../../../components/Gallery/Gallery"
+
+import { countOff, quarterArray } from '../../../../../utils/divideArray'
 
 export default function EventsGalleries({ events }: { events: any[] }) {
 

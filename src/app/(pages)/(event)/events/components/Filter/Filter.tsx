@@ -1,9 +1,9 @@
 'use client'
 
 import { useContext, useState } from 'react'
-import { InteractionContext } from '../../../../../context/InteractionContext'
 
 import filterStyle from './Filter.module.scss'
+import { InteractionContext } from '../../../../../context/InteractionContext'
 import { FilterContext } from '../../../context/FilterContext'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

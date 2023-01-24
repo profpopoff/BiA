@@ -1,9 +1,11 @@
 'use client'
 
-import { useContext, useState } from 'react'
-import { countOff } from '../../utils/divideArray'
+import { useState } from 'react'
+
 import styles from '../HomePage.module.scss'
 import Gallery from './Gallery/Gallery'
+
+import { countOff } from '../../utils/divideArray'
 
 export default function HomePageGalleries({ events }: { events: any[] }) {
 

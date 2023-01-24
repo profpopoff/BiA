@@ -1,11 +1,10 @@
-import { countOff } from '../../../utils/divideArray'
-import Gallery from '../../components/Gallery/Gallery'
 import contactStyle from './Contact.module.scss'
-import images from '../../../public/img/contacts/contactsImages'
+import Gallery from '../../components/Gallery/Gallery'
 
+import images from '../../../public/img/contacts/contactsImages'
+import { countOff } from '../../../utils/divideArray'
 
 export default function Contact() {
-
    return (
       <div className="container">
          <div className={contactStyle.wrapper}>

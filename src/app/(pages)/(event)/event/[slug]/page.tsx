@@ -1,14 +1,14 @@
 import Image from "next/image"
-import { decode } from 'html-entities'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot, faCakeCandles, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
-
-import { fetchEvent, fetchNextEvent } from "../../../../../utils/fetch"
 
 import eventStyle from './Event.module.scss'
-import Wrapper from "./components/Wrapper"
-import Link from "next/link"
 import CustomLink from "../../../../components/CustomLink/CustomLink"
+import Wrapper from "./components/Wrapper"
+
+import { decode } from 'html-entities'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLocationDot, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
+
+import { fetchEvent, fetchNextEvent } from "../../../../../utils/fetch"
 
 export default async function Event({ params }: {
    params: { slug: string }

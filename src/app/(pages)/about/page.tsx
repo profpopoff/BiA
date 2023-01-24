@@ -1,7 +1,8 @@
 import Image, { StaticImageData } from 'next/image'
 
-import Wrapper from '../(event)/event/[slug]/components/Wrapper'
 import aboutStyles from './About.module.scss'
+import Wrapper from '../(event)/event/[slug]/components/Wrapper'
+import CustomLink from '../../components/CustomLink/CustomLink'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faClock, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
@@ -12,7 +13,6 @@ import img3 from '../../../public/img/about/img3.jpg'
 import img4 from '../../../public/img/about/img4.jpg'
 import img5 from '../../../public/img/about/img5.jpg'
 import img6 from '../../../public/img/about/img6.jpg'
-import CustomLink from '../../components/CustomLink/CustomLink'
 
 export default function About() {
    return (
