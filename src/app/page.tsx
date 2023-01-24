@@ -2,16 +2,24 @@ import styles from './HomePage.module.scss'
 import HomePageGalleries from './components/HomePageGalleries'
 import CustomLink from './components/CustomLink/CustomLink'
 
-import { fetchEvents } from '../utils/fetch'
+async function fetchEvents() {
+
+   const URL = process.env.URL
+
+   const events = await fetch(URL + "/api/events", { cache: "no-store" })
+      .then(eventsResponse => eventsResponse.json())
+
+   return events.data
+}
 
 export default async function HomePage() {
 
-   const { data } = await fetchEvents()
+   const events = await fetchEvents()
 
    return (
       <div className="container">
          <div className={styles.wrapper}>
-            <HomePageGalleries events={data} />
+            <HomePageGalleries events={events} />
             <Article />
          </div>
       </div>

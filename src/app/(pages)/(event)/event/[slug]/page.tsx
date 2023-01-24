@@ -8,7 +8,42 @@ import { decode } from 'html-entities'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 
-import { fetchEvent, fetchNextEvent } from "../../../../../utils/fetch"
+const URL = process.env.URL
+
+async function fetchEvent(slug: string) {
+   const eventResponse = await fetch(`${URL}/api/events/${slug}`, { cache: "no-store" })
+      .then(eventResponse => eventResponse.json())
+
+   return eventResponse.data
+}
+
+async function fetchNextEvent(slug: string) {
+   const events = await fetch(URL + "/api/events", { cache: "no-store" })
+      .then(eventsResponse => eventsResponse.json())
+
+   let nextEvent: { title: string, image: string, link: string } = { title: '', image: '', link: '' }
+
+   events.data.map((event: any, index: number) => {
+      if (event.link === slug) {
+         if (index + 1 < events.data.length) {
+            nextEvent = {
+               link: events.data[index + 1].link,
+               title: events.data[index + 1].title,
+               image: events.data[index + 1].images.cover,
+            }
+         } else {
+            nextEvent = {
+               link: events.data[0].link,
+               title: events.data[0].title,
+               image: events.data[0].images.cover,
+            }
+         }
+      }
+   })
+
+   return nextEvent
+}
+
 
 export default async function Event({ params }: {
    params: { slug: string }
@@ -17,17 +52,17 @@ export default async function Event({ params }: {
    const eventData = fetchEvent(params.slug)
    const nextData = fetchNextEvent(params.slug)
 
-   const [{ data }, nextEvent] = await Promise.all([eventData, nextData])
+   const [event, nextEvent] = await Promise.all([eventData, nextData])
 
    return (
       <div className={eventStyle.event}>
          <Wrapper>
-            <Hero title={data.title} artist={data.artist?.name} image={data.images.cover} />
-            <Info type={data.type} description={data.description.main} dates={data.dates} place={data.place} ageRestriction={data.ageRestriction} image={data.images.info} />
-            {!!data.artist?.info && <Artist artist={data.artist} image={data.artist.image} info={data.artist.info} />}
-            <ImageThesis image={data.images.thesis.image} thesis={data.images.thesis.text} />
-            <AdditionalDesc description={data.description.additional.text} title={data.description.additional.title} />
-            {data.images.gallery.length > 1 && <ImageSections gallery={data.images.gallery} />}
+            <Hero title={event.title} artist={event.artist?.name} image={event.images.cover} />
+            <Info type={event.type} description={event.description.main} dates={event.dates} place={event.place} ageRestriction={event.ageRestriction} image={event.images.info} />
+            {!!event.artist?.info && <Artist artist={event.artist} image={event.artist.image} info={event.artist.info} />}
+            <ImageThesis image={event.images.thesis.image} thesis={event.images.thesis.text} />
+            <AdditionalDesc description={event.description.additional.text} title={event.description.additional.title} />
+            {event.images.gallery.length > 1 && <ImageSections gallery={event.images.gallery} />}
             <Next title={nextEvent.title} image={nextEvent.image} link={nextEvent.link} />
          </Wrapper>
       </div>
