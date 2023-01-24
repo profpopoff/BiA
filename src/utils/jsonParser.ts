@@ -1,0 +1,1 @@
+export const jsonParser = (data: any) => JSON.parse(JSON.stringify(data))

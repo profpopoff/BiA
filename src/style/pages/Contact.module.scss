@@ -1,0 +1,115 @@
+@import '../../style/variables';
+
+.contactContainer {
+   posittion: relative;
+   display: flex;
+
+   .galleries {
+      width: 50vw;
+      display: flex;
+      gap: $gap;
+   }
+
+   .contacts {
+      position: sticky;
+      top: 0;
+      width: 50vw;
+      height: 100vh;
+      padding-inline: 9vw 9vw;
+      display: flex;
+      flex-direction: column;
+      place-content: center;
+      gap: min(8vw, 3.2em);
+
+      h1 {
+         font-size: 3em;
+         font-weight: 400;
+      }
+
+      .links {
+         display: flex;
+         flex-direction: column;
+         gap: min(8vw, 2.5em);
+
+         h2 {
+            font-size: 1.25rem;
+            margin-bottom: .25em;
+         }
+
+         .link {
+            display: inline-flex;
+            position: relative;
+            font-size: 1.25rem;
+
+            .text {
+               transition: all .2s ease-in-out;
+            }
+
+            .dot {
+               position: absolute;
+               left: 0;
+               top: 50%;
+               transform: translate(.5em, -35%);
+               width: .6em;
+               aspect-ratio: 1;
+               opacity: 0;
+               border-radius: 50%;
+               background-color: $primary-color;
+               transition: all .2s ease-in-out;
+               z-index: -1;
+            }
+
+            &:hover {
+
+               .text {
+                  transform: translateX(1em);
+               }
+
+               .dot {
+                  opacity: 1;
+                  transform: translate(0, -35%);
+               }
+            }
+         }
+
+         .socials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1em min(10vw, 4em);
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 64rem) {
+   .contactContainer {
+      flex-direction: column-reverse;
+      font-size: clamp(.85rem, 3vw, 1rem);
+
+      .galleries {
+         width: 100vw;
+         gap: $mobile-gap;
+      }
+
+      .contacts {
+         position: relative;
+         width: 100vw;
+         height: 40rem;
+
+         h1 {
+            font-size: clamp(1.5rem, 7vw, 3rem);
+         }
+
+         .links {
+
+            h2 {
+               font-size: 1.25em;
+            }
+
+            .link {
+               font-size: 1.25em;
+            }
+         }
+      }
+   }
+}

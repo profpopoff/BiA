@@ -1,0 +1,56 @@
+@import '../../style/variables';
+
+.eventsContainer {
+   .wrapper {
+      position: relative;
+   }
+
+   &.filterActive .galleries .gallery {
+
+      &:first-child,
+      &:nth-child(2) {
+         translate: min(-10rem, -15vw) 0;
+      }
+
+      &:nth-child(3),
+      &:last-child {
+         translate: max(10rem, 15vw) 0;
+      }
+   }
+
+   .galleries {
+      display: flex;
+      gap: $gap;
+      opacity: 1;
+      transition: all .3s ease;
+
+      &.transition {
+         opacity: 0;
+      }
+   }
+}
+
+@media screen and (max-width: 64rem) {
+   .wrapper {
+      .galleries {
+         gap: $mobile-gap;
+      }
+   }
+}
+
+@media screen and (max-width: 32rem) {
+   .wrapper {
+      &.filterActive .galleries .gallery {
+
+         &:first-child,
+         &:nth-child(2) {
+            translate: -30vw 0;
+         }
+
+         &:nth-child(3),
+         &:last-child {
+            translate: 30vw 0;
+         }
+      }
+   }
+}

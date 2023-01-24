@@ -1,0 +1,130 @@
+@import '../../style/variables';
+
+.gallery {
+   position: relative;
+   flex: 1;
+   height: min-content;
+   display: flex;
+   flex-direction: column;
+   gap: $gap;
+   transition: translate .3s $cubic-bezier;
+
+   .card {
+      position: relative;
+      aspect-ratio: 2/3;
+      font-size: clamp(.85rem, 1.25vw, 1rem);
+
+      &.filtered {
+         cursor: default;
+         pointer-events: none;
+
+         .cardContainer {
+            .image {
+               filter: blur(1rem);
+            }
+
+            .headline {
+               display: none;
+            }
+
+            .marker {
+               display: none;
+            }
+         }
+      }
+
+      .image {
+         position: relative;
+         width: 100%;
+         height: 100%;
+         user-select: none;
+
+         .src {
+            object-fit: cover;
+         }
+      }
+
+      .cardContainer {
+         overflow: hidden;
+         position: absolute;
+         inset: 0;
+         cursor: pointer;
+         transition: inset .75s ease;
+
+         .headline {
+            position: absolute;
+            bottom: 0;
+            padding: 1em;
+            gap: 1em;
+            font-size: 1em;
+            color: #fff;
+            font-weight: 400;
+            text-shadow: $text-shadow;
+
+            .title {
+               text-transform: uppercase;
+               font-weight: 600;
+            }
+
+            .artist {
+               text-transform: capitalize;
+
+               &::before {
+                  content: "•";
+                  margin-inline: .3em;
+               }
+            }
+         }
+      }
+
+      .marker {
+         position: absolute;
+         top: .6rem;
+         right: .6rem;
+         padding: .3em 1em;
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         border-radius: 2.5em;
+         background-color: rgba(255, 255, 255, .2);
+         backdrop-filter: blur(.2rem);
+         color: #fff;
+
+         .text {
+            display: inline-block;
+            transform: translateY(-.012em);
+            font-size: 1em;
+            line-height: 1.2;
+            font-weight: 400;
+         }
+      }
+   }
+
+   &:nth-child(2n) {
+      .card {
+         aspect-ratio: 3/4;
+      }
+   }
+
+   &.reverse {
+      .card {
+         aspect-ratio: 3/4;
+      }
+
+      &:nth-child(2n) {
+         .card {
+            aspect-ratio: 2/3;
+         }
+      }
+   }
+}
+
+@media screen and (max-width: 64rem) {
+   .gallery {
+      gap: $mobile-gap;
+
+      .card {
+         font-size: clamp(.75rem, 2.5vw, 1rem);
+      }
+   }
+}

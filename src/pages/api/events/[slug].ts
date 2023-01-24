@@ -2,6 +2,18 @@ import dbConnect from '../../../utils/dbConnect'
 import Event from '../../../models/Event'
 import { NextApiRequest, NextApiResponse } from 'next'
 
+export async function getEvent(slug: any) {
+
+   await dbConnect()
+
+   try {
+      const event = await Event.findOne({ link: slug })
+      return event
+   } catch (error) {
+      return error
+   }
+}
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
    const {
       query: { slug },
