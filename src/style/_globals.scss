@@ -12,7 +12,7 @@ main {
   position: relative;
   z-index: 1;
   height: 100vh;
-  max-height: -webkit-fill-available;
+  min-height: -webkit-fill-available;
   background-color: #fff;
   transition: transform 500ms $cubic-bezier;
   overflow: hidden;
