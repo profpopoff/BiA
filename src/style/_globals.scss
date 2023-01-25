@@ -8,6 +8,7 @@ main {
   font-size: clamp(.8rem, 1vw, 1rem);
   position: relative;
   height: 100vh;
+  min-height: -webkit-fill-available;
   z-index: 1;
   background-color: #fff;
   transition: transform 500ms $cubic-bezier;
@@ -20,6 +21,7 @@ main {
 
 .container {
   height: 100vh;
+  min-height: -webkit-fill-available;
   overflow: auto;
 }
 
