@@ -95,7 +95,6 @@ const ImageCard = ({ image }: { image: string }) => {
                src={image}
                fill
                priority
-               // sizes="(max-width: 1024px) 150vw, 75vw"
                alt='image'
             />
          </div>

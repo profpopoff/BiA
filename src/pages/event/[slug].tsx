@@ -114,8 +114,6 @@ const Info = ({ type, description, dates, place, ageRestriction, image }:
                src={image}
                fill
                priority
-               quality={100}
-               // sizes="(max-width: 1024px) 100vw, 75vw"
                alt='description image'
             />
          </div>
@@ -132,7 +130,6 @@ const Artist = ({ name, image, info }: { name: string, image?: string, info?: st
                src={image}
                fill
                priority
-               // sizes="(max-width: 1024px) 100vw, 50vw"
                alt={`${name}`}
             />
          </div>}
@@ -186,7 +183,6 @@ const ImageSections = ({ gallery }: { gallery: string[] }) => {
                         src={image}
                         fill
                         priority
-                        // sizes="(max-width: 1024px) 100vw, 50vw"
                         alt='thesis image'
                      />
                   </div>
