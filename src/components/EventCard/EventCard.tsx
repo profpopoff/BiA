@@ -9,8 +9,12 @@ import { InteractionContext } from "../../context/InteractionContext"
 
 import styles from '../Gallery/Gallery.module.scss'
 
-const EventCard = ({ event, galleryIndex, setSelectedGallery }:
-   { event: any, galleryIndex: number, setSelectedGallery?: React.Dispatch<React.SetStateAction<number>> }) => {
+const EventCard = ({ event, galleryIndex, container, setSelectedGallery }: {
+   event: any,
+   galleryIndex: number,
+   container: React.RefObject<HTMLDivElement>,
+   setSelectedGallery?: React.Dispatch<React.SetStateAction<number>>
+}) => {
 
    const { filter } = useContext(FilterContext)
 
@@ -37,11 +41,11 @@ const EventCard = ({ event, galleryIndex, setSelectedGallery }:
 
       setSelectedGallery?.(galleryIndex)
 
-      const container = e.currentTarget as HTMLElement
-      const clientRect = container.getBoundingClientRect()
+      const target = e.currentTarget as HTMLElement
+      const clientRect = target.getBoundingClientRect()
 
-      const wrapper = container.parentElement?.parentElement?.parentElement?.parentElement!
-      const mainContainer = wrapper.parentElement! as HTMLElement
+      const wrapper = target.parentElement?.parentElement?.parentElement?.parentElement!
+      const mainContainer = container.current as HTMLElement
 
       if (pathname === '/events') {
          const filter = wrapper.children[1] as HTMLElement
@@ -50,10 +54,10 @@ const EventCard = ({ event, galleryIndex, setSelectedGallery }:
 
       mainContainer.style.overflow = 'hidden'
 
-      container.style.pointerEvents = 'none'
-      container.style.cursor = 'default'
-      container.style.zIndex = '2'
-      container.style.inset = `${-clientRect.y}px 
+      target.style.pointerEvents = 'none'
+      target.style.cursor = 'default'
+      target.style.zIndex = '2'
+      target.style.inset = `${-clientRect.y}px 
       ${-(window.innerWidth - clientRect.x - clientRect.width)}px 
       ${-(window.innerHeight - clientRect.y - clientRect.height)}px 
       ${-clientRect.x}px`

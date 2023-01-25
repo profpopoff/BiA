@@ -12,7 +12,7 @@ import { FilterContext } from '../../context/FilterContext'
 
 const Gallery = ({ array, galleryIndex, container, selectedGallery, setSelectedGallery }: {
    array: any[], galleryIndex: number,
-   container: React.RefObject<HTMLDivElement>
+   container: React.RefObject<HTMLDivElement>,
    selectedGallery?: number,
    setSelectedGallery?: React.Dispatch<React.SetStateAction<number>>
 }) => {
@@ -42,9 +42,8 @@ const Gallery = ({ array, galleryIndex, container, selectedGallery, setSelectedG
    const { filter } = useContext(FilterContext)
 
    useEffect(() => {
-      const container = galleryRef.current?.parentElement?.parentElement?.parentElement
 
-      container?.scrollTo({ top: 0 })
+      container.current?.scrollTo({ top: 0 })
 
       const animation = (from: string) => [
          { transform: `translateY(${from})`, opacity: '0' },
@@ -81,7 +80,7 @@ const Gallery = ({ array, galleryIndex, container, selectedGallery, setSelectedG
             array.map((image: string, index: number) =>
                <ImageCard image={image} key={index} />) :
             array.map((event: Event) =>
-               <EventCard event={event} key={event._id} galleryIndex={galleryIndex} setSelectedGallery={setSelectedGallery} />)
+               <EventCard event={event} key={event._id} galleryIndex={galleryIndex} container={container} setSelectedGallery={setSelectedGallery} />)
          }
       </div>
    )
