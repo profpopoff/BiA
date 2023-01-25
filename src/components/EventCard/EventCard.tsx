@@ -82,6 +82,7 @@ const EventCard = ({ event, galleryIndex, container, setSelectedGallery }: {
                   className={styles.src}
                   src={event.images.cover}
                   fill
+                  priority
                   sizes="(max-width: 1024px) 300vw, 100vw"
                   alt={`${decode(event.title)} image`}
                />

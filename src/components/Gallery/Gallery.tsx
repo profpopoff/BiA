@@ -94,7 +94,8 @@ const ImageCard = ({ image }: { image: string }) => {
                className={styles.src}
                src={image}
                fill
-               sizes="(max-width: 1024px) 150vw, 75vw"
+               priority
+               // sizes="(max-width: 1024px) 150vw, 75vw"
                alt='image'
             />
          </div>

@@ -46,7 +46,8 @@ const Hero = ({ title, artist, image }: { title: string, artist?: string, image:
       <Image
          className={styles.image}
          src={image}
-         fill={true}
+         fill
+         priority
          sizes="(max-width: 1024px) 300vw, 100vw"
          alt={`${decode(title)} image`}
       />
@@ -112,7 +113,9 @@ const Info = ({ type, description, dates, place, ageRestriction, image }:
                className={styles.src}
                src={image}
                fill
-               sizes="(max-width: 1024px) 100vw, 75vw"
+               priority
+               quality={100}
+               // sizes="(max-width: 1024px) 100vw, 75vw"
                alt='description image'
             />
          </div>
@@ -128,7 +131,8 @@ const Artist = ({ name, image, info }: { name: string, image?: string, info?: st
                className={styles.src}
                src={image}
                fill
-               sizes="(max-width: 1024px) 100vw, 50vw"
+               priority
+               // sizes="(max-width: 1024px) 100vw, 50vw"
                alt={`${name}`}
             />
          </div>}
@@ -147,6 +151,7 @@ const ImageThesis = ({ image, thesis }: { image: string, thesis: string }) => (
             className={styles.src}
             src={image}
             fill
+            priority
             sizes="(max-width: 1024px) 300vw, 100vw"
             alt='thesis image'
          />
@@ -180,7 +185,8 @@ const ImageSections = ({ gallery }: { gallery: string[] }) => {
                         className={styles.src}
                         src={image}
                         fill
-                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        priority
+                        // sizes="(max-width: 1024px) 100vw, 50vw"
                         alt='thesis image'
                      />
                   </div>
@@ -197,6 +203,7 @@ const Next = ({ title, image, link }: { title: string, image: string, link: stri
          className={styles.image}
          src={image}
          fill
+         priority
          sizes="(max-width: 1024px) 300vw, 100vw"
          alt={`${decode(title)} image`}
       />

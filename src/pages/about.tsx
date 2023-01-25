@@ -61,8 +61,8 @@ const Info = () => (
          <Image
             className={styles.src}
             src={infoImage}
-            fill={true}
-            sizes="(max-width: 1024px) 100vw, 75vw"
+            fill
+            priority
             alt='image'
          />
       </div>
@@ -76,8 +76,9 @@ const Images = ({ images, thesis }: { images: StaticImageData[], thesis?: String
             <Image
                className={styles.src}
                src={image}
-               fill={true}
-               sizes="(max-width: 1024px) 300vw, 100vw"
+               fill
+               priority
+               sizes="(max-width: 1024px) 300vw, auto"
                alt='thesis image'
             />
          </div>
@@ -109,7 +110,8 @@ const Events = () => (
          <Image
             className={styles.src}
             src={img6}
-            fill={true}
+            fill
+            priority
             sizes="(max-width: 1024px) 300vw, 100vw"
             alt='thesis image'
          />
