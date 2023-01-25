@@ -146,8 +146,11 @@
 
 @media screen and (max-width: 48rem) {
    .container {
+      height: 30rem;
+
       .links {
          justify-content: start;
+         margin-top: 2rem;
          padding-inline: clamp(2em, 7vw, 4em);
       }
    }
