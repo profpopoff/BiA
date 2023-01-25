@@ -2,13 +2,13 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: #000;
+  height: 100vh;
+  max-height: -webkit-fill-available;
 }
 
 main {
   font-size: clamp(.8rem, 1vw, 1rem);
   position: relative;
-  height: 100vh;
-  min-height: -webkit-fill-available;
   z-index: 1;
   background-color: #fff;
   transition: transform 500ms $cubic-bezier;
@@ -21,7 +21,7 @@ main {
 
 .container {
   height: 100vh;
-  min-height: -webkit-fill-available;
+  max-height: -webkit-fill-available;
   overflow: auto;
 }
 
