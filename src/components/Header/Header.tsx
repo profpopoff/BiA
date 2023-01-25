@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useContext } from "react"
 
-import { InteractionContext } from "../../app/context/InteractionContext"
+import { InteractionContext } from '../../context/InteractionContext'
 import header from './Header.module.scss'
 
 export default function Header() {
