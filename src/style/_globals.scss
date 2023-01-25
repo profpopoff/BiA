@@ -14,11 +14,11 @@ main {
   z-index: 1;
   height: 100%;
   background-color: #fff;
-  transition: all 500ms $cubic-bezier;
+  transition: transform 500ms $cubic-bezier;
   overflow: hidden;
 
   &.navActive {
-    inset: -30em 0;
+    transform: translateY(-30em);
   }
 }
 
@@ -30,7 +30,7 @@ main {
 @media screen and (max-width: 64rem) {
   main {
     &.navActive {
-      inset: -30rem 0;
+      transform: translateY(-30rem);
     }
   }
 }
