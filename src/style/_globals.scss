@@ -9,16 +9,16 @@ body {
 
 main {
   font-size: clamp(.8rem, 1vw, 1rem);
-  position: relative;
+  position: fixed;
+  inset: 0;
   z-index: 1;
-  height: 100vh;
-  min-height: -webkit-fill-available;
+  height: 100%;
   background-color: #fff;
-  transition: transform 500ms $cubic-bezier;
+  transition: all 500ms $cubic-bezier;
   overflow: hidden;
 
   &.navActive {
-    transform: translateY(-30em);
+    inset: -30em 0;
   }
 }
 
@@ -30,7 +30,7 @@ main {
 @media screen and (max-width: 64rem) {
   main {
     &.navActive {
-      transform: translateY(-30rem);
+      inset: -30rem 0;
     }
   }
 }
