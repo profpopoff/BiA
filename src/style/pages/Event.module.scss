@@ -1,11 +1,12 @@
 @import '../../style/variables';
 
 .eventContainer {
+   height: inherit;
    -webkit-font-smoothing: antialiased;
    font-size: clamp(.85rem, 1.25vw, 1rem);
 
    section {
-      height: 100vh;
+      height: 100%;
       overflow: hidden;
       display: flex;
       white-space: pre-line;
